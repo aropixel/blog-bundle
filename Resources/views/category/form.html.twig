@@ -1,0 +1,41 @@
+{% extends '@AropixelAdmin/Form/base.html.twig' %}
+
+{% block meta_title %}Catégories - {% if category and category.id %}Modifier{% else %}Ajouter{% endif %} une catégorie{% endblock %}
+{% block header_title %}Catégories{% endblock %}
+{% block header_breadcrumb %}
+    <ul class="breadcrumb breadcrumb-caret position-right">
+        <li class="breadcrumb-item"><a href="{{ url('_admin') }}">Accueil</a></li>
+        <li class="breadcrumb-item">Blog</li>
+        <li class="breadcrumb-item"><a href="{{ url('post_category_index') }}">Catégories</a></li>
+        {% if category and category.id %}
+            <li class="breadcrumb-item">Modifier</li>
+        {% else %}
+            <li class="breadcrumb-item active">Création</li>
+        {% endif %}
+    </ul>
+{% endblock %}
+
+
+
+{% block mainPanel %}
+    <!-- Form horizontal -->
+    <div class="card">
+
+        <div class="card-heading">
+            <h5 class="card-header">{% if category and category.id %}Modifier{% else %}Ajouter{% endif %} une catégorie</h5>
+        </div>
+
+        <div class="card-body">
+
+
+            <div class="row">
+                <div class="col-sm-8">
+                    {{ form_row(form.name) }}
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+{% endblock %}
