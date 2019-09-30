@@ -25,7 +25,7 @@ class PostImage extends AttachImage
     private $post;
 
     /**
-     * @ORM\OneToMany(targetEntity="PostImageCrop", mappedBy="image")
+     * @ORM\OneToMany(targetEntity="PostImageCrop", mappedBy="image", cascade={"all"})
      */
     private $crops;
 
