@@ -1,8 +1,8 @@
 <?xml version="1.0" ?>
 
 <container xmlns="http://symfony.com/schema/dic/services"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
 
     <services>
@@ -11,13 +11,20 @@
 
         <prototype namespace="Aropixel\BlogBundle\" resource="../../*" exclude="../../{DependencyInjection,Entity,Migrations,Resources,Tests}"/>
 
-        <service id="aropixel_blog.example" class="Aropixel\BlogBundle\Form\PostType">
+        <service id="aropixel_blog.form.post_type" class="Aropixel\BlogBundle\Form\PostType">
             <argument>%aropixel_blog.categories%</argument>
             <tag name="form.type"/>
         </service>
 
-        <service id="Aropixel\BlogBundle\Repository\PostRepository" public="true" autowire="true">
+        <service id="Aropixel\BlogBundle\Repository\PostRepository" public="true">
+            <argument type="service" id="doctrine" />
+            <argument>%aropixel_blog.entities.post%</argument>
             <tag name="doctrine.repository_service"/>
+        </service>
+
+        <service id="Aropixel\BlogBundle\EventListener\MappedSuperClassSubscriber" public="true">
+            <argument>%aropixel_blog.entities%</argument>
+            <tag name="doctrine.event_subscriber" priority="8192" />
         </service>
 
     </services>

@@ -16,9 +16,9 @@ use Symfony\Bridge\Doctrine\RegistryInterface;
  */
 class PostRepository extends PublishableRepository
 {
-    public function __construct(RegistryInterface $registry)
+    public function __construct(RegistryInterface $registry, $className)
     {
-        parent::__construct($registry, Post::class);
+        parent::__construct($registry, $className);
     }
 
 

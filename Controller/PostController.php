@@ -46,10 +46,15 @@ class PostController extends AbstractController
      */
     public function new(Request $request): Response
     {
-        $post = new Post();
+        $entities = $this->getParameter('aropixel_blog.entities');
+        $forms = $this->getParameter('aropixel_blog.forms');
+        $entityName = $entities['post'];
+        $formName = $forms['post'];
+
+        $post = new $entityName();
         $post->setStatus(Publishable::STATUS_OFFLINE);
 
-        $form = $this->createForm(PostType::class, $post);
+        $form = $this->createForm($formName, $post);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -75,11 +80,17 @@ class PostController extends AbstractController
      */
     public function edit(Request $request, Post $post): Response
     {
+        //
+        $forms = $this->getParameter('aropixel_blog.forms');
+        $formName = $forms['post'];
+
+        //
         $em = $this->getDoctrine()->getManager();
         $image = $post->getImage();
 
+        //
         $deleteForm = $this->createDeleteForm($post);
-        $form = $this->createForm(PostType::class, $post);
+        $form = $this->createForm($formName, $post);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

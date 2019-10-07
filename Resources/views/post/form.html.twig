@@ -26,13 +26,13 @@
         </ul>
     </div>
 
-    <div class="card">
+    <div class="panel-tab-content tab-content">
 
-        <div class="card-body">
+        <div class="tab-pane active" id="panel-tab1">
 
-            <div class="panel-tab-content tab-content">
+            <div class="card">
 
-                <div class="tab-pane active" id="panel-tab1">
+                <div class="card-body">
 
 
                     {{ form_row(form.title) }}
@@ -49,11 +49,19 @@
 
                     {{ form_row(form.description) }}
 
-
                 </div>
 
-                <div class="tab-pane" id="panel-tab2">
+            </div>
 
+
+        </div>
+
+        <div class="tab-pane" id="panel-tab2">
+
+
+            <div class="card">
+
+                <div class="card-body">
 
                     {{ form_row(form.metaTitle) }}
 

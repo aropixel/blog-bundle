@@ -9,7 +9,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
 
 
 /**
- * @ORM\Entity(repositoryClass="Aropixel\BlogBundle\Repository\PostRepository")
+ * @ORM\MappedSuperclass(repositoryClass="Aropixel\BlogBundle\Repository\PostRepository")
  */
 class Post
 {
