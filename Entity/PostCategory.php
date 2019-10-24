@@ -16,54 +16,37 @@ use Gedmo\Mapping\Annotation as Gedmo;
 class PostCategory
 {
     /**
-     * @var int
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
+     * @var integer
      */
     private $id;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="name", type="string", length=255)
      */
     private $name;
 
     /**
-     * @var int
-     *
-     * @Gedmo\SortablePosition
-     * @ORM\Column(name="position", type="integer")
+     * @var integer
      */
     private $position;
 
     /**
      * @var \DateTime
-     *
-     * @Gedmo\Timestampable(on="create")
-     * @ORM\Column(name="created_at", type="datetime")
      */
     private $createdAt;
 
     /**
      * @var \DateTime
-     *
-     * @Gedmo\Timestampable(on="update")
-     * @ORM\Column(name="updated_at", type="datetime", nullable=true)
      */
     private $updatedAt;
 
-
     /**
-     * @ORM\OneToMany(targetEntity="Post", mappedBy="category")
+     * @var Post[]
      */
     private $categoryPosts;
 
-
     /**
-     * @ORM\ManyToMany(targetEntity="Post", mappedBy="tags")
+     * @var Post[]
      */
     private $tagPosts;
 

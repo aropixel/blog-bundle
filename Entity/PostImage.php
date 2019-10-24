@@ -8,24 +8,22 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="Aropixel\BlogBundle\Repository\PostImageRepository")
+ * PostImage
  */
 class PostImage extends AttachImage
 {
     /**
-     * @ORM\Id()
-     * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
+     * @var integer
      */
     private $id;
 
     /**
-     * @ORM\OneToOne(targetEntity="Post", mappedBy="image")
+     * @var Post
      */
     private $post;
 
     /**
-     * @ORM\OneToMany(targetEntity="PostImageCrop", mappedBy="image", cascade={"all"})
+     * @var PostImageCrop[]
      */
     private $crops;
 

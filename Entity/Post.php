@@ -2,100 +2,93 @@
 
 namespace Aropixel\BlogBundle\Entity;
 
+use Aropixel\AdminBundle\Entity\Publishable;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
-use Doctrine\ORM\Mapping as ORM;
-use Gedmo\Mapping\Annotation as Gedmo;
 
 
 /**
- * @ORM\MappedSuperclass(repositoryClass="Aropixel\BlogBundle\Repository\PostRepository")
+ * Post
  */
-class Post
+class Post implements PostInterface
 {
     /**
-     * @ORM\Id()
-     * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
+     * @var integer
      */
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=20)
+     * @var string
      */
-    private $status;
+    private $status = Publishable::STATUS_OFFLINE;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @var string
      */
     private $title;
 
     /**
-     * @Gedmo\Slug(fields={"title"})
-     * @ORM\Column(type="string", length=255)
+     * @var string
      */
     private $slug;
 
     /**
-     * @ORM\Column(type="text", nullable=true)
+     * @var string
      */
     private $excerpt;
 
     /**
-     * @ORM\Column(type="text", nullable=true)
+     * @var string
      */
     private $description;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @var string
      */
     private $metaTitle;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @var string
      */
     private $metaDescription;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @var string
      */
     private $metaKeywords;
 
     /**
-     * @Gedmo\Timestampable(on="create")
-     * @ORM\Column(type="datetime")
+     * @var \DateTime
      */
     private $createdAt;
 
     /**
-     * @Gedmo\Timestampable(on="update")
-     * @ORM\Column(type="datetime", nullable=true)
+     * @var ?\DateTime
      */
     private $updatedAt;
 
     /**
-     * @ORM\Column(type="datetime", nullable=true)
+     * @var ?\DateTime
      */
     private $publishAt;
 
     /**
-     * @ORM\Column(type="datetime", nullable=true)
+     * @var ?\DateTime
      */
     private $publishUntil;
 
     /**
-     * @ORM\OneToOne(targetEntity="PostImage", inversedBy="post", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(name="image_id", referencedColumnName="id", onDelete="SET NULL")
+     * @var PostImage
      */
     private $image;
 
     /**
-     * @ORM\ManyToOne(targetEntity="PostCategory", inversedBy="categoryPosts")
+     * @var PostCategory
      */
     private $category;
 
     /**
-     * @ORM\ManyToMany(targetEntity="PostCategory", inversedBy="tagPosts")
+     * @var PostCategory[]
      */
     private $tags;
 

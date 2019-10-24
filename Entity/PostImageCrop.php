@@ -6,19 +6,17 @@ use Aropixel\AdminBundle\Entity\Crop;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="Aropixel\BlogBundle\Repository\PostImageCropRepository")
+ * PostImageCrop
  */
 class PostImageCrop extends Crop
 {
     /**
-     * @ORM\Id()
-     * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
+     * @var integer
      */
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="PostImage", inversedBy="crops")
+     * @var PostImage
      */
     private $image;
 
