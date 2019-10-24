@@ -2,6 +2,7 @@
 
 namespace Aropixel\BlogBundle\DependencyInjection;
 
+use Aropixel\BlogBundle\Entity\PostInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
@@ -27,7 +28,7 @@ class AropixelBlogExtension extends Extension
         //
         $container->setParameter('aropixel_blog.categories', $config['categories']);
         $container->setParameter('aropixel_blog.entities', $config['entities']);
-        $container->setParameter('aropixel_blog.entities.post', $config['entities']['post']);
+        $container->setParameter('aropixel_blog.entities.post', $config['entities'][PostInterface::class]);
         $container->setParameter('aropixel_blog.forms', $config['forms']);
         $container->setParameter('aropixel_blog.forms.post', $config['forms']['post']);
 

@@ -3,6 +3,7 @@
 namespace Aropixel\BlogBundle\DependencyInjection;
 
 use Aropixel\BlogBundle\Entity\Post;
+use Aropixel\BlogBundle\Entity\PostInterface;
 use Aropixel\BlogBundle\Form\PostType;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
@@ -35,7 +36,7 @@ class Configuration implements ConfigurationInterface
                 ->arrayNode('entities')
                     ->addDefaultsIfNotSet()
                     ->children()
-                        ->scalarNode('post')->defaultValue(Post::class)->end()
+                        ->scalarNode(PostInterface::class)->defaultValue(Post::class)->end()
                     ->end()
                 ->end()
             ->end()
