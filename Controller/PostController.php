@@ -5,6 +5,7 @@ namespace Aropixel\BlogBundle\Controller;
 use Aropixel\AdminBundle\Entity\Publishable;
 use Aropixel\AdminBundle\Services\Status;
 use Aropixel\BlogBundle\Entity\Post;
+use Aropixel\BlogBundle\Entity\PostInterface;
 use Aropixel\BlogBundle\Form\PostType;
 use Aropixel\BlogBundle\Repository\PostRepository;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -48,7 +49,7 @@ class PostController extends AbstractController
     {
         $entities = $this->getParameter('aropixel_blog.entities');
         $forms = $this->getParameter('aropixel_blog.forms');
-        $entityName = $entities['post'];
+        $entityName = $entities[PostInterface::class];
         $formName = $forms['post'];
 
         $post = new $entityName();

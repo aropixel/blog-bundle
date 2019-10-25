@@ -44,6 +44,7 @@ class MappedSuperClassSubscriber implements EventSubscriber
 
     public function loadClassMetadata(LoadClassMetadataEventArgs $eventArgs): void
     {
+
         $metadata = $eventArgs->getClassMetadata();
 
         /**

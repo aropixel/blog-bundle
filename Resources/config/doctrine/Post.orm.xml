@@ -27,10 +27,6 @@
             <join-column name="image_id" on-delete="SET NULL" />
         </one-to-one>
 
-        <many-to-one field="category" target-entity="Aropixel\BlogBundle\Entity\PostCategory" inversed-by="categoryPosts" />
-
-        <many-to-many field="tags" target-entity="Aropixel\BlogBundle\Entity\PostCategory" inversed-by="tagPosts" />
-
         <field name="createdAt" column="created_at" type="datetime">
             <gedmo:timestampable on="create"/>
         </field>

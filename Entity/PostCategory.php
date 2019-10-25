@@ -43,19 +43,13 @@ class PostCategory
     /**
      * @var Post[]
      */
-    private $categoryPosts;
-
-    /**
-     * @var Post[]
-     */
-    private $tagPosts;
+    private $posts;
 
 
 
     public function __construct()
     {
-        $this->categoryPosts = new ArrayCollection();
-        $this->tagPosts = new ArrayCollection();
+        $this->posts = new ArrayCollection();
     }
 
     /**
@@ -163,68 +157,35 @@ class PostCategory
     /**
      * @return Collection|Post[]
      */
-    public function getCategoryPosts(): Collection
+    public function getPosts(): Collection
     {
-        return $this->categoryPosts;
+        return $this->posts;
     }
 
 
-    public function addCategoryPost(Post $categoryPost): self
+    public function addPost(Post $post): self
     {
-        if (!$this->categoryPosts->contains($categoryPost)) {
-            $this->categoryPosts[] = $categoryPost;
-            $categoryPost->setCategory($this);
+        if (!$this->posts->contains($post)) {
+            $this->posts[] = $post;
+            $post->setCategory($this);
         }
 
         return $this;
     }
 
 
-    public function removeCategoryPost(Post $categoryPost): self
+    public function removePost(Post $post): self
     {
-        if ($this->categoryPosts->contains($categoryPost)) {
-            $this->categoryPosts->removeElement($categoryPost);
+        if ($this->posts->contains($post)) {
+            $this->posts->removeElement($post);
             // set the owning side to null (unless already changed)
-            if ($categoryPost->getCategory() === $this) {
-                $categoryPost->setCategory(null);
+            if ($post->getCategory() === $this) {
+                $post->setCategory(null);
             }
         }
 
         return $this;
     }
-
-
-
-    /**
-     * @return Collection|Post[]
-     */
-    public function getTagPosts(): Collection
-    {
-        return $this->tagPosts;
-    }
-
-
-    public function addTagPost(Post $tagPost): self
-    {
-        if (!$this->tagPosts->contains($tagPost)) {
-            $this->tagPosts[] = $tagPost;
-            $tagPost->addTag($this);
-        }
-
-        return $this;
-    }
-
-
-    public function removeTagPost(Post $tagPost): self
-    {
-        if ($this->tagPosts->contains($tagPost)) {
-            $this->tagPosts->removeElement($tagPost);
-            $tagPost->removeTag($this);
-        }
-
-        return $this;
-    }
-
 
 
 }

@@ -90,13 +90,13 @@ class Post implements PostInterface
     /**
      * @var PostCategory[]
      */
-    private $tags;
+    private $categories;
 
 
 
     public function __construct()
     {
-        $this->tags = new ArrayCollection();
+        $this->categories = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -278,24 +278,24 @@ class Post implements PostInterface
     /**
      * @return Collection|PostCategory[]
      */
-    public function getTags(): Collection
+    public function getCategories(): Collection
     {
-        return $this->tags;
+        return $this->categories;
     }
 
-    public function addTag(PostCategory $tag): self
+    public function addCategory(PostCategory $tag): self
     {
-        if (!$this->tags->contains($tag)) {
-            $this->tags[] = $tag;
+        if (!$this->categories->contains($tag)) {
+            $this->categories[] = $tag;
         }
 
         return $this;
     }
 
-    public function removeTag(PostCategory $tag): self
+    public function removeCategory(PostCategory $tag): self
     {
-        if ($this->tags->contains($tag)) {
-            $this->tags->removeElement($tag);
+        if ($this->categories->contains($tag)) {
+            $this->categories->removeElement($tag);
         }
 
         return $this;

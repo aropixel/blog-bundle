@@ -97,12 +97,12 @@ class PostType extends AbstractType
         else if ($this->categoryMode == 'tags') {
 
             $builder
-                ->add('tags', EntityType::class, array(
+                ->add('categories', EntityType::class, array(
                     'class' => PostCategory::class,
                     'multiple' => true,
                     'required' => false,
-                    'label' => "Tags",
-                    'placeholder' => "Sélectionner des catégorie",
+                    'label' => "Catégories",
+                    'placeholder' => "Sélectionner des catégories",
                     'query_builder' => function(EntityRepository $er) {
                         return $er->createQueryBuilder('c')
                             ->orderBy('c.position', 'ASC');
