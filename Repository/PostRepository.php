@@ -6,7 +6,7 @@ use Aropixel\AdminBundle\Repository\PublishableRepository;
 use Aropixel\BlogBundle\Entity\Post;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Collections\ArrayCollection;
-use Symfony\Bridge\Doctrine\RegistryInterface;
+use Doctrine\Persistence\ManagerRegistry;
 
 /**
  * @method Post|null find($id, $lockMode = null, $lockVersion = null)
@@ -16,7 +16,7 @@ use Symfony\Bridge\Doctrine\RegistryInterface;
  */
 class PostRepository extends PublishableRepository
 {
-    public function __construct(RegistryInterface $registry, $className)
+    public function __construct(ManagerRegistry $registry, $className)
     {
         parent::__construct($registry, $className);
     }
