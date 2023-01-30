@@ -20,31 +20,8 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class PostController extends AbstractController
 {
-    /**
-     * @Route("/", name="post_index", methods={"GET"})
-     */
-    public function index(PostRepository $postRepository): Response
-    {
-        //
-        $posts = $postRepository->findAll();
 
-        //
-        $delete_forms = array();
-        foreach ($posts as $entity) {
-            $deleteForm = $this->createDeleteForm($entity);
-            $delete_forms[$entity->getId()] = $deleteForm->createView();
-        }
 
-        //
-        return $this->render('@AropixelBlog/post/index.html.twig', [
-            'posts' => $postRepository->findAll(),
-            'delete_forms' => $delete_forms,
-        ]);
-    }
-
-    /**
-     * @Route("/new", name="post_new", methods={"GET","POST"})
-     */
     public function new(Request $request): Response
     {
         $entities = $this->getParameter('aropixel_blog.entities');
@@ -126,7 +103,7 @@ class PostController extends AbstractController
 
 
     /**
-     * @Route("/{id}", name="post_delete", methods={"DELETE"})
+     * @Route("/{id}", name="aropixel_blog_post_delete", methods={"DELETE"})
      */
     public function delete(Request $request, Post $post): Response
     {

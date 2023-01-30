@@ -116,4 +116,22 @@ class PostRepository extends PublishableRepository
         return $last;
     }
 
+    public function add(Post $post, bool $flush = false): void
+    {
+        $this->getEntityManager()->persist($post);
+
+        if ($flush) {
+            $this->getEntityManager()->flush();
+        }
+    }
+
+    public function remove(Post $post, bool $flush = false) : void
+    {
+        $this->getEntityManager()->remove($post);
+
+        if ($flush) {
+            $this->getEntityManager()->flush();
+        }
+    }
+
 }
