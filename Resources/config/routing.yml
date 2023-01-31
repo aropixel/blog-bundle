@@ -1,7 +1,3 @@
-aropixel_blog_post:
-  resource: "@AropixelBlogBundle/Controller/PostController.php"
-  type:     annotation
-
 aropixel_blog_post_category:
   resource: "@AropixelBlogBundle/Controller/PostCategoryController.php"
   type:     annotation
@@ -13,3 +9,15 @@ aropixel_blog_post_index:
 aropixel_blog_post_new:
   path: /blog/post/new
   controller: Aropixel\BlogBundle\Http\Action\Post\CreatePostAction
+
+aropixel_blog_post_edit:
+  path: /blog/post/{id}/edit
+  controller: Aropixel\BlogBundle\Http\Action\Post\EditPostAction
+
+aropixel_blog_post_delete:
+  path: /blog/post/{id}
+  controller: Aropixel\BlogBundle\Http\Action\Post\EditPostAction
+
+aropixel_blog_post_status:
+  path: /blog/post/{id}/status
+  controller: Aropixel\BlogBundle\Http\Action\Post\StatusPageAction

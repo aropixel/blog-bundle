@@ -20,8 +20,8 @@ class IndexPostAction extends AbstractController
 
         $delete_forms = array();
         foreach ($posts as $post) {
-            $delete_forms = $this->formFactory->createDeleteForm($post);
-            $delete_forms[$post->getId()] = $delete_forms->createView();
+            $deleteForm = $this->formFactory->createDeleteForm($post);
+            $delete_forms[$post->getId()] = $deleteForm->createView();
         }
 
         return $this->render('@AropixelBlog/post/index.html.twig', [
