@@ -2,7 +2,7 @@
 
 namespace Aropixel\BlogBundle\Http\Action\Post;
 
-use Aropixel\BlogBundle\Http\Form\Blog\FormFactory;
+use Aropixel\BlogBundle\Http\Form\Post\FormFactory;
 use Aropixel\BlogBundle\Repository\PostRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;

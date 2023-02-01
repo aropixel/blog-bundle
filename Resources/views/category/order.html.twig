@@ -2,13 +2,13 @@
 
 
 {% block meta_title %}Catégories - Réorganiser les catégories{% endblock %}
-{% block header_title %} <span class="text-semibold">Catégories</span> - Réorganiser les catégories{% endblock %}
+{% block header_title %}Réorganiser les catégories{% endblock %}
 {% block header_breadcrumb %}
     <ul class="breadcrumb breadcrumb-caret position-right">
-        <li><a href="{{ url('_admin') }}">Accueil</a></li>
-        <li>Blog</li>
-        <li><a href="{{ url('post_category_index') }}">Catégories</a></li>
-        <li class="active">Réorganiser les catégories</li>
+        <li class="breadcrumb-item"><a href="{{ url('_admin') }}">Accueil</a></li>
+        <li class="breadcrumb-item">Blog</li>
+        <li class="breadcrumb-item"><a href="{{ url('aropixel_blog_category_index') }}">Catégories</a></li>
+        <li class="breadcrumb-item active">Réorganiser les catégories</li>
     </ul>
 {% endblock %}
 

@@ -19,6 +19,24 @@ class PostCategoryRepository extends ServiceEntityRepository
         parent::__construct($registry, PostCategory::class);
     }
 
+    public function add(PostCategory $postCategory, bool $flush = false): void
+    {
+        $this->getEntityManager()->persist($postCategory);
+
+        if ($flush) {
+            $this->getEntityManager()->flush();
+        }
+    }
+
+    public function remove(PostCategory $postCategory, bool $flush = false) : void
+    {
+        $this->getEntityManager()->remove($postCategory);
+
+        if ($flush) {
+            $this->getEntityManager()->flush();
+        }
+    }
+
     // /**
     //  * @return PostCategory[] Returns an array of PostCategory objects
     //  */

@@ -33,16 +33,16 @@
                 <td>
                     <div class="btn-group">
                         {% if is_granted('ROLE_SUPER_ADMIN') %}
-                            <a href="{{ path('post_category_edit', {'id': category.id}) }}" class="btn btn-primary btn-labeled"><b><i class="fas fa-edit"></i></b> Modifier</a>
-                            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span class="caret"></span></button>
+                            <a href="{{ path('aropixel_blog_category_edit', {'id': category.id}) }}" class="btn btn-primary btn-labeled"><b><i class="fas fa-edit"></i></b> Modifier</a>
+                            <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><span class="caret"></span></button>
                             <ul class="dropdown-menu dropdown-menu-right">
-                                <li class="dropdown-item"><a href="{{ path('post_category_edit', {'id': category.id}) }}"><i class="fas fa-edit"></i> Modifier</a></li>
+                                <li class="dropdown-item"><a href="{{ path('aropixel_blog_category_edit', {'id': category.id}) }}"><i class="fas fa-edit"></i> Modifier</a></li>
                                 <li class="dropdown-divider"></li>
                                 <li class="dropdown-item"><a class="delete" data-confirm="Êtes-vous certain de vouloir supprimer cette catégorie ?"><i class="fas fa-trash"></i> Supprimer</a></li>
                             </ul>
                             {{ form(delete_forms[category.id]) }}
                         {% else %}
-                            <a href="{{ path('post_category_edit', {'id': category.id}) }}" class="btn btn-primary btn-labeled"><b><i class="fas fa-edit"></i></b> Modifier</a>
+                            <a href="{{ path('aropixel_blog_category_edit', {'id': category.id}) }}" class="btn btn-primary btn-labeled"><b><i class="fas fa-edit"></i></b> Modifier</a>
                         {% endif %}
                     </div>
                 </td>

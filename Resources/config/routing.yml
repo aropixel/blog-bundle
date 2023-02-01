@@ -1,23 +1,61 @@
-aropixel_blog_post_category:
-  resource: "@AropixelBlogBundle/Controller/PostCategoryController.php"
-  type:     annotation
-
 aropixel_blog_post_index:
   path: /blog/post/
   controller: Aropixel\BlogBundle\Http\Action\Post\IndexPostAction
+  methods: GET|POST
+
 
 aropixel_blog_post_new:
   path: /blog/post/new
   controller: Aropixel\BlogBundle\Http\Action\Post\CreatePostAction
+  methods: GET|POST
+
 
 aropixel_blog_post_edit:
   path: /blog/post/{id}/edit
   controller: Aropixel\BlogBundle\Http\Action\Post\EditPostAction
+  methods: GET|POST
+
 
 aropixel_blog_post_delete:
   path: /blog/post/{id}
-  controller: Aropixel\BlogBundle\Http\Action\Post\EditPostAction
+  controller: Aropixel\BlogBundle\Http\Action\Post\DeletePostAction
+  methods: GET|POST|DELETE
+
 
 aropixel_blog_post_status:
   path: /blog/post/{id}/status
   controller: Aropixel\BlogBundle\Http\Action\Post\StatusPageAction
+  methods: GET|POST
+
+
+aropixel_blog_category_index:
+  path: /blog/category/index
+  controller: Aropixel\BlogBundle\Http\Action\PostCategory\IndexPostCategoryAction
+  methods: GET|POST
+
+
+aropixel_blog_category_order:
+  path: /blog/category/order
+  controller: Aropixel\BlogBundle\Http\Action\PostCategory\OrderPostCategoryAction
+  methods: GET|POST
+
+
+aropixel_blog_category_new:
+  path: /blog/category/new
+  controller: Aropixel\BlogBundle\Http\Action\PostCategory\CreatePostCategoryAction
+  methods: GET|POST
+
+aropixel_blog_category_status:
+  path: /blog/category/{id}/status
+  controller: Aropixel\BlogBundle\Http\Action\PostCategory\StatusPostCategoryAction
+  methods: GET|POST
+
+aropixel_blog_category_edit:
+  path: /blog/category/{id}/edit
+  controller: Aropixel\BlogBundle\Http\Action\PostCategory\EditPostCategoryAction
+  methods: GET|POST
+
+aropixel_blog_category_delete:
+  path: /blog/category/{id}
+  controller: Aropixel\BlogBundle\Http\Action\PostCategory\DeletePostCategoryAction
+  methods: GET|POST|DELETE

@@ -2,7 +2,7 @@
 
 namespace Aropixel\BlogBundle\Http\Action\Post;
 
-use Aropixel\BlogBundle\Http\Form\Blog\FormFactory;
+use Aropixel\BlogBundle\Http\Form\Post\FormFactory;
 use Aropixel\BlogBundle\Repository\PostRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RequestStack;
@@ -22,10 +22,6 @@ class DeletePostAction extends AbstractController
     {
         $post = $this->postRepository->find($id);
         $title = $post->getTitle();
-
-        if (is_null($post)) {
-            throw $this->createNotFoundException();
-        }
 
 
         $form = $this->formFactory->createDeleteForm($post);

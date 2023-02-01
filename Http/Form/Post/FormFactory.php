@@ -1,6 +1,6 @@
 <?php
 
-namespace Aropixel\BlogBundle\Http\Form\Blog;
+namespace Aropixel\BlogBundle\Http\Form\Post;
 
 use Aropixel\BlogBundle\Entity\Post;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -8,9 +8,7 @@ use Symfony\Component\Form\FormInterface;
 
 class FormFactory extends AbstractController
 {
-    /**
-     * Creates a form to delete a Page entity by id.
-     */
+
     public function createDeleteForm(Post $post) : FormInterface
     {
         return $this->createFormBuilder()
@@ -19,5 +17,4 @@ class FormFactory extends AbstractController
             ->getForm()
             ;
     }
-
 }
