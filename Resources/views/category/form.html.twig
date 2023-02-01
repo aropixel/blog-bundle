@@ -1,16 +1,16 @@
 {% extends '@AropixelAdmin/Form/base.html.twig' %}
 
-{% block meta_title %}Catégories - {% if category and category.id %}Modifier{% else %}Ajouter{% endif %} une catégorie{% endblock %}
-{% block header_title %}Catégories{% endblock %}
+{% block meta_title %}{% trans %}Categories{% endtrans %} - {% if category and category.id %}{% trans %}Modify{% endtrans %}{% else %}{% trans %}Add{% endtrans %}{% endif %} {% trans %}a category{% endtrans %}{% endblock %}
+{% block header_title %}{% trans %}Categories{% endtrans %}{% endblock %}
 {% block header_breadcrumb %}
     <ul class="breadcrumb breadcrumb-caret position-right">
-        <li class="breadcrumb-item"><a href="{{ url('_admin') }}">Accueil</a></li>
+        <li class="breadcrumb-item"><a href="{{ url('_admin') }}">{% trans %}Home{% endtrans %}</a></li>
         <li class="breadcrumb-item">Blog</li>
-        <li class="breadcrumb-item"><a href="{{ url('aropixel_blog_category_index') }}">Catégories</a></li>
+        <li class="breadcrumb-item"><a href="{{ url('aropixel_blog_category_index') }}">{% trans %}Categories{% endtrans %}</a></li>
         {% if category and category.id %}
-            <li class="breadcrumb-item">Modifier</li>
+            <li class="breadcrumb-item">{% trans %}Modify{% endtrans %}</li>
         {% else %}
-            <li class="breadcrumb-item active">Création</li>
+            <li class="breadcrumb-item active">{% trans %}Add{% endtrans %}</li>
         {% endif %}
     </ul>
 {% endblock %}
@@ -22,7 +22,7 @@
     <div class="card">
 
         <div class="card-heading">
-            <h5 class="card-header">{% if category and category.id %}Modifier{% else %}Ajouter{% endif %} une catégorie</h5>
+            <h5 class="card-header">{% if category and category.id %}{% trans %}Modify{% endtrans %}{% else %}{% trans %}Add{% endtrans %}{% endif %} {% trans %}a category{% endtrans %}</h5>
         </div>
 
         <div class="card-body">

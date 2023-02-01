@@ -38,8 +38,8 @@ class PostType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title', null, array('label'  => 'Titre'))
-            ->add('excerpt', null, array('label'  => 'Chapeau'))
+            ->add('title', null, array('label'  => 'Title'))
+            ->add('excerpt', null, array('label'  => 'Header'))
             ->add('description', null, array('label'  => 'Description', 'attr' => array('class' => 'ckeditor')))
             ->add('slug', HiddenType::class)
             ->add('metaTitle', null, array('label'  => 'Meta title'))

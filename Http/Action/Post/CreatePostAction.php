@@ -33,7 +33,7 @@ class CreatePostAction extends AbstractController
             $this->postRepository->add($post, true);
 
             $this->addFlash('notice', 'Le post a bien été enregistré.');
-            return $this->redirectToRoute('post_edit', array('id' => $post->getId()));
+            return $this->redirectToRoute('aropixel_blog_post_edit', array('id' => $post->getId()));
         }
 
         return $this->render('@AropixelBlog/post/form.html.twig', [

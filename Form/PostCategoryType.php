@@ -19,7 +19,7 @@ class PostCategoryType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name', null, array('label'  => 'Nom'))
+            ->add('name', null, array('label'  => 'Name'))
             ->add('createdAt', DateTimeType::class, array(
                 'required' => false,
                 'date_widget' => 'single_text',

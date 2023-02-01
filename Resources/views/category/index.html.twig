@@ -1,18 +1,18 @@
 {% extends '@AropixelAdmin/List/datatable.html.twig' %}
 
 
-{% block meta_title %}Catégories - Liste des catégories{% endblock %}
-{% block header_title %}Catégories {% endblock %}
+{% block meta_title %}{% trans %}Categories{% endtrans %} - {% trans %}Categories list{% endtrans %}{% endblock %}
+{% block header_title %}{% trans %}Categories{% endtrans %} {% endblock %}
 {% block header_breadcrumb %}
     <ul class="breadcrumb breadcrumb-caret position-right">
-        <li class="breadcrumb-item"><a href="{{ url('_admin') }}">Accueil</a></li>
+        <li class="breadcrumb-item"><a href="{{ url('_admin') }}">{% trans %}Home{% endtrans %}</a></li>
         <li class="breadcrumb-item">Blog</li>
-        <li class="breadcrumb-item active">Catégories</li>
+        <li class="breadcrumb-item active">{% trans %}Categories{% endtrans %}</li>
     </ul>
 {% endblock %}
 
 
-{% block paneltitle %}Liste des catégories{% endblock %}
+{% block paneltitle %}{% trans %}Categories list{% endtrans %}{% endblock %}
 
 
 {% block paneldatatable %}
@@ -20,7 +20,7 @@
     <table class="table card-table table-vcenter text-nowrap datatable">
         <thead>
         <tr>
-            <th>Titre</th>
+            <th>{% trans %}Title{% endtrans %}</th>
             <th style="width:200px">Date</th>
             <th class="no-sort" style="width:150px">Actions</th>
         </tr>
@@ -33,16 +33,16 @@
                 <td>
                     <div class="btn-group">
                         {% if is_granted('ROLE_SUPER_ADMIN') %}
-                            <a href="{{ path('aropixel_blog_category_edit', {'id': category.id}) }}" class="btn btn-primary btn-labeled"><b><i class="fas fa-edit"></i></b> Modifier</a>
+                            <a href="{{ path('aropixel_blog_category_edit', {'id': category.id}) }}" class="btn btn-primary btn-labeled"><b><i class="fas fa-edit"></i></b> {% trans %}Edit{% endtrans %}</a>
                             <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><span class="caret"></span></button>
                             <ul class="dropdown-menu dropdown-menu-right">
-                                <li class="dropdown-item"><a href="{{ path('aropixel_blog_category_edit', {'id': category.id}) }}"><i class="fas fa-edit"></i> Modifier</a></li>
+                                <li class="dropdown-item"><a href="{{ path('aropixel_blog_category_edit', {'id': category.id}) }}"><i class="fas fa-edit"></i> {% trans %}Edit{% endtrans %}</a></li>
                                 <li class="dropdown-divider"></li>
-                                <li class="dropdown-item"><a class="delete" data-confirm="Êtes-vous certain de vouloir supprimer cette catégorie ?"><i class="fas fa-trash"></i> Supprimer</a></li>
+                                <li class="dropdown-item"><a class="delete" data-confirm="Êtes-vous certain de vouloir supprimer cette catégorie ?"><i class="fas fa-trash"></i> {% trans %}Delete{% endtrans %}</a></li>
                             </ul>
                             {{ form(delete_forms[category.id]) }}
                         {% else %}
-                            <a href="{{ path('aropixel_blog_category_edit', {'id': category.id}) }}" class="btn btn-primary btn-labeled"><b><i class="fas fa-edit"></i></b> Modifier</a>
+                            <a href="{{ path('aropixel_blog_category_edit', {'id': category.id}) }}" class="btn btn-primary btn-labeled"><b><i class="fas fa-edit"></i></b> {% trans %}Edit{% endtrans %}</a>
                         {% endif %}
                     </div>
                 </td>
