@@ -2,7 +2,7 @@
 
 namespace Aropixel\BlogBundle\Repository;
 
-use Aropixel\AdminBundle\Repository\PublishableRepository;
+use Aropixel\AdminBundle\Infrastructure\Publication\Repository\PublishableRepository;
 use Aropixel\BlogBundle\Entity\Post;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Collections\ArrayCollection;
