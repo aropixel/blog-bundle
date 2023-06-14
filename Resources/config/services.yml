@@ -20,8 +20,7 @@ services:
   Aropixel\BlogBundle\Repository\PostRepository:
     public: true
     arguments:
-      - type: service
-        id: doctrine
+      - "@doctrine"
       - '%aropixel_blog.entities.post%'
     tags:
       - { name: doctrine.repository_service }
