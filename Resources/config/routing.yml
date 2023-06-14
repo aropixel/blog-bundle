@@ -24,7 +24,7 @@ aropixel_blog_post_delete:
 
 aropixel_blog_post_status:
   path: /blog/post/{id}/status
-  controller: Aropixel\BlogBundle\Http\Action\Post\StatusPageAction
+  controller: Aropixel\BlogBundle\Http\Action\Post\StatusPostAction
   methods: GET|POST
 
 

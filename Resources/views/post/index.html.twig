@@ -1,6 +1,5 @@
 {% extends '@AropixelAdmin/List/datatable.html.twig' %}
 
-
 {% block header_title %}{% trans %}News{% endtrans %}{% endblock %}
 {% block header_breadcrumb %}
     <ul class="breadcrumb">
@@ -24,22 +23,27 @@
             <th class="no-sort" style="width:150px">Actions</th>
         </tr>
         </thead>
+
         <tbody>
         {% for post in posts %}
             <tr>
                 <td>{{ post.title }}</td>
                 <td>{{ post.createdAt|datetime('dd/MM/Y') }}</td>
-                <td>
+
+                <td class="text-right">
                     <div class="btn-group">
-                        <a href="{{ path('aropixel_blog_post_edit', {'id': post.id}) }}" class="btn {{ post.status == 'online' ? 'btn-primary' : 'btn-default' }} btn-labeled"><b><i class="fas fa-edit"></i></b> {% trans %}Edit{% endtrans %}</a>
-                        <button type="button" class="btn {{ post.status == 'online' ? 'btn-primary' : 'btn-default' }} dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false"><span class="sr-only"></span></button>
-                        <ul class="dropdown-menu">
-                            <li class="dropdown-item"><a href="{{ path('aropixel_blog_post_edit', {'id': post.id}) }}"><i class="fas fa-edit"></i> {% trans %}Edit{% endtrans %}</a></li>
-                            <li class="dropdown-item"><a class="status" data-confirm="Êtes-vous certain de vouloir mettre ce post %s ?" data-path="{{ path('aropixel_blog_post_status', {'id': post.id}) }}"><i class="fas fa-toggle-on"></i>{{ post.status == 'online' ? 'Mettre hors ligne' : 'Mettre en ligne' }}</a></li>
-                            <li class="dropdown-divider"></li>
-                            <li class="dropdown-item"><a class="delete" data-confirm="Êtes-vous certain de vouloir supprimer ce post ?"><i class="fas fa-trash"></i> {% trans %}Delete{% endtrans %}</a></li>
-                        </ul>
-                        {{ form(delete_forms[post.id]) }}
+                        <button type="button" class="badge badge-light badge-icon" data-bs-toggle="dropdown" data-boundary="viewport">
+                            <i class="fas fa-ellipsis-h"></i>
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-end" data-bs-popper="static">
+                            <a href="{{ path('aropixel_blog_post_edit', {'id': post.id}) }}" class="dropdown-item has-icon"><i class="fas fa-edit"></i> Modifier</a>
+                            <a class="dropdown-item has-icon status" data-confirm="Êtes-vous certain de vouloir mettre ce post %s ?" data-path="{{ path('aropixel_blog_post_status', {'id': post.id}) }}"><i class="fas fa-toggle-on"></i>{{ post.status == 'online' ? 'Mettre hors ligne' : 'Mettre en ligne' }}</a></li>
+                            <div class="dropdown-divider"></div>
+                            <a data-confirm="Êtes-vous certain de vouloir supprimer ce post ?" class="delete dropdown-item has-icon text-danger">
+                                <i class="fas fa-trash"></i> Supprimer
+                            </a>
+                            {{ form(delete_forms[post.id]) }}
+                        </div>
                     </div>
                 </td>
             </tr>
