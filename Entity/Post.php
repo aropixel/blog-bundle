@@ -3,6 +3,7 @@
 namespace Aropixel\BlogBundle\Entity;
 
 use Aropixel\AdminBundle\Entity\Publishable;
+use Aropixel\AdminBundle\Entity\PublishableTrait;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 
@@ -12,6 +13,8 @@ use Doctrine\Common\Collections\Collection;
  */
 class Post implements PostInterface
 {
+    use PublishableTrait;
+
     /**
      * @var integer
      */
