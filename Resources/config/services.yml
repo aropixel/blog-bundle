@@ -1,0 +1,42 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: false
+
+  prototype:
+    namespace: Aropixel\BlogBundle\
+    resource: ../../*
+    exclude: ../../{DependencyInjection,Entity,Migrations,Resources,Tests}
+
+  aropixel_blog.form.post_type:
+    class: Aropixel\BlogBundle\Form\PostType
+    autowire: false
+    arguments:
+      - '%aropixel_blog.categories%'
+    tags:
+      - { name: form.type }
+
+  Aropixel\BlogBundle\Repository\PostRepository:
+    public: true
+    arguments:
+      - type: service
+        id: doctrine
+      - '%aropixel_blog.entities.post%'
+    tags:
+      - { name: doctrine.repository_service }
+
+  Aropixel\BlogBundle\EventListener\MapCategorySubscriber:
+    public: true
+    arguments:
+      - '%aropixel_blog.entities.post%'
+      - '%aropixel_blog.categories%'
+    tags:
+      - { name: doctrine.event_subscriber }
+
+  Aropixel\BlogBundle\EventListener\MappedSuperClassSubscriber:
+    public: true
+    arguments:
+      - '%aropixel_blog.entities%'
+    tags:
+      - { name: doctrine.event_subscriber, priority: 8192 }
