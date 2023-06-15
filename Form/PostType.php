@@ -49,13 +49,7 @@ class PostType extends AbstractType
                 'data_class' => PostImage::class,
                 'crop_class' => PostImageCrop::class,
             ))
-            ->add('status', ChoiceType::class, array(
-                'choices'  => array(
-                    'Oui' => 'online',
-                    'Non' => 'offline',
-                ),
-                'expanded' => true
-            ))
+            ->add('status', HiddenType::class)
             ->add('createdAt', DateTimeType::class, array(
                 'required' => false,
                 'date_widget' => 'single_text',
