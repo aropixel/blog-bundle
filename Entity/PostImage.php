@@ -3,15 +3,19 @@
 namespace Aropixel\BlogBundle\Entity;
 
 use Aropixel\AdminBundle\Entity\AttachImage;
+use Aropixel\AdminBundle\Entity\CroppableInterface;
+use Aropixel\AdminBundle\Entity\CroppableTrait;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
-use Doctrine\ORM\Mapping as ORM;
 
 /**
  * PostImage
  */
-class PostImage extends AttachImage
+class PostImage extends AttachImage implements CroppableInterface
 {
+
+    use CroppableTrait;
+
     /**
      * @var integer
      */
