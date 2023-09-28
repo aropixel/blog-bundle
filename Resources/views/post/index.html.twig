@@ -42,7 +42,9 @@
                             <a data-confirm="Êtes-vous certain de vouloir supprimer ce post ?" class="delete dropdown-item has-icon text-danger">
                                 <i class="fas fa-trash"></i> Supprimer
                             </a>
-                            {{ form(delete_forms[post.id]) }}
+                            <form method="post" action="{{ path('aropixel_post_delete', {'id': post.id}) }}">
+                                <input type="hidden" name="_token" value="{{ csrf_token('delete__post' ~ post.id) }}">
+                            </form>
                         </div>
                     </div>
                 </td>

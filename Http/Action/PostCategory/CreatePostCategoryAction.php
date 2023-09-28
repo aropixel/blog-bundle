@@ -13,7 +13,7 @@ class CreatePostCategoryAction extends AbstractController
 {
     public function __construct(
         private readonly PostCategoryRepository $postCategoryRepository,
-        private readonly RequestStack $request,
+        private readonly RequestStack $request
     ){}
 
     public function __invoke() : Response

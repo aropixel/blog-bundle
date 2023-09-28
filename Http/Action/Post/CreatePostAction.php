@@ -13,7 +13,7 @@ class CreatePostAction extends AbstractController
 {
     public function __construct(
         private readonly PostRepository $postRepository,
-        private readonly RequestStack $request,
+        private readonly RequestStack $request
     ){}
 
     public function __invoke() : Response

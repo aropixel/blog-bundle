@@ -3,7 +3,6 @@
 namespace Aropixel\BlogBundle\Http\Action\Post;
 
 use Aropixel\BlogBundle\Form\PostType;
-use Aropixel\BlogBundle\Http\Form\Post\FormFactory;
 use Aropixel\BlogBundle\Repository\PostRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RequestStack;
@@ -12,9 +11,8 @@ use Symfony\Component\HttpFoundation\Response;
 class EditPostAction extends AbstractController
 {
     public function __construct(
-        private readonly FormFactory $formFactory,
         private readonly RequestStack $request,
-        private readonly PostRepository $postRepository,
+        private readonly PostRepository $postRepository
     ){}
 
     private string $form = PostType::class;
@@ -27,7 +25,6 @@ class EditPostAction extends AbstractController
             throw $this->createNotFoundException();
         }
 
-        $deleteForm = $this->formFactory->createDeleteForm($post);
         $editForm = $this->createForm($this->form, $post);
         $editForm->handleRequest($this->request->getMainRequest());
 
@@ -40,8 +37,7 @@ class EditPostAction extends AbstractController
 
         return $this->render('@AropixelBlog/post/form.html.twig', [
             'post' => $post,
-            'form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView()
+            'form' => $editForm->createView()
         ]);
     }
 }

@@ -44,7 +44,9 @@
                             <a data-confirm="Êtes-vous certain de vouloir supprimer cette catégorie ?" class="delete dropdown-item has-icon text-danger">
                                 <i class="fas fa-trash"></i> Supprimer
                             </a>
-                            {{ form(delete_forms[category.id]) }}
+                            <form method="post" action="{{ path('aropixel_category_delete', {'id': category.id}) }}">
+                                <input type="hidden" name="_token" value="{{ csrf_token('delete__post_category' ~ category.id) }}">
+                            </form>
                         </div>
                     </div>
                 </td>
