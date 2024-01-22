@@ -67,6 +67,10 @@ class PostImage extends AttachImage implements CroppableInterface
      */
     public function getCrops(): Collection
     {
+        if (is_null($this->crops)) {
+            $this->crops = new ArrayCollection();
+        }
+
         return $this->crops;
     }
 

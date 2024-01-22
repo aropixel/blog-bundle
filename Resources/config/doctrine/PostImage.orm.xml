@@ -8,7 +8,12 @@
             <generator strategy="AUTO" />
         </id>
         <one-to-one field="post" target-entity="Aropixel\BlogBundle\Entity\Post" mapped-by="image" />
-        <one-to-many field="crops" target-entity="Aropixel\BlogBundle\Entity\PostImageCrop" mapped-by="image" />
+        <one-to-many field="crops" target-entity="Aropixel\BlogBundle\Entity\PostImageCrop" mapped-by="image">
+            <cascade>
+                <cascade-persist/>
+                <cascade-remove/>
+            </cascade>
+        </one-to-many>
 
     </entity>
 
