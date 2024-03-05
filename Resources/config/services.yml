@@ -13,6 +13,7 @@ services:
     class: Aropixel\BlogBundle\Form\PostType
     autowire: false
     arguments:
+      - '@translator.default'
       - '%aropixel_blog.categories%'
     tags:
       - { name: form.type }

@@ -42,7 +42,26 @@
                 <source>Home</source>
                 <target>Accueil</target>
             </trans-unit>
-
+            <trans-unit id="11">
+                <source>SEO</source>
+                <target>Référencement</target>
+            </trans-unit>
+            <trans-unit id="12">
+                <source>Picture</source>
+                <target>Image</target>
+            </trans-unit>
+            <trans-unit id="13">
+                <source>Excerpt</source>
+                <target>Extrait</target>
+            </trans-unit>
+            <trans-unit id="14">
+                <source>Content</source>
+                <target>Contenu</target>
+            </trans-unit>
+            <trans-unit id="15">
+                <source>Add</source>
+                <target>Ajouter</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

@@ -10,24 +10,23 @@ use Aropixel\BlogBundle\Entity\PostImageCrop;
 use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 class PostType extends AbstractType
 {
-    /** @var string */
-    private $categoryMode;
-
-
+    private TranslatorInterface $translator;
+    private string $categoryMode;
 
     /**
      * PostType constructor.
      */
-    public function __construct($categoryMode)
+    public function __construct(TranslatorInterface $translator, $categoryMode)
     {
+        $this->translator = $translator;
         $this->categoryMode = $categoryMode;
     }
 
@@ -38,8 +37,8 @@ class PostType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title', null, array('label'  => 'Title'))
-            ->add('excerpt', null, array('label'  => 'Header'))
+            ->add('title', null, array('label'  => $this->translator->trans('Title')))
+            ->add('excerpt', null, array('label'  => $this->translator->trans('Excerpt')))
             ->add('description', null, array('label'  => 'Description', 'attr' => array('class' => 'ckeditor')))
             ->add('slug', HiddenType::class)
             ->add('metaTitle', null, array('label'  => 'Meta title'))
