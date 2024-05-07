@@ -27,7 +27,7 @@
         <tbody>
         {% for post in posts %}
             <tr>
-                <td>{{ post.title }}</td>
+                <td><a href="{{ path('aropixel_blog_post_edit', {'id': post.id}) }}">{{ post.title }}</a></td>
                 <td>{{ post.createdAt|datetime('dd/MM/Y') }}</td>
 
                 <td class="text-right">
@@ -42,7 +42,7 @@
                             <a data-confirm="Êtes-vous certain de vouloir supprimer ce post ?" class="delete dropdown-item has-icon text-danger">
                                 <i class="fas fa-trash"></i> Supprimer
                             </a>
-                            <form method="post" action="{{ path('aropixel_post_delete', {'id': post.id}) }}">
+                            <form method="post" action="{{ path('aropixel_blog_post_delete', {'id': post.id}) }}">
                                 <input type="hidden" name="_token" value="{{ csrf_token('delete__post' ~ post.id) }}">
                             </form>
                         </div>

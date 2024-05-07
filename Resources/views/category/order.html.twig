@@ -21,7 +21,8 @@
     <table class="table sortable" data-path="{{ path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) }}">
         <thead>
         <tr>
-            <th class="position">&nbsp;</th>
+            <th class="position" width="40">&nbsp;</th>
+            <th style="width: 50px">Pos.</th>
             <th>Titre</th>
             <th style="width:200px">Date</th>
         </tr>
@@ -29,7 +30,8 @@
         <tbody>
         {% for category in categories %}
             <tr id="entity_{{ category.id }}">
-                <td class="position"><i class="icon-move"></i></td>
+                <td class="position"><i class="fas fa-arrows-alt"></i></td>
+                <td class="position numero" style="width:35px;">{{ category.position + 1 }}.</td>
                 <td>{{ category.name }}</td>
                 <td>{{ category.createdAt|datetime('dd/MM/Y') }}</td>
             </tr>

@@ -1,6 +1,8 @@
 {% extends '@AropixelAdmin/Form/base.html.twig' %}
 
+{% block meta_title %}{% trans %}News{% endtrans %}{% endblock %}
 {% block header_title %}{% trans %}News{% endtrans %}{% endblock %}
+
 {% block header_breadcrumb %}
     <ul class="breadcrumb">
         <li class="breadcrumb-item"><a href="{{ url('_admin') }}">{% trans %}Home{% endtrans %}</a></li>
@@ -15,76 +17,35 @@
     </ul>
 {% endblock %}
 
-{% block tabbable %}
-    <li class="nav-item"><a href="#panel-tab1" data-bs-toggle="pill" class="nav-link active"><i class="fa fa-paper-plane position-left"></i><span> {% trans %}Content{% endtrans %}</span></a></li>
-    <li class="nav-item"><a href="#panel-tab2" data-bs-toggle="pill" class="nav-link"><i class="fas fa-image position-left"></i><span> {% trans %}Picture{% endtrans %}</span></a></li>
-    <li class="nav-item"><a href="#panel-tab3" data-bs-toggle="pill" class="nav-link"><i class="fab fa-google position-left"></i><span> {% trans %}SEO{% endtrans %}</span></a></li>
-{% endblock %}
 
+{% block tabbable %}
+    <li class="nav-item"><a href="#panel-tab1" data-bs-toggle="pill" class="nav-link active"><span> {% trans %}Content{% endtrans %}</span></a></li>
+    <li class="nav-item"><a href="#panel-tab2" data-bs-toggle="pill" class="nav-link"><span> {% trans %}Picture{% endtrans %}</span></a></li>
+    <li class="nav-item"><a href="#panel-tab3" data-bs-toggle="pill" class="nav-link"><span> {% trans %}SEO{% endtrans %}</span></a></li>
+{% endblock %}
 
 
 {% block mainPanel %}
 
+    <div class="tab-pane active" id="panel-tab1">
 
-    <div class="panel-tab-content tab-content">
+        <div class="card card-centered-large">
 
-        <div class="tab-pane active" id="panel-tab1">
+            <div class="card-body">
 
-            <div class="card">
+                {{ form_row(form.title) }}
 
-                <div class="card-body">
+                {% if form.category is defined %}
+                    {{ form_row(form.category) }}
+                {% endif %}
 
+                {% if form.categories is defined %}
+                    {{ form_row(form.categories) }}
+                {% endif %}
 
-                    {{ form_row(form.title) }}
+                {{ form_row(form.excerpt) }}
 
-                    {% if form.category is defined %}
-                        {{ form_row(form.category) }}
-                    {% endif %}
-
-                    {% if form.categories is defined %}
-                        {{ form_row(form.categories) }}
-                    {% endif %}
-
-                    {{ form_row(form.excerpt) }}
-
-                    {{ form_row(form.description) }}
-
-                </div>
-
-            </div>
-
-
-        </div>
-
-        <div class="tab-pane" id="panel-tab2">
-
-
-            <div class="card">
-
-                <div class="card-body">
-
-                    {{ form_row(form.image) }}
-
-                </div>
-
-            </div>
-
-        </div>
-
-        <div class="tab-pane" id="panel-tab3">
-
-
-            <div class="card">
-
-                <div class="card-body">
-
-                    {{ form_row(form.metaTitle) }}
-
-                    {{ form_row(form.metaDescription) }}
-
-                    {{ form_row(form.metaKeywords) }}
-
-                </div>
+                {{ form_row(form.description) }}
 
             </div>
 
@@ -92,6 +53,38 @@
 
     </div>
 
+    <div class="tab-pane" id="panel-tab2">
+
+
+        <div class="card card-centered-large">
+
+            <div class="card-body">
+
+                {{ form_row(form.image) }}
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="tab-pane" id="panel-tab3">
+
+        <div class="card card-centered-large">
+
+            <div class="card-body">
+
+                {{ form_row(form.metaTitle) }}
+
+                {{ form_row(form.metaDescription) }}
+
+                {{ form_row(form.metaKeywords) }}
+
+            </div>
+
+        </div>
+
+    </div>
 
 {% endblock %}
 
