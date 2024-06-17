@@ -18,16 +18,11 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 
 class PostType extends AbstractType
 {
-    private TranslatorInterface $translator;
-    private string $categoryMode;
-
     /**
      * PostType constructor.
      */
-    public function __construct(TranslatorInterface $translator, $categoryMode)
+    public function __construct(private readonly TranslatorInterface $translator, private readonly string $categoryMode)
     {
-        $this->translator = $translator;
-        $this->categoryMode = $categoryMode;
     }
 
 
@@ -37,71 +32,32 @@ class PostType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title', null, array('label'  => $this->translator->trans('Title')))
-            ->add('excerpt', null, array('label'  => $this->translator->trans('Excerpt')))
-            ->add('description', null, array('label'  => 'Description', 'attr' => array('class' => 'ckeditor')))
+            ->add('title', null, ['label'  => $this->translator->trans('Title')])
+            ->add('excerpt', null, ['label'  => $this->translator->trans('Excerpt')])
+            ->add('description', null, ['label'  => 'Description', 'attr' => ['class' => 'ckeditor']])
             ->add('slug', HiddenType::class)
-            ->add('metaTitle', null, array('label'  => 'Meta title'))
-            ->add('metaDescription', null, array('label'  => 'Meta description'))
-            ->add('metaKeywords', null, array('label'  => 'Meta keywords'))
-            ->add('image', ImageType::class, array(
-                'data_class' => PostImage::class,
-                'crop_class' => PostImageCrop::class,
-            ))
+            ->add('metaTitle', null, ['label'  => 'Meta title'])
+            ->add('metaDescription', null, ['label'  => 'Meta description'])
+            ->add('metaKeywords', null, ['label'  => 'Meta keywords'])
+            ->add('image', ImageType::class, ['data_class' => PostImage::class, 'crop_class' => PostImageCrop::class])
             ->add('status', HiddenType::class)
-            ->add('createdAt', DateTimeType::class, array(
-                'required' => false,
-                'date_widget' => 'single_text',
-                'time_widget' => 'single_text',
-                'date_format' => 'yyyy-MM-dd',
-            ))
-            ->add('publishAt', null, array(
-                'required' => false,
-                'date_widget' => 'single_text',
-                'time_widget' => 'single_text',
-                'date_format' => 'yyyy-MM-dd',
-                'years' => range(date('Y') - 50, date('Y') + 50),
-            ))
-            ->add('publishUntil', null, array(
-                'required' => false,
-                'date_widget' => 'single_text',
-                'time_widget' => 'single_text',
-                'date_format' => 'yyyy-MM-dd',
-                'years' => range(date('Y') - 50, date('Y') + 50),
-            ))
+            ->add('createdAt', DateTimeType::class, ['required' => false, 'date_widget' => 'single_text', 'time_widget' => 'single_text', 'date_format' => 'yyyy-MM-dd'])
+            ->add('publishAt', null, ['required' => false, 'date_widget' => 'single_text', 'time_widget' => 'single_text', 'date_format' => 'yyyy-MM-dd', 'years' => range(date('Y') - 50, date('Y') + 50)])
+            ->add('publishUntil', null, ['required' => false, 'date_widget' => 'single_text', 'time_widget' => 'single_text', 'date_format' => 'yyyy-MM-dd', 'years' => range(date('Y') - 50, date('Y') + 50)])
         ;
 
         if ($this->categoryMode == 'category') {
 
             $builder
-                ->add('category', EntityType::class, array(
-                    'class' => PostCategory::class,
-                    'required' => false,
-                    'label' => "Catégorie",
-                    'placeholder' => "Sélectionner une catégorie",
-                    'query_builder' => function(EntityRepository $er) {
-                        return $er->createQueryBuilder('c')
-                            ->orderBy('c.position', 'ASC');
-                    },
-                    'choice_label' => 'name'
-                ))
+                ->add('category', EntityType::class, ['class' => PostCategory::class, 'required' => false, 'label' => "Catégorie", 'placeholder' => "Sélectionner une catégorie", 'query_builder' => fn(EntityRepository $er) => $er->createQueryBuilder('c')
+                    ->orderBy('c.position', 'ASC'), 'choice_label' => 'name'])
             ;
         }
         else if ($this->categoryMode == 'tags') {
 
             $builder
-                ->add('categories', EntityType::class, array(
-                    'class' => PostCategory::class,
-                    'multiple' => true,
-                    'required' => false,
-                    'label' => "Catégories",
-                    'placeholder' => "Sélectionner des catégories",
-                    'query_builder' => function(EntityRepository $er) {
-                        return $er->createQueryBuilder('c')
-                            ->orderBy('c.position', 'ASC');
-                    },
-                    'choice_label' => 'name'
-                ))
+                ->add('categories', EntityType::class, ['class' => PostCategory::class, 'multiple' => true, 'required' => false, 'label' => "Catégories", 'placeholder' => "Sélectionner des catégories", 'query_builder' => fn(EntityRepository $er) => $er->createQueryBuilder('c')
+                    ->orderBy('c.position', 'ASC'), 'choice_label' => 'name'])
             ;
         }
 
@@ -112,9 +68,7 @@ class PostType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
-            'data_class' => Post::class
-        ));
+        $resolver->setDefaults(['data_class' => Post::class]);
     }
 
 

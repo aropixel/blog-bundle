@@ -27,7 +27,7 @@ class OrderPostCategoryAction extends AbstractController
         }
         else {
 
-            $postCategories = $this->postCategoryRepository->findBy(array(), array('position' => 'ASC'));
+            $postCategories = $this->postCategoryRepository->findBy([], ['position' => 'ASC']);
             return $this->render('@AropixelBlog/category/order.html.twig', [
                 'categories' => $postCategories,
             ]);

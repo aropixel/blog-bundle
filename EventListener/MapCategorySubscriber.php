@@ -21,17 +21,12 @@ use Doctrine\ORM\Mapping\ClassMetadataInfo;
 class MapCategorySubscriber implements EventSubscriber
 {
 
-    /** @var string */
-    private $postClass;
-
-    /** @var string */
-    private $categoriesMode;
-
-
-    public function __construct($postClass, $categoriesMode)
+    /**
+     * @param string $postClass
+     * @param string $categoriesMode
+     */
+    public function __construct(private $postClass, private $categoriesMode)
     {
-        $this->postClass = $postClass;
-        $this->categoriesMode = $categoriesMode;
     }
 
 
@@ -52,21 +47,12 @@ class MapCategorySubscriber implements EventSubscriber
 
             if ($this->categoriesMode == 'category') {
 
-                $metadata->mapManyToOne(array(
-                    'fieldName' => 'category',
-                    'targetEntity' => PostCategory::class,
-                    'inversedBy' => 'posts'
-                ));
+                $metadata->mapManyToOne(['fieldName' => 'category', 'targetEntity' => PostCategory::class, 'inversedBy' => 'posts']);
 
             }
             else if ($this->categoriesMode == 'tags') {
 
-                $metadata->mapManyToMany(array(
-                    'fieldName' => 'categories',
-                    'targetEntity' => PostCategory::class,
-                    'inversedBy' => 'posts',
-                    'joinTable' => array('name' => 'aropixel_post_tag')
-                ));
+                $metadata->mapManyToMany(['fieldName' => 'categories', 'targetEntity' => PostCategory::class, 'inversedBy' => 'posts', 'joinTable' => ['name' => 'aropixel_post_tag']]);
 
             }
 
@@ -76,20 +62,12 @@ class MapCategorySubscriber implements EventSubscriber
 
             if ($this->categoriesMode == 'category') {
 
-                $metadata->mapOneToMany(array(
-                    'fieldName' => 'posts',
-                    'targetEntity' => PostInterface::class,
-                    'mappedBy' => 'category'
-                ));
+                $metadata->mapOneToMany(['fieldName' => 'posts', 'targetEntity' => PostInterface::class, 'mappedBy' => 'category']);
 
             }
             else if ($this->categoriesMode == 'tags') {
 
-                $metadata->mapManyToMany(array(
-                    'fieldName' => 'posts',
-                    'targetEntity' => PostInterface::class,
-                    'mappedBy' => 'categories',
-                ));
+                $metadata->mapManyToMany(['fieldName' => 'posts', 'targetEntity' => PostInterface::class, 'mappedBy' => 'categories']);
 
             }
 

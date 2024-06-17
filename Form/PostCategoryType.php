@@ -19,13 +19,8 @@ class PostCategoryType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name', null, array('label'  => 'Name'))
-            ->add('createdAt', DateTimeType::class, array(
-                'required' => false,
-                'date_widget' => 'single_text',
-                'time_widget' => 'single_text',
-                'date_format' => 'yyyy-MM-dd',
-            ))
+            ->add('name', null, ['label'  => 'Name'])
+            ->add('createdAt', DateTimeType::class, ['required' => false, 'date_widget' => 'single_text', 'time_widget' => 'single_text', 'date_format' => 'yyyy-MM-dd'])
         ;
     }
 
@@ -34,9 +29,7 @@ class PostCategoryType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
-            'data_class' => PostCategory::class
-        ));
+        $resolver->setDefaults(['data_class' => PostCategory::class]);
     }
 
 

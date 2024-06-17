@@ -48,7 +48,7 @@ class Post implements PostInterface
     #[ORM\Column(nullable: true)]
     private ?string $metaKeywords = null;
 
-    #[ORM\OneToOne(targetEntity: "Aropixel\BlogBundle\Entity\PostImage", inversedBy: "post", cascade: ["persist", "remove"])]
+    #[ORM\OneToOne(targetEntity: \Aropixel\BlogBundle\Entity\PostImage::class, inversedBy: "post", cascade: ["persist", "remove"])]
     #[ORM\JoinColumn(name: "image_id", onDelete: "SET NULL")]
     private ?PostImage $image = null;
 

@@ -7,31 +7,21 @@
 
 namespace Aropixel\BlogBundle\EventListener;
 
-use Aropixel\AdminBundle\Entity\Image;
-use Aropixel\BlogBundle\Entity\Post;
-use Aropixel\PageBundle\Entity\Page;
+
 use Doctrine\Common\EventSubscriber;
-use Doctrine\Common\Persistence\Mapping\Driver\MappingDriver;
-use Doctrine\ORM\Configuration;
 use Doctrine\ORM\Event\LoadClassMetadataEventArgs;
 use Doctrine\ORM\Events;
-use Doctrine\ORM\Mapping\ClassMetadata;
-use Doctrine\ORM\Mapping\ClassMetadataInfo;
-use Webmozart\Assert\Assert;
 
 
 class MappedSuperClassSubscriber implements EventSubscriber
 {
 
-    /** @var array */
-    private $entitiesNames;
-
     /**
      * MapPageBundleSubscriber constructor.
+     * @param mixed[] $entitiesNames
      */
-    public function __construct($entitiesNames)
+    public function __construct(private $entitiesNames)
     {
-        $this->entitiesNames = $entitiesNames;
     }
 
 

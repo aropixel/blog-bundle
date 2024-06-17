@@ -27,7 +27,7 @@ class CreatePostCategoryAction extends AbstractController
             $this->postCategoryRepository->add($postCategory, true);
 
             $this->addFlash('notice', 'La catégorie a bien été enregistrée.');
-            return $this->redirectToRoute('aropixel_blog_category_edit', array('id' => $postCategory->getId()));
+            return $this->redirectToRoute('aropixel_blog_category_edit', ['id' => $postCategory->getId()]);
         }
 
         return $this->render('@AropixelBlog/category/form.html.twig', [

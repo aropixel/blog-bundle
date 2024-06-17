@@ -16,7 +16,7 @@ class DoctrineTargetEntitiesResolverPass implements CompilerPassInterface
 
         try {
             $resolveTargetEntityListener = $container->findDefinition('doctrine.orm.listeners.resolve_target_entity');
-        } catch (InvalidArgumentException $exception) {
+        } catch (InvalidArgumentException) {
             return;
         }
 
@@ -25,8 +25,8 @@ class DoctrineTargetEntitiesResolverPass implements CompilerPassInterface
             $resolveTargetEntityListener->addMethodCall('addResolveTargetEntity', [$interface, $model, []]);
         }
 
-        if (!$resolveTargetEntityListener->hasTag('doctrine.event_subscriber')) {
-            $resolveTargetEntityListener->addTag('doctrine.event_subscriber', ['event' => 'loadClassMetadata']);
+        if (!$resolveTargetEntityListener->hasTag('doctrine.event_listener')) {
+            $resolveTargetEntityListener->addTag('doctrine.event_listener', ['event' => 'loadClassMetadata']);
         }
 
     }
