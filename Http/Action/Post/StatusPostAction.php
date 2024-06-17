@@ -2,7 +2,7 @@
 
 namespace Aropixel\BlogBundle\Http\Action\Post;
 
-use Aropixel\AdminBundle\Services\Status;
+use Aropixel\AdminBundle\Domain\StatusInterface;
 use Aropixel\BlogBundle\Entity\Post;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -10,12 +10,13 @@ use Symfony\Component\HttpFoundation\Response;
 class StatusPostAction extends AbstractController
 {
     public function __construct(
-        private readonly Status $status,
+        private readonly StatusInterface $status,
     )
     {}
 
     public function __invoke(Post $post) : Response
     {
-        return $this->status->changeStatus($post);
+        $this->status->changeStatus($post);
+        return new Response('OK', Response::HTTP_OK);
     }
 }

@@ -2,7 +2,7 @@
 
 namespace Aropixel\BlogBundle\Entity;
 
-use Aropixel\AdminBundle\Entity\AttachImage;
+use Aropixel\AdminBundle\Entity\AttachedImage;
 use Aropixel\AdminBundle\Entity\CroppableInterface;
 use Aropixel\AdminBundle\Entity\CroppableTrait;
 use Aropixel\BlogBundle\Repository\PostImageRepository;
@@ -13,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: PostImageRepository::class)]
 #[ORM\Table(name: "aropixel_post_image")]
-class PostImage extends AttachImage implements CroppableInterface
+class PostImage extends AttachedImage implements CroppableInterface
 {
 
     use CroppableTrait;
