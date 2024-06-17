@@ -3,23 +3,21 @@
 namespace Aropixel\BlogBundle\Entity;
 
 use Aropixel\AdminBundle\Entity\Crop;
+use Aropixel\BlogBundle\Repository\PostImageCropRepository;
 use Doctrine\ORM\Mapping as ORM;
 
-/**
- * PostImageCrop
- */
+
+#[ORM\Entity(repositoryClass: PostImageCropRepository::class)]
+#[ORM\Table(name: "aropixel_post_image_crop")]
 class PostImageCrop extends Crop
 {
-    /**
-     * @var integer
-     */
-    private $id;
+    #[ORM\Id]
+    #[ORM\GeneratedValue(strategy: "AUTO")]
+    #[ORM\Column(type: "integer")]
+    private ?int $id = null;
 
-    /**
-     * @var PostImage
-     */
-    private $image;
-
+    #[ORM\ManyToOne(targetEntity: PostImage::class, inversedBy: "crops")]
+    private ?PostImage $image = null;
 
 
     public function getId(): ?int

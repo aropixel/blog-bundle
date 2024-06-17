@@ -4,97 +4,74 @@ namespace Aropixel\BlogBundle\Entity;
 
 use Aropixel\AdminBundle\Entity\Publishable;
 use Aropixel\AdminBundle\Entity\PublishableTrait;
+use Aropixel\BlogBundle\Repository\PostRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 
-/**
- * Post
- */
+#[ORM\MappedSuperclass(repositoryClass: PostRepository::class)]
+#[ORM\Table(name: "aropixel_post")]
 class Post implements PostInterface
 {
+
     use PublishableTrait;
 
-    /**
-     * @var integer
-     */
-    private $id;
+    #[ORM\Id]
+    #[ORM\GeneratedValue(strategy: "AUTO")]
+    #[ORM\Column(type: "integer")]
+    private ?int $id = null;
+
+    #[ORM\Column(length: 20)]
+    private string $status = Publishable::STATUS_OFFLINE;
+
+    #[ORM\Column(nullable: true)]
+    private ?string $title = null;
+
+    #[Gedmo\Slug(fields: ["title"])]
+    #[ORM\Column]
+    private string $slug;
+
+    #[ORM\Column(type: "text", nullable: true)]
+    private ?string $excerpt = null;
+
+    #[ORM\Column(type: "text", nullable: true)]
+    private ?string $description = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?string $metaTitle = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?string $metaDescription = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?string $metaKeywords = null;
+
+    #[ORM\OneToOne(targetEntity: "Aropixel\BlogBundle\Entity\PostImage", inversedBy: "post", cascade: ["persist", "remove"])]
+    #[ORM\JoinColumn(name: "image_id", onDelete: "SET NULL")]
+    private ?PostImage $image = null;
+
+    #[Gedmo\Timestampable(on: "create")]
+    #[ORM\Column(name: "created_at", type: "datetime", nullable: true)]
+    private ?\DateTime $createdAt = null;
+
+    #[Gedmo\Timestampable(on: "update")]
+    #[ORM\Column(name: "updated_at", type: "datetime", nullable: true)]
+    private ?\DateTime $updatedAt = null;
+
+    #[ORM\Column(type: "datetime", nullable: true)]
+    private ?\DateTime $publishAt = null;
+
+    #[ORM\Column(type: "datetime", nullable: true)]
+    private ?\DateTime $publishUntil = null;
 
     /**
-     * @var string
+     * @var Collection|PostCategory[]
      */
-    private $status = Publishable::STATUS_OFFLINE;
-
-    /**
-     * @var string
-     */
-    private $title;
-
-    /**
-     * @var string
-     */
-    private $slug;
-
-    /**
-     * @var string
-     */
-    private $excerpt;
-
-    /**
-     * @var string
-     */
-    private $description;
-
-    /**
-     * @var string
-     */
-    private $metaTitle;
-
-    /**
-     * @var string
-     */
-    private $metaDescription;
-
-    /**
-     * @var string
-     */
-    private $metaKeywords;
-
-    /**
-     * @var \DateTime
-     */
-    private $createdAt;
-
-    /**
-     * @var ?\DateTime
-     */
-    private $updatedAt;
-
-    /**
-     * @var ?\DateTime
-     */
-    private $publishAt;
-
-    /**
-     * @var ?\DateTime
-     */
-    private $publishUntil;
-
-    /**
-     * @var PostImage
-     */
-    private $image;
-
-    /**
-     * @var PostCategory
-     */
-    private $category;
-
-    /**
-     * @var PostCategory[]
-     */
-    private $categories;
-
+    #[ORM\ManyToMany(targetEntity: "PostCategory", inversedBy: "posts")]
+    #[ORM\JoinTable(name: "post_categories")]
+    private Collection $categories;
 
 
     public function __construct()

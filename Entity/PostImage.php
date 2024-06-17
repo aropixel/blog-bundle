@@ -5,32 +5,29 @@ namespace Aropixel\BlogBundle\Entity;
 use Aropixel\AdminBundle\Entity\AttachImage;
 use Aropixel\AdminBundle\Entity\CroppableInterface;
 use Aropixel\AdminBundle\Entity\CroppableTrait;
+use Aropixel\BlogBundle\Repository\PostImageRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Doctrine\ORM\Mapping as ORM;
 
-/**
- * PostImage
- */
+
+#[ORM\Entity(repositoryClass: PostImageRepository::class)]
+#[ORM\Table(name: "aropixel_post_image")]
 class PostImage extends AttachImage implements CroppableInterface
 {
 
     use CroppableTrait;
 
-    /**
-     * @var integer
-     */
-    private $id;
+    #[ORM\Id]
+    #[ORM\GeneratedValue(strategy: "AUTO")]
+    #[ORM\Column(type: "integer")]
+    private ?int $id = null;
 
-    /**
-     * @var Post
-     */
-    private $post;
+    #[ORM\OneToOne(mappedBy: "image", targetEntity: Post::class)]
+    private ?Post $post = null;
 
-    /**
-     * @var PostImageCrop[]
-     */
-    private $crops;
-
+    #[ORM\OneToMany(mappedBy: "image", targetEntity: PostImageCrop::class, cascade: ["persist", "remove"])]
+    private Collection $crops;
 
 
     public function __construct()

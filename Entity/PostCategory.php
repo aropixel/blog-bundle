@@ -2,50 +2,39 @@
 
 namespace Aropixel\BlogBundle\Entity;
 
+use Aropixel\BlogBundle\Repository\PostCategoryRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 
-/**
- * Category
- *
- * @ORM\Table(name="post_category")
- * @ORM\Entity(repositoryClass="Aropixel\BlogBundle\Repository\PostCategoryRepository")
- */
+
+#[ORM\Entity(repositoryClass: PostCategoryRepository::class)]
+#[ORM\Table(name: "aropixel_post_category")]
 class PostCategory
 {
-    /**
-     * @var integer
-     */
-    private $id;
+    #[ORM\Id]
+    #[ORM\GeneratedValue(strategy: "AUTO")]
+    #[ORM\Column(type: "integer")]
+    private ?int $id = null;
 
-    /**
-     * @var string
-     */
-    private $name;
+    #[ORM\Column]
+    private string $name;
 
-    /**
-     * @var integer
-     */
-    private $position;
+    #[Gedmo\SortablePosition]
+    #[ORM\Column(type: "integer")]
+    private int $position;
 
-    /**
-     * @var \DateTime
-     */
-    private $createdAt;
+    #[Gedmo\Timestampable(on: "create")]
+    #[ORM\Column(name: "created_at", type: "datetime")]
+    private \DateTime $createdAt;
 
-    /**
-     * @var \DateTime
-     */
-    private $updatedAt;
+    #[Gedmo\Timestampable(on: "update")]
+    #[ORM\Column(name: "updated_at", type: "datetime", nullable: true)]
+    private ?\DateTime $updatedAt = null;
 
-    /**
-     * @var Post[]
-     */
-    private $posts;
-
-
+    #[ORM\OneToMany(targetEntity: Post::class, mappedBy: "category")]
+    private Collection $posts;
 
     public function __construct()
     {
