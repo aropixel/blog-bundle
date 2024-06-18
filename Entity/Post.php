@@ -11,8 +11,8 @@ use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 
 
-#[ORM\MappedSuperclass(repositoryClass: PostRepository::class)]
 #[ORM\Table(name: "aropixel_post")]
+#[ORM\Entity(repositoryClass: PostRepository::class)]
 class Post implements PostInterface
 {
 
