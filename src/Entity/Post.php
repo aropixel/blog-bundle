@@ -11,66 +11,42 @@ use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 
 
-#[ORM\Table(name: "aropixel_post")]
-#[ORM\Entity(repositoryClass: PostRepository::class)]
 class Post implements PostInterface
 {
 
     use PublishableTrait;
 
-    #[ORM\Id]
-    #[ORM\GeneratedValue(strategy: "AUTO")]
-    #[ORM\Column(type: "integer")]
     private ?int $id = null;
 
-    #[ORM\Column(length: 20)]
     private string $status = Publishable::STATUS_OFFLINE;
 
-    #[ORM\Column(nullable: true)]
     private ?string $title = null;
 
-    #[Gedmo\Slug(fields: ["title"])]
-    #[ORM\Column]
     private string $slug;
 
-    #[ORM\Column(type: "text", nullable: true)]
     private ?string $excerpt = null;
 
-    #[ORM\Column(type: "text", nullable: true)]
     private ?string $description = null;
 
-    #[ORM\Column(nullable: true)]
     private ?string $metaTitle = null;
 
-    #[ORM\Column(nullable: true)]
     private ?string $metaDescription = null;
 
-    #[ORM\Column(nullable: true)]
     private ?string $metaKeywords = null;
 
-    #[ORM\OneToOne(targetEntity: \Aropixel\BlogBundle\Entity\PostImage::class, inversedBy: "post", cascade: ["persist", "remove"])]
-    #[ORM\JoinColumn(name: "image_id", onDelete: "SET NULL")]
     private ?PostImage $image = null;
 
-    #[Gedmo\Timestampable(on: "create")]
-    #[ORM\Column(name: "created_at", type: "datetime", nullable: true)]
     private ?\DateTime $createdAt = null;
 
-    #[Gedmo\Timestampable(on: "update")]
-    #[ORM\Column(name: "updated_at", type: "datetime", nullable: true)]
     private ?\DateTime $updatedAt = null;
 
-    #[ORM\Column(type: "datetime", nullable: true)]
     private ?\DateTime $publishAt = null;
 
-    #[ORM\Column(type: "datetime", nullable: true)]
     private ?\DateTime $publishUntil = null;
 
     /**
      * @var Collection|PostCategory[]
      */
-    #[ORM\ManyToMany(targetEntity: "PostCategory", inversedBy: "posts")]
-    #[ORM\JoinTable(name: "post_categories")]
     private Collection $categories;
 
 

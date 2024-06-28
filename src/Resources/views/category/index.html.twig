@@ -1,18 +1,15 @@
 {% extends '@AropixelAdmin/List/datatable.html.twig' %}
 
 
-{% block meta_title %}{% trans %}Categories{% endtrans %} - {% trans %}Categories list{% endtrans %}{% endblock %}
-{% block header_title %}{% trans %}Categories{% endtrans %} {% endblock %}
+{% block meta_title %}{% trans %}categories.list.meta.title{% endtrans %}{% endblock %}
+{% block header_title %}{% trans %}categories.list.header.title{% endtrans %} {% endblock %}
 {% block header_breadcrumb %}
     <ul class="breadcrumb breadcrumb-caret position-right">
-        <li class="breadcrumb-item"><a href="{{ url('_admin') }}">{% trans %}Home{% endtrans %}</a></li>
-        <li class="breadcrumb-item">Blog</li>
-        <li class="breadcrumb-item active">{% trans %}Categories{% endtrans %}</li>
+        <li class="breadcrumb-item"><a href="{{ url('_admin') }}">{% trans %}text.dashboard{% endtrans %}</a></li>
+        <li class="breadcrumb-item">{% trans %}breadcrumb.blog{% endtrans %}</li>
+        <li class="breadcrumb-item active">{% trans %}breadcrumb.list{% endtrans %}</li>
     </ul>
 {% endblock %}
-
-
-{% block paneltitle %}{% trans %}Categories list{% endtrans %}{% endblock %}
 
 
 {% block paneldatatable %}
@@ -20,10 +17,10 @@
     <table class="table card-table table-vcenter text-nowrap datatable">
         <thead>
             <tr>
-                <th style="width:100px">Position</th>
-                <th>{% trans %}Title{% endtrans %}</th>
-                <th style="width:200px">Date</th>
-                <th class="no-sort" style="width:150px">Actions</th>
+                <th style="width:100px">{% trans %}categories.list.datatable.header.position{% endtrans %}</th>
+                <th>{% trans %}categories.list.datatable.header.title{% endtrans %}</th>
+                <th style="width:200px">{% trans %}categories.list.datatable.header.date{% endtrans %}</th>
+                <th class="no-sort" style="width:150px">{% trans %}categories.list.datatable.header.actions{% endtrans %}</th>
             </tr>
         </thead>
         <tbody>
@@ -39,10 +36,10 @@
                                 <i class="fas fa-ellipsis-h"></i>
                             </button>
                             <div class="dropdown-menu dropdown-menu-end" data-bs-popper="static">
-                                <a href="{{ path('aropixel_blog_category_edit', {'id': category.id}) }}" class="dropdown-item has-icon"><i class="fas fa-edit"></i> {% trans %}Edit{% endtrans %}</a>
+                                <a href="{{ path('aropixel_blog_category_edit', {'id': category.id}) }}" class="dropdown-item has-icon"><i class="fas fa-edit"></i> {% trans %}categories.list.datatable.body.edit{% endtrans %}</a>
                                 <div class="dropdown-divider"></div>
-                                <a data-confirm="Êtes-vous certain de vouloir supprimer cette catégorie ?" class="delete dropdown-item has-icon text-danger">
-                                    <i class="fas fa-trash"></i> Supprimer
+                                <a data-confirm="{% trans %}categories.list.datatable.body.delete.confirm{% endtrans %}" class="delete dropdown-item has-icon text-danger">
+                                    <i class="fas fa-trash"></i> {% trans %}categories.list.datatable.body.delete.button{% endtrans %}
                                 </a>
                                 <form method="post" action="{{ path('aropixel_blog_category_delete', {'id': category.id}) }}">
                                     <input type="hidden" name="_token" value="{{ csrf_token('delete__post_category' ~ category.id) }}">

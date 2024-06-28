@@ -26,17 +26,17 @@ services:
     tags:
       - { name: doctrine.repository_service }
 
-  Aropixel\BlogBundle\EventListener\MapCategorySubscriber:
+  Aropixel\BlogBundle\EventListener\MapCategoryListener:
     public: true
     arguments:
       - '%aropixel_blog.entities.post%'
       - '%aropixel_blog.categories%'
     tags:
-      - { name: doctrine.event_subscriber }
+      - { name: doctrine.event_listener, event: 'loadClassMetadata' }
 
-  Aropixel\BlogBundle\EventListener\MappedSuperClassSubscriber:
+  Aropixel\BlogBundle\EventListener\MappedSuperClassListener:
     public: true
     arguments:
       - '%aropixel_blog.entities%'
     tags:
-      - { name: doctrine.event_subscriber, priority: 8192 }
+      - { name: doctrine.event_listener, event: 'loadClassMetadata', priority: 8192 }

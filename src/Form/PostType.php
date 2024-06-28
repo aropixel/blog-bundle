@@ -32,13 +32,13 @@ class PostType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title', null, ['label'  => $this->translator->trans('Title')])
-            ->add('excerpt', null, ['label'  => $this->translator->trans('Excerpt')])
-            ->add('description', null, ['label'  => 'Description', 'attr' => ['class' => 'ckeditor']])
+            ->add('title', null, ['label'  => $this->translator->trans('form.field.title')])
+            ->add('excerpt', null, ['label'  => $this->translator->trans('form.field.excerpt')])
+            ->add('description', null, ['label'  => $this->translator->trans('form.field.description'), 'attr' => ['class' => 'ckeditor']])
             ->add('slug', HiddenType::class)
-            ->add('metaTitle', null, ['label'  => 'Meta title'])
-            ->add('metaDescription', null, ['label'  => 'Meta description'])
-            ->add('metaKeywords', null, ['label'  => 'Meta keywords'])
+            ->add('metaTitle', null, ['label'  => $this->translator->trans('form.field.meta_title')])
+            ->add('metaDescription', null, ['label'  => $this->translator->trans('form.field.meta_description')])
+            ->add('metaKeywords', null, ['label'  => $this->translator->trans('form.field.meta_keywords')])
             ->add('image', ImageType::class, ['data_class' => PostImage::class, 'crop_class' => PostImageCrop::class])
             ->add('status', HiddenType::class)
             ->add('createdAt', DateTimeType::class, ['required' => false, 'date_widget' => 'single_text', 'time_widget' => 'single_text', 'date_format' => 'yyyy-MM-dd'])
@@ -49,14 +49,14 @@ class PostType extends AbstractType
         if ($this->categoryMode == 'category') {
 
             $builder
-                ->add('category', EntityType::class, ['class' => PostCategory::class, 'required' => false, 'label' => "Catégorie", 'placeholder' => "Sélectionner une catégorie", 'query_builder' => fn(EntityRepository $er) => $er->createQueryBuilder('c')
+                ->add('category', EntityType::class, ['class' => PostCategory::class, 'required' => false, 'label' => $this->translator->trans('form.field.category.label'), 'placeholder' => $this->translator->trans('form.field.category.placeholder'), 'query_builder' => fn(EntityRepository $er) => $er->createQueryBuilder('c')
                     ->orderBy('c.position', 'ASC'), 'choice_label' => 'name'])
             ;
         }
         else if ($this->categoryMode == 'tags') {
 
             $builder
-                ->add('categories', EntityType::class, ['class' => PostCategory::class, 'multiple' => true, 'required' => false, 'label' => "Catégories", 'placeholder' => "Sélectionner des catégories", 'query_builder' => fn(EntityRepository $er) => $er->createQueryBuilder('c')
+                ->add('categories', EntityType::class, ['class' => PostCategory::class, 'multiple' => true, 'required' => false, 'label' => $this->translator->trans('form.field.tags.label'), 'placeholder' => $this->translator->trans('form.field.tags.placeholder'), 'query_builder' => fn(EntityRepository $er) => $er->createQueryBuilder('c')
                     ->orderBy('c.position', 'ASC'), 'choice_label' => 'name'])
             ;
         }

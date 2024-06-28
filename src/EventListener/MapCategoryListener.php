@@ -9,16 +9,13 @@ namespace Aropixel\BlogBundle\EventListener;
 
 use Aropixel\BlogBundle\Entity\PostCategory;
 use Aropixel\BlogBundle\Entity\PostInterface;
-use Aropixel\MenuBundle\Entity\Menu;
-use Aropixel\PageBundle\Entity\Page;
 use Doctrine\Common\EventSubscriber;
 use Doctrine\ORM\Event\LoadClassMetadataEventArgs;
 use Doctrine\ORM\Events;
-use Doctrine\ORM\Mapping\ClassMetadataInfo;
 
 
 
-class MapCategorySubscriber implements EventSubscriber
+class MapCategoryListener implements EventSubscriber
 {
 
     /**
@@ -40,7 +37,6 @@ class MapCategorySubscriber implements EventSubscriber
     public function loadClassMetadata(LoadClassMetadataEventArgs $eventArgs)
     {
 
-        /** @var ClassMetadataInfo $metadata */
         $metadata = $eventArgs->getClassMetadata();
 
         if ($metadata->getName() === $this->postClass) {

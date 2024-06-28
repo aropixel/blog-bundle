@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="fr" target-language="en" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="OmKv5oR" resname="form.meta.title">
+        <source>form.meta.title</source>
+        <target>News</target>
+      </trans-unit>
+      <trans-unit id="np_t4FK" resname="form.header.title">
+        <source>form.header.title</source>
+        <target>News</target>
+      </trans-unit>
+      <trans-unit id="gMLmKTL" resname="breadcrumb.home">
+        <source>breadcrumb.home</source>
+        <target>Home</target>
+      </trans-unit>
+      <trans-unit id="2jiXFwn" resname="breadcrumb.blog">
+        <source>breadcrumb.blog</source>
+        <target>Blog</target>
+      </trans-unit>
+      <trans-unit id="fbtEl2O" resname="breadcrumb.list">
+        <source>breadcrumb.list</source>
+        <target>News</target>
+      </trans-unit>
+      <trans-unit id="RIm2M8r" resname="breadcrumb.form.edit">
+        <source>breadcrumb.form.edit</source>
+        <target>Edit</target>
+      </trans-unit>
+      <trans-unit id="hoJ6mIr" resname="breadcrumb.form.add">
+        <source>breadcrumb.form.add</source>
+        <target>Add</target>
+      </trans-unit>
+      <trans-unit id="jSbUW0O" resname="form.pills.content">
+        <source>form.pills.content</source>
+        <target>Content</target>
+      </trans-unit>
+      <trans-unit id="Eg5NBgf" resname="form.pills.image">
+        <source>form.pills.image</source>
+        <target>Image</target>
+      </trans-unit>
+      <trans-unit id="WPAMlIw" resname="form.pills.seo">
+        <source>form.pills.seo</source>
+        <target>SEO</target>
+      </trans-unit>
+      <trans-unit id="iitI3Lq" resname="list.header.title">
+        <source>list.header.title</source>
+        <target>News</target>
+      </trans-unit>
+      <trans-unit id="Z6TLuDy" resname="list.datatable.header.title">
+        <source>list.datatable.header.title</source>
+        <target>Title</target>
+      </trans-unit>
+      <trans-unit id="nd24Mi0" resname="list.datatable.header.date">
+        <source>list.datatable.header.date</source>
+        <target>Date</target>
+      </trans-unit>
+      <trans-unit id="WCWrrjj" resname="list.datatable.header.actions">
+        <source>list.datatable.header.actions</source>
+        <target>Actions</target>
+      </trans-unit>
+      <trans-unit id="WbWWVMe" resname="list.datatable.body.edit">
+        <source>list.datatable.body.edit</source>
+        <target>Edit</target>
+      </trans-unit>
+      <trans-unit id="mkDUQEV" resname="list.datatable.body.toggle_status.confirm">
+        <source>list.datatable.body.toggle_status.confirm</source>
+        <target>Are you sure to modify post's status ?</target>
+      </trans-unit>
+      <trans-unit id="wHq1TkQ" resname="list.datatable.body.toggle_status.to_offline">
+        <source>list.datatable.body.toggle_status.to_offline</source>
+        <target>Offline</target>
+      </trans-unit>
+      <trans-unit id="GQbsrQ8" resname="list.datatable.body.toggle_status.to_online">
+        <source>list.datatable.body.toggle_status.to_online</source>
+        <target>Online</target>
+      </trans-unit>
+      <trans-unit id="nnXe.Zl" resname="list.datatable.body.delete.confirm">
+        <source>list.datatable.body.delete.confirm</source>
+        <target>Are you sure to permanently remove this post ?</target>
+      </trans-unit>
+      <trans-unit id="LwjjM8K" resname="list.datatable.body.delete.button">
+        <source>list.datatable.body.delete.button</source>
+        <target>Remove</target>
+      </trans-unit>
+      <trans-unit id="EqOdnwY" resname="categories.form.meta.title">
+        <source>categories.form.meta.title</source>
+        <target>Categories</target>
+      </trans-unit>
+      <trans-unit id="7lAsh4C" resname="categories.form.header.title">
+        <source>categories.form.header.title</source>
+        <target>{%edit%, select,
+          1 {Categories - Edit category}
+          0 {Categories - Add a category}
+          other {Categories}
+          }</target>
+      </trans-unit>
+      <trans-unit id="OtJJHgs" resname="breadcrumb.categories">
+        <source>breadcrumb.categories</source>
+        <target>Categories</target>
+      </trans-unit>
+      <trans-unit id="VyKnwmV" resname="categories.form.pills.content">
+        <source>categories.form.pills.content</source>
+        <target>Content</target>
+      </trans-unit>
+      <trans-unit id="6H5vToz" resname="categories.list.meta.title">
+        <source>categories.list.meta.title</source>
+        <target>Categories list</target>
+      </trans-unit>
+      <trans-unit id="jbRL15j" resname="categories.list.header.title">
+        <source>categories.list.header.title</source>
+        <target>Categories</target>
+      </trans-unit>
+      <trans-unit id="E0PDdYx" resname="categories.list.datatable.header.position">
+        <source>categories.list.datatable.header.position</source>
+        <target>Position</target>
+      </trans-unit>
+      <trans-unit id="tVivb6n" resname="categories.list.datatable.header.title">
+        <source>categories.list.datatable.header.title</source>
+        <target>Title</target>
+      </trans-unit>
+      <trans-unit id="1d6gIos" resname="categories.list.datatable.header.date">
+        <source>categories.list.datatable.header.date</source>
+        <target>Date</target>
+      </trans-unit>
+      <trans-unit id="Cxzx.0a" resname="categories.list.datatable.header.actions">
+        <source>categories.list.datatable.header.actions</source>
+        <target>Actions</target>
+      </trans-unit>
+      <trans-unit id="r4lOP34" resname="categories.list.datatable.body.edit">
+        <source>categories.list.datatable.body.edit</source>
+        <target>Edit</target>
+      </trans-unit>
+      <trans-unit id="1cJo3M0" resname="categories.list.datatable.body.delete.confirm">
+        <source>categories.list.datatable.body.delete.confirm</source>
+        <target>Are you sure to permanently remove this category ?</target>
+      </trans-unit>
+      <trans-unit id="N4K1fWQ" resname="categories.list.datatable.body.delete.button">
+        <source>categories.list.datatable.body.delete.button</source>
+        <target>Remove</target>
+      </trans-unit>
+      <trans-unit id="xNlqtr4" resname="categories.order.meta.title">
+        <source>categories.order.meta.title</source>
+        <target>Categories - Sort categories</target>
+      </trans-unit>
+      <trans-unit id="JMmB0Xo" resname="breadcrumb.categories.order">
+        <source>breadcrumb.categories.order</source>
+        <target>Sort categories</target>
+      </trans-unit>
+      <trans-unit id="F9f0eWF" resname="categories.order.title">
+        <source>categories.order.title</source>
+        <target>Sort categories</target>
+      </trans-unit>
+      <trans-unit id="BYTp9At" resname="categories.order.datatable.header.position">
+        <source>categories.order.datatable.header.position</source>
+        <target>Pos.</target>
+      </trans-unit>
+      <trans-unit id="AK_Y_r6" resname="categories.order.datatable.header.title">
+        <source>categories.order.datatable.header.title</source>
+        <target>Title</target>
+      </trans-unit>
+      <trans-unit id="JP7781R" resname="categories.order.datatable.header.date">
+        <source>categories.order.datatable.header.date</source>
+        <target>Date</target>
+      </trans-unit>
+      <trans-unit id="bP_731h" resname="categories.form.name.label">
+        <source>categories.form.name.label</source>
+        <target>Name</target>
+      </trans-unit>
+      <trans-unit id="iNa_54h" resname="form.field.title">
+        <source>form.field.title</source>
+        <target>Title</target>
+      </trans-unit>
+      <trans-unit id="bP_731a" resname="form.field.excerpt">
+        <source>form.field.excerpt</source>
+        <target>Excerpt</target>
+      </trans-unit>
+      <trans-unit id="bP_731b" resname="form.field.description">
+        <source>form.field.description</source>
+        <target>Description</target>
+      </trans-unit>
+      <trans-unit id="bP_731c" resname="form.field.meta_title">
+        <source>form.field.meta_title</source>
+        <target>Meta title</target>
+      </trans-unit>
+      <trans-unit id="bP_731d" resname="form.field.meta_description">
+        <source>form.field.meta_description</source>
+        <target>Meta description</target>
+      </trans-unit>
+      <trans-unit id="bP_731e" resname="form.field.meta_keywords">
+        <source>form.field.meta_keywords</source>
+        <target>Meta keywords</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

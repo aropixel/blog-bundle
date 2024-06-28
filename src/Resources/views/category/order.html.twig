@@ -1,0 +1,42 @@
+{% extends '@AropixelAdmin/List/order.html.twig' %}
+
+
+{% block meta_title %}{% trans %}categories.order.meta.title{% endtrans %}{% endblock %}
+{% block header_title %}{% trans %}categories.order.meta.title{% endtrans %}{% endblock %}
+{% block header_breadcrumb %}
+    <ul class="breadcrumb breadcrumb-caret position-right">
+        <li class="breadcrumb-item"><a href="{{ url('_admin') }}">{% trans %}text.dashboard{% endtrans %}</a></li>
+        <li class="breadcrumb-item">{% trans %}breadcrumb.blog{% endtrans %}</li>
+        <li class="breadcrumb-item"><a href="{{ url('aropixel_blog_category_index') }}">{% trans %}breadcrumb.categories{% endtrans %}</a></li>
+        <li class="breadcrumb-item active">{% trans %}breadcrumb.categories.order{% endtrans %}</li>
+    </ul>
+{% endblock %}
+
+
+{% block paneltitle %}{% trans %}categories.order.title{% endtrans %}{% endblock %}
+
+
+{% block panelbody %}
+
+    <table class="table sortable" data-path="{{ path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) }}">
+        <thead>
+        <tr>
+            <th class="position" width="40">&nbsp;</th>
+            <th style="width: 50px">{% trans %}categories.order.datatable.header.position{% endtrans %}</th>
+            <th>{% trans %}categories.order.datatable.header.title{% endtrans %}</th>
+            <th style="width:200px">{% trans %}categories.order.datatable.header.date{% endtrans %}</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for category in categories %}
+            <tr id="entity_{{ category.id }}">
+                <td class="position"><i class="fas fa-arrows-alt"></i></td>
+                <td class="position numero" style="width:35px;">{{ category.position + 1 }}.</td>
+                <td>{{ category.name }}</td>
+                <td>{{ category.createdAt|datetime('dd/MM/Y') }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

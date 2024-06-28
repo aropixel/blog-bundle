@@ -14,7 +14,7 @@
   ],
   "autoload" : {
     "psr-4" : {
-      "Aropixel\\BlogBundle\\" : ""
+      "Aropixel\\BlogBundle\\" : "src/"
     }
   },
   "require" : {

@@ -11,22 +11,15 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 
-#[ORM\Entity(repositoryClass: PostImageRepository::class)]
-#[ORM\Table(name: "aropixel_post_image")]
 class PostImage extends AttachedImage implements CroppableInterface
 {
 
     use CroppableTrait;
 
-    #[ORM\Id]
-    #[ORM\GeneratedValue(strategy: "AUTO")]
-    #[ORM\Column(type: "integer")]
     private ?int $id = null;
 
-    #[ORM\OneToOne(mappedBy: "image", targetEntity: Post::class)]
     private ?Post $post = null;
 
-    #[ORM\OneToMany(mappedBy: "image", targetEntity: PostImageCrop::class, cascade: ["persist", "remove"])]
     private Collection $crops;
 
 

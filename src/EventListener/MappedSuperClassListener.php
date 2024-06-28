@@ -13,7 +13,7 @@ use Doctrine\ORM\Event\LoadClassMetadataEventArgs;
 use Doctrine\ORM\Events;
 
 
-class MappedSuperClassSubscriber implements EventSubscriber
+class MappedSuperClassListener implements EventSubscriber
 {
 
     /**

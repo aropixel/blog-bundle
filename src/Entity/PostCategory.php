@@ -9,32 +9,20 @@ use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 
 
-#[ORM\Entity(repositoryClass: PostCategoryRepository::class)]
-#[ORM\Table(name: "aropixel_post_category")]
 class PostCategory
 {
-    #[ORM\Id]
-    #[ORM\GeneratedValue(strategy: "AUTO")]
-    #[ORM\Column(type: "integer")]
     private ?int $id = null;
 
-    #[ORM\Column]
     private string $name;
 
-    #[Gedmo\SortablePosition]
-    #[ORM\Column(type: "integer")]
     private int $position;
 
-    #[Gedmo\Timestampable(on: "create")]
-    #[ORM\Column(name: "created_at", type: "datetime")]
-    private \DateTime $createdAt;
+    private ?\DateTime $createdAt = null;
 
-    #[Gedmo\Timestampable(on: "update")]
-    #[ORM\Column(name: "updated_at", type: "datetime", nullable: true)]
     private ?\DateTime $updatedAt = null;
 
-    #[ORM\OneToMany(targetEntity: Post::class, mappedBy: "category")]
     private Collection $posts;
+
 
     public function __construct()
     {
