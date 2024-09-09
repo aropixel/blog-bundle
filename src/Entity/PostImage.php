@@ -5,10 +5,8 @@ namespace Aropixel\BlogBundle\Entity;
 use Aropixel\AdminBundle\Entity\AttachedImage;
 use Aropixel\AdminBundle\Entity\CroppableInterface;
 use Aropixel\AdminBundle\Entity\CroppableTrait;
-use Aropixel\BlogBundle\Repository\PostImageRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
-use Doctrine\ORM\Mapping as ORM;
 
 
 class PostImage extends AttachedImage implements CroppableInterface
@@ -39,7 +37,7 @@ class PostImage extends AttachedImage implements CroppableInterface
         return $this->post;
     }
 
-    public function setPost(?Post $post): self
+    public function setPost(Post|null $post): self
     {
         $this->post = $post;
 

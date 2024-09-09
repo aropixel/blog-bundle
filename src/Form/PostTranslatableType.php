@@ -3,10 +3,12 @@
 namespace Aropixel\BlogBundle\Form;
 
 use Aropixel\AdminBundle\Form\Type\Image\Single\ImageType;
+use Aropixel\AdminBundle\Form\Type\TranslatableType;
 use Aropixel\BlogBundle\Entity\PostCategory;
 use Aropixel\BlogBundle\Entity\PostImage;
 use Aropixel\BlogBundle\Entity\PostImageCrop;
 use Aropixel\BlogBundle\Entity\PostInterface;
+use Aropixel\BlogBundle\Entity\PostTranslation;
 use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
@@ -16,11 +18,9 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
-class PostType extends AbstractType
+class PostTranslatableType extends AbstractType
 {
-    /**
-     * PostType constructor.
-     */
+
     public function __construct(private readonly TranslatorInterface $translator, private readonly string $categoryMode)
     {
     }
@@ -32,13 +32,38 @@ class PostType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title', null, ['label'  => $this->translator->trans('form.field.title')])
-            ->add('excerpt', null, ['label'  => $this->translator->trans('form.field.excerpt')])
-            ->add('description', null, ['label'  => $this->translator->trans('form.field.description'), 'attr' => ['class' => 'ckeditor']])
+            ->add('title', TranslatableType::class, [
+                'label'                => $this->translator->trans('form.field.title'),
+                'personal_translation' => PostTranslation::class,
+                'property_path'        => 'translations'
+            ])
+            ->add('excerpt', TranslatableType::class, [
+                'label'                => $this->translator->trans('form.field.excerpt'),
+                'personal_translation' => PostTranslation::class,
+                'property_path'        => 'translations'
+            ])
+            ->add('description', TranslatableType::class, [
+                'label'                => $this->translator->trans('form.field.description'),
+                'attr'                 => ['class' => 'ckeditor'],
+                'personal_translation' => PostTranslation::class,
+                'property_path'        => 'translations'
+            ])
             ->add('slug', HiddenType::class)
-            ->add('metaTitle', null, ['label'  => $this->translator->trans('form.field.meta_title')])
-            ->add('metaDescription', null, ['label'  => $this->translator->trans('form.field.meta_description')])
-            ->add('metaKeywords', null, ['label'  => $this->translator->trans('form.field.meta_keywords')])
+            ->add('metaTitle', TranslatableType::class, [
+                'label'                => $this->translator->trans('form.field.meta_title'),
+                'personal_translation' => PostTranslation::class,
+                'property_path'        => 'translations'
+            ])
+            ->add('metaDescription', TranslatableType::class, [
+                'label'                => $this->translator->trans('form.field.meta_description'),
+                'personal_translation' => PostTranslation::class,
+                'property_path'        => 'translations'
+            ])
+            ->add('metaKeywords', TranslatableType::class, [
+                'label'                => $this->translator->trans('form.field.meta_keywords'),
+                'personal_translation' => PostTranslation::class,
+                'property_path'        => 'translations'
+            ])
             ->add('image', ImageType::class, ['data_class' => PostImage::class, 'crop_class' => PostImageCrop::class])
             ->add('status', HiddenType::class)
             ->add('createdAt', DateTimeType::class, [

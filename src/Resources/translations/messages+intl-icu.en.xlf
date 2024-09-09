@@ -165,33 +165,49 @@
         <source>categories.order.datatable.header.date</source>
         <target>Date</target>
       </trans-unit>
-      <trans-unit id="bP_731h" resname="categories.form.name.label">
+      <trans-unit id="bI.kWhk" resname="categories.form.name.label">
         <source>categories.form.name.label</source>
         <target>Name</target>
       </trans-unit>
-      <trans-unit id="iNa_54h" resname="form.field.title">
+      <trans-unit id="U2dI4mp" resname="form.field.title">
         <source>form.field.title</source>
         <target>Title</target>
       </trans-unit>
-      <trans-unit id="bP_731a" resname="form.field.excerpt">
+      <trans-unit id="HEsX53e" resname="form.field.excerpt">
         <source>form.field.excerpt</source>
         <target>Excerpt</target>
       </trans-unit>
-      <trans-unit id="bP_731b" resname="form.field.description">
+      <trans-unit id="uDSEEWp" resname="form.field.description">
         <source>form.field.description</source>
         <target>Description</target>
       </trans-unit>
-      <trans-unit id="bP_731c" resname="form.field.meta_title">
+      <trans-unit id="GHYWBnX" resname="form.field.meta_title">
         <source>form.field.meta_title</source>
         <target>Meta title</target>
       </trans-unit>
-      <trans-unit id="bP_731d" resname="form.field.meta_description">
+      <trans-unit id="mhFciHW" resname="form.field.meta_description">
         <source>form.field.meta_description</source>
         <target>Meta description</target>
       </trans-unit>
-      <trans-unit id="bP_731e" resname="form.field.meta_keywords">
+      <trans-unit id="xLQAuNb" resname="form.field.meta_keywords">
         <source>form.field.meta_keywords</source>
         <target>Meta keywords</target>
+      </trans-unit>
+      <trans-unit id="igmwK8E" resname="text.dashboard">
+        <source>text.dashboard</source>
+        <target>Dashboard</target>
+      </trans-unit>
+      <trans-unit id="5e4s9b1" resname="form.field.created_at">
+        <source>form.field.created_at</source>
+        <target>Created at</target>
+      </trans-unit>
+      <trans-unit id="UErOO7D" resname="form.field.publish_at">
+        <source>form.field.publish_at</source>
+        <target>Published at</target>
+      </trans-unit>
+      <trans-unit id="o5fIg51" resname="form.field.publish_until">
+        <source>form.field.publish_until</source>
+        <target>Published until</target>
       </trans-unit>
     </body>
   </file>

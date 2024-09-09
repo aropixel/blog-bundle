@@ -2,9 +2,10 @@
 
 namespace Aropixel\BlogBundle\Http\Action\Post;
 
-use Aropixel\BlogBundle\Form\PostType;
+use Aropixel\BlogBundle\Entity\Post;
 use Aropixel\BlogBundle\Repository\PostRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -12,20 +13,25 @@ class EditPostAction extends AbstractController
 {
     public function __construct(
         private readonly RequestStack $request,
-        private readonly PostRepository $postRepository
+        private readonly PostRepository $postRepository,
+        private readonly ParameterBagInterface $parameterBag,
     ){}
-
-    private string $form = PostType::class;
 
     public function __invoke(int $id) : Response
     {
-         $post = $this->postRepository->find($id);
+        $isTranslatable = $this->parameterBag->has('translatable') && $this->parameterBag->get('translatable');
+
+        /** @var Post $post */
+        $post = $this->postRepository->find($id);
 
         if (is_null($post)) {
             throw $this->createNotFoundException();
         }
 
-        $editForm = $this->createForm($this->form, $post);
+        $forms = $this->getParameter('aropixel_blog.forms');
+        $formName = $isTranslatable ? $forms['post_translatable'] : $forms['post'];
+
+        $editForm = $this->createForm($formName, $post);
         $editForm->handleRequest($this->request->getMainRequest());
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {

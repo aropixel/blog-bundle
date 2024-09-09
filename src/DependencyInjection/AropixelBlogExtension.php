@@ -21,19 +21,16 @@ class AropixelBlogExtension extends Extension
     public function load(array $configs, ContainerBuilder $container)
     {
 
-        //
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
 
-        //
         $container->setParameter('aropixel_blog.categories', $config['categories']);
         $container->setParameter('aropixel_blog.entities', $config['entities']);
         $container->setParameter('aropixel_blog.entities.post', $config['entities'][PostInterface::class]);
         $container->setParameter('aropixel_blog.forms', $config['forms']);
         $container->setParameter('aropixel_blog.forms.post', $config['forms']['post']);
+        $container->setParameter('aropixel_blog.forms.post_translatable', $config['forms']['post_translatable']);
 
-
-        //
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yaml');
     }

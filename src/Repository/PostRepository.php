@@ -4,8 +4,6 @@ namespace Aropixel\BlogBundle\Repository;
 
 use Aropixel\AdminBundle\Infrastructure\Publication\Repository\PublishableRepository;
 use Aropixel\BlogBundle\Entity\Post;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -21,8 +19,7 @@ class PostRepository extends PublishableRepository
         parent::__construct($registry, $className);
     }
 
-
-    public function findPrevious(Post $post, $loop=false): ?Post
+    public function findPrevious(Post $post, $loop=false): Post|null
     {
 
         $qb = $this->qbPublished('p');
@@ -43,7 +40,7 @@ class PostRepository extends PublishableRepository
     }
 
 
-    public function findNext(Post $post, $loop=false): ?Post
+    public function findNext(Post $post, $loop=false): Post|null
     {
 
         $qb = $this->qbPublished('p');
@@ -81,7 +78,7 @@ class PostRepository extends PublishableRepository
     }
 
 
-    public function getFirst(): ?Post
+    public function getFirst(): Post|null
     {
 
         $qb = $this->qbPublished('p');
@@ -99,7 +96,7 @@ class PostRepository extends PublishableRepository
     }
 
 
-    public function getLast(): ?Post
+    public function getLast(): Post|null
     {
 
         $qb = $this->qbPublished('p');

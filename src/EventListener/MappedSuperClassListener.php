@@ -11,6 +11,8 @@ namespace Aropixel\BlogBundle\EventListener;
 use Doctrine\Common\EventSubscriber;
 use Doctrine\ORM\Event\LoadClassMetadataEventArgs;
 use Doctrine\ORM\Events;
+use Doctrine\ORM\Mapping\ClassMetadata;
+use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 
 
 class MappedSuperClassListener implements EventSubscriber
@@ -56,6 +58,18 @@ class MappedSuperClassListener implements EventSubscriber
 
     }
 
+    private function isRelation(int $type): bool
+    {
+        return in_array(
+            $type,
+            [
+                ClassMetadata::MANY_TO_MANY,
+                ClassMetadata::ONE_TO_MANY,
+                ClassMetadata::ONE_TO_ONE,
+            ],
+            true
+        );
+    }
 
 
 }

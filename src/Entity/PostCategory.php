@@ -2,15 +2,18 @@
 
 namespace Aropixel\BlogBundle\Entity;
 
-use Aropixel\BlogBundle\Repository\PostCategoryRepository;
+use Aropixel\AdminBundle\Entity\TranslatableTrait;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Gedmo\Translatable\Translatable;
 
 
-class PostCategory
+class PostCategory implements Translatable
 {
+    use TranslatableTrait;
+
     private ?int $id = null;
 
     private string $name;
@@ -22,7 +25,6 @@ class PostCategory
     private ?\DateTime $updatedAt = null;
 
     private Collection $posts;
-
 
     public function __construct()
     {
@@ -163,6 +165,5 @@ class PostCategory
 
         return $this;
     }
-
 
 }

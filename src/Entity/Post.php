@@ -4,17 +4,18 @@ namespace Aropixel\BlogBundle\Entity;
 
 use Aropixel\AdminBundle\Entity\Publishable;
 use Aropixel\AdminBundle\Entity\PublishableTrait;
-use Aropixel\BlogBundle\Repository\PostRepository;
+use Aropixel\AdminBundle\Entity\TranslatableTrait;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
-use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Gedmo\Translatable\Translatable;
 
 
-class Post implements PostInterface
+class Post implements PostInterface, Translatable
 {
 
     use PublishableTrait;
+    use TranslatableTrait;
 
     private ?int $id = null;
 
@@ -79,7 +80,7 @@ class Post implements PostInterface
 
     public function getTitle(): ?string
     {
-        return $this->title;
+        return $this->getTranslation('title');
     }
 
     public function setTitle(?string $title): self
@@ -91,7 +92,7 @@ class Post implements PostInterface
 
     public function getSlug(): ?string
     {
-        return $this->slug;
+        return $this->getTranslation('slug');
     }
 
     public function setSlug(string $slug): self
@@ -103,7 +104,7 @@ class Post implements PostInterface
 
     public function getExcerpt(): ?string
     {
-        return $this->excerpt;
+        return $this->getTranslation('excerpt');
     }
 
     public function setExcerpt(?string $excerpt): self
@@ -115,7 +116,7 @@ class Post implements PostInterface
 
     public function getDescription(): ?string
     {
-        return $this->description;
+        return $this->getTranslation('description');
     }
 
     public function setDescription(?string $description): self
@@ -127,7 +128,7 @@ class Post implements PostInterface
 
     public function getMetaTitle(): ?string
     {
-        return $this->metaTitle;
+        return $this->getTranslation('metaTitle');
     }
 
     public function setMetaTitle(?string $metaTitle): self
@@ -139,7 +140,7 @@ class Post implements PostInterface
 
     public function getMetaDescription(): ?string
     {
-        return $this->metaDescription;
+        return $this->getTranslation('metaDescription');
     }
 
     public function setMetaDescription(?string $metaDescription): self
@@ -151,7 +152,7 @@ class Post implements PostInterface
 
     public function getMetaKeywords(): ?string
     {
-        return $this->metaKeywords;
+        return $this->getTranslation('metaKeywords');
     }
 
     public function setMetaKeywords(?string $metaKeywords): self

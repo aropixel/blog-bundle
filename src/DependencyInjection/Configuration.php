@@ -4,6 +4,9 @@ namespace Aropixel\BlogBundle\DependencyInjection;
 
 use Aropixel\BlogBundle\Entity\Post;
 use Aropixel\BlogBundle\Entity\PostInterface;
+use Aropixel\BlogBundle\Entity\PostTranslation;
+use Aropixel\BlogBundle\Entity\PostTranslationInterface;
+use Aropixel\BlogBundle\Form\PostTranslatableType;
 use Aropixel\BlogBundle\Form\PostType;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
@@ -31,12 +34,14 @@ class Configuration implements ConfigurationInterface
                     ->addDefaultsIfNotSet()
                     ->children()
                         ->scalarNode('post')->defaultValue(PostType::class)->end()
+                        ->scalarNode('post_translatable')->defaultValue(PostTranslatableType::class)->end()
                     ->end()
                 ->end()
                 ->arrayNode('entities')
                     ->addDefaultsIfNotSet()
                     ->children()
                         ->scalarNode(PostInterface::class)->defaultValue(Post::class)->end()
+                        ->scalarNode(PostTranslationInterface::class)->defaultValue(PostTranslation::class)->end()
                     ->end()
                 ->end()
             ->end()
