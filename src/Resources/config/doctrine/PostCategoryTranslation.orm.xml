@@ -18,7 +18,7 @@
         </many-to-one>
 
         <indexes>
-            <index columns="locale,object_id,field" name="post_translation_idx"/>
+            <index columns="locale,object_id,field" name="post_category_translation_idx"/>
         </indexes>
 
     </mapped-superclass>

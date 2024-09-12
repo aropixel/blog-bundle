@@ -3,6 +3,10 @@
 namespace Aropixel\BlogBundle\DependencyInjection;
 
 use Aropixel\BlogBundle\Entity\Post;
+use Aropixel\BlogBundle\Entity\PostCategory;
+use Aropixel\BlogBundle\Entity\PostCategoryInterface;
+use Aropixel\BlogBundle\Entity\PostCategoryTranslation;
+use Aropixel\BlogBundle\Entity\PostCategoryTranslationInterface;
 use Aropixel\BlogBundle\Entity\PostInterface;
 use Aropixel\BlogBundle\Entity\PostTranslation;
 use Aropixel\BlogBundle\Entity\PostTranslationInterface;
@@ -42,6 +46,8 @@ class Configuration implements ConfigurationInterface
                     ->children()
                         ->scalarNode(PostInterface::class)->defaultValue(Post::class)->end()
                         ->scalarNode(PostTranslationInterface::class)->defaultValue(PostTranslation::class)->end()
+                        ->scalarNode(PostCategoryInterface::class)->defaultValue(PostCategory::class)->end()
+                        ->scalarNode(PostCategoryTranslationInterface::class)->defaultValue(PostCategoryTranslation::class)->end()
                     ->end()
                 ->end()
             ->end()

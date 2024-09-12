@@ -12,7 +12,6 @@ use Doctrine\Common\EventSubscriber;
 use Doctrine\ORM\Event\LoadClassMetadataEventArgs;
 use Doctrine\ORM\Events;
 use Doctrine\ORM\Mapping\ClassMetadata;
-use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 
 
 class MappedSuperClassListener implements EventSubscriber

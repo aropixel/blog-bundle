@@ -9,11 +9,13 @@ use Aropixel\BlogBundle\Entity\PostImage;
 use Aropixel\BlogBundle\Entity\PostImageCrop;
 use Aropixel\BlogBundle\Entity\PostInterface;
 use Aropixel\BlogBundle\Entity\PostTranslation;
+use Aropixel\PageBundle\Entity\PageTranslation;
 use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Contracts\Translation\TranslatorInterface;
@@ -43,10 +45,11 @@ class PostTranslatableType extends AbstractType
                 'property_path'        => 'translations'
             ])
             ->add('description', TranslatableType::class, [
-                'label'                => $this->translator->trans('form.field.description'),
-                'attr'                 => ['class' => 'ckeditor'],
+                'label'                => 'Description',
                 'personal_translation' => PostTranslation::class,
-                'property_path'        => 'translations'
+                'property_path'        => 'translations',
+                'widget' => TextareaType::class,
+                'attr' => ['class' => 'ckeditor']
             ])
             ->add('slug', HiddenType::class)
             ->add('metaTitle', TranslatableType::class, [

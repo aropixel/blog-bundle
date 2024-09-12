@@ -8,7 +8,7 @@
         <id name="id" column="id" type="integer">
             <generator strategy="AUTO" />
         </id>
-        <field name="name">
+        <field name="name" nullable="true">
             <gedmo:translatable/>
         </field>
         <field name="position" type="integer">

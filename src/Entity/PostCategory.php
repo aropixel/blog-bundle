@@ -61,7 +61,7 @@ class PostCategory implements Translatable
      */
     public function getName()
     {
-        return $this->name;
+        return $this->getTranslation('name');
     }
 
     /**

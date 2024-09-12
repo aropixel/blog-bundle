@@ -8,7 +8,7 @@ use Gedmo\Translatable\Entity\Repository\TranslationRepository;
 
 #[ORM\Index(name: 'post_category_translation_idx', columns: ['locale', 'object_id', 'field'])]
 #[ORM\Entity(repositoryClass: TranslationRepository::class)]
-class PostCategoryTranslation extends AbstractPersonalTranslation implements PostTranslationInterface
+class PostCategoryTranslation extends AbstractPersonalTranslation implements PostCategoryTranslationInterface
 {
     public function __construct($locale, $field, $value)
     {
