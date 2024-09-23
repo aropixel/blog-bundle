@@ -23,7 +23,7 @@ class Post implements PostInterface, Translatable
 
     private ?string $title = null;
 
-    private string $slug;
+    private ?string $slug = null;
 
     private ?string $excerpt = null;
 
@@ -95,7 +95,7 @@ class Post implements PostInterface, Translatable
         return $this->getTranslation('slug');
     }
 
-    public function setSlug(string $slug): self
+    public function setSlug(?string $slug): self
     {
         $this->slug = $slug;
 

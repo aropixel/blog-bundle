@@ -9,7 +9,6 @@ use Aropixel\BlogBundle\Entity\PostImage;
 use Aropixel\BlogBundle\Entity\PostImageCrop;
 use Aropixel\BlogBundle\Entity\PostInterface;
 use Aropixel\BlogBundle\Entity\PostTranslation;
-use Aropixel\PageBundle\Entity\PageTranslation;
 use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
