@@ -2,6 +2,7 @@
 
 namespace Aropixel\BlogBundle\Form;
 
+use Aropixel\AdminBundle\Domain\Translation\TranslationResolverInterface;
 use Aropixel\AdminBundle\Form\Type\TranslatableType;
 use Aropixel\BlogBundle\Entity\PostCategory;
 use Aropixel\BlogBundle\Entity\PostCategoryTranslation;
@@ -16,7 +17,7 @@ class PostCategoryType extends AbstractType
 {
     public function __construct(
         private readonly TranslatorInterface $translator,
-        private readonly ParameterBagInterface $parameterBag,
+        private readonly TranslationResolverInterface $translationResolver
     ) {
     }
 
@@ -26,7 +27,7 @@ class PostCategoryType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
 
-        $isTranslatable = $this->parameterBag->has('translatable') && $this->parameterBag->get('translatable');
+        $isTranslatable = $this->translationResolver->isTranslatable();
 
         if ($isTranslatable) {
 

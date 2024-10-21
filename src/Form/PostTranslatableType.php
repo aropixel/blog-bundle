@@ -54,17 +54,20 @@ class PostTranslatableType extends AbstractType
             ->add('metaTitle', TranslatableType::class, [
                 'label'                => $this->translator->trans('form.field.meta_title'),
                 'personal_translation' => PostTranslation::class,
-                'property_path'        => 'translations'
+                'property_path'        => 'translations',
+                'required' => false
             ])
             ->add('metaDescription', TranslatableType::class, [
                 'label'                => $this->translator->trans('form.field.meta_description'),
                 'personal_translation' => PostTranslation::class,
-                'property_path'        => 'translations'
+                'property_path'        => 'translations',
+                'required' => false
             ])
             ->add('metaKeywords', TranslatableType::class, [
                 'label'                => $this->translator->trans('form.field.meta_keywords'),
                 'personal_translation' => PostTranslation::class,
-                'property_path'        => 'translations'
+                'property_path'        => 'translations',
+                'required' => false
             ])
             ->add('image', ImageType::class, ['data_class' => PostImage::class, 'crop_class' => PostImageCrop::class])
             ->add('status', HiddenType::class)

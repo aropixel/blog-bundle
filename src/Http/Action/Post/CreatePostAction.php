@@ -2,11 +2,11 @@
 
 namespace Aropixel\BlogBundle\Http\Action\Post;
 
+use Aropixel\AdminBundle\Domain\Translation\TranslationResolverInterface;
 use Aropixel\AdminBundle\Entity\Publishable;
 use Aropixel\BlogBundle\Entity\PostInterface;
 use Aropixel\BlogBundle\Repository\PostRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -15,12 +15,12 @@ class CreatePostAction extends AbstractController
     public function __construct(
         private readonly PostRepository $postRepository,
         private readonly RequestStack $request,
-        private readonly ParameterBagInterface $parameterBag
+        private readonly TranslationResolverInterface $translationResolver
     ){}
 
     public function __invoke() : Response
     {
-        $isTranslatable = $this->parameterBag->has('translatable') && $this->parameterBag->get('translatable');
+        $isTranslatable = $this->translationResolver->isTranslatable();
         $entities = $this->getParameter('aropixel_blog.entities');
         $forms = $this->getParameter('aropixel_blog.forms');
         $entityName = $entities[PostInterface::class];
