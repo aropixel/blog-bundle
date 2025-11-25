@@ -2,9 +2,8 @@
 
 namespace Aropixel\BlogBundle\Entity;
 
+use Aropixel\AdminBundle\Entity\AttachedImageInterface;
 use Aropixel\AdminBundle\Entity\Crop;
-use Aropixel\BlogBundle\Repository\PostImageCropRepository;
-use Doctrine\ORM\Mapping as ORM;
 
 
 class PostImageCrop extends Crop
@@ -19,7 +18,7 @@ class PostImageCrop extends Crop
         return $this->id;
     }
 
-    public function getImage(): ?PostImage
+    public function getImage(): AttachedImageInterface
     {
         return $this->image;
     }
