@@ -3,28 +3,52 @@
 namespace Aropixel\BlogBundle\Entity;
 
 use Aropixel\AdminBundle\Entity\TranslatableTrait;
+use Aropixel\BlogBundle\Repository\PostCategoryRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Gedmo\Translatable\Translatable;
 
-
+#[ORM\Entity(repositoryClass: PostCategoryRepository::class)]
+#[ORM\Table(name: "aropixel_post_category")]
+#[Gedmo\TranslationEntity(class: PostCategoryTranslation::class)]
 class PostCategory implements Translatable
 {
     use TranslatableTrait;
 
+    #[ORM\Id]
+    #[ORM\GeneratedValue(strategy: "AUTO")]
+    #[ORM\Column(type: Types::INTEGER)]
     private ?int $id = null;
 
-    private string $name;
+    #[ORM\Column(type: Types::STRING, nullable: true)]
+    #[Gedmo\Translatable]
+    private ?string $name = null;
 
+    #[ORM\Column(type: Types::INTEGER)]
+    #[Gedmo\SortablePosition]
     private int $position;
 
+    #[ORM\Column(name: "created_at", type: Types::DATETIME_MUTABLE)]
+    #[Gedmo\Timestampable(on: "create")]
     private ?\DateTime $createdAt = null;
 
+    #[ORM\Column(name: "updated_at", type: Types::DATETIME_MUTABLE, nullable: true)]
+    #[Gedmo\Timestampable(on: "update")]
     private ?\DateTime $updatedAt = null;
 
+    /**
+     * @var Collection<int, PostInterface>
+     */
     private Collection $posts;
+
+    /**
+     * @var Collection<int, PostCategoryTranslation>|null
+     */
+    #[ORM\OneToMany(targetEntity: PostCategoryTranslation::class, mappedBy: "object", cascade: ["persist", "remove"])]
+    private ?Collection $translations = null;
 
     public function __construct()
     {
@@ -134,7 +158,7 @@ class PostCategory implements Translatable
 
 
     /**
-     * @return Collection|Post[]
+     * @return Collection<int, PostInterface>
      */
     public function getPosts(): Collection
     {

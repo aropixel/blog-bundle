@@ -2,7 +2,7 @@
 
 namespace Aropixel\BlogBundle\Http\Action\PostCategory;
 
-use Aropixel\AdminBundle\Domain\PositionInterface;
+use Aropixel\AdminBundle\Component\Position\PositionInterface;
 use Aropixel\BlogBundle\Entity\PostCategory;
 use Aropixel\BlogBundle\Repository\PostCategoryRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;

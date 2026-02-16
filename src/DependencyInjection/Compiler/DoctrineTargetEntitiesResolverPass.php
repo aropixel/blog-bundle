@@ -5,11 +5,18 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
 
-
+/**
+ * Compiler pass to automatically register resolve_target_entity mappings.
+ *
+ * It reads the 'aropixel_blog.entities' parameter and adds the corresponding
+ * resolveTargetEntity mappings to the Doctrine ResolveTargetEntityListener.
+ */
 class DoctrineTargetEntitiesResolverPass implements CompilerPassInterface
 {
     /**
-     * {@inheritdoc}
+     * Process the compiler pass to configure resolve_target_entity mappings.
+     *
+     * @param ContainerBuilder $container
      */
     public function process(ContainerBuilder $container): void
     {

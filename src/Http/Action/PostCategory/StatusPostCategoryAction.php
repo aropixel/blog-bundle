@@ -2,7 +2,7 @@
 
 namespace Aropixel\BlogBundle\Http\Action\PostCategory;
 
-use Aropixel\AdminBundle\Infrastructure\Status;
+use Aropixel\AdminBundle\Component\Status\StatusInterface;
 use Aropixel\BlogBundle\Entity\PostCategory;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\Response;
 class StatusPostCategoryAction extends AbstractController
 {
     public function __construct(
-        private readonly Status $status,
+        private readonly StatusInterface $status,
     )
     {}
 

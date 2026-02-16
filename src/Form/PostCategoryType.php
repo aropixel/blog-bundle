@@ -2,11 +2,10 @@
 
 namespace Aropixel\BlogBundle\Form;
 
-use Aropixel\AdminBundle\Domain\Translation\TranslationResolverInterface;
+use Aropixel\AdminBundle\Component\Translation\TranslationResolverInterface;
 use Aropixel\AdminBundle\Form\Type\TranslatableType;
 use Aropixel\BlogBundle\Entity\PostCategory;
 use Aropixel\BlogBundle\Entity\PostCategoryTranslation;
-use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\FormBuilderInterface;

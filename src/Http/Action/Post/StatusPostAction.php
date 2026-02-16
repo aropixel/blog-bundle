@@ -2,7 +2,7 @@
 
 namespace Aropixel\BlogBundle\Http\Action\Post;
 
-use Aropixel\AdminBundle\Domain\StatusInterface;
+use Aropixel\AdminBundle\Component\Status\StatusInterface;
 use Aropixel\BlogBundle\Entity\Post;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;

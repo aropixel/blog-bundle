@@ -33,9 +33,7 @@ services:
 
   Aropixel\BlogBundle\Repository\PostRepository:
     public: true
-    arguments:
-      - "@doctrine"
-      - '%aropixel_blog.entities.post%'
+    autowire: true
     tags:
       - { name: doctrine.repository_service }
 

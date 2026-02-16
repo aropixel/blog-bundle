@@ -11,6 +11,7 @@ use Doctrine\Persistence\ManagerRegistry;
  * @method PostCategory|null findOneBy(array $criteria, array $orderBy = null)
  * @method PostCategory[]    findAll()
  * @method PostCategory[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @extends ServiceEntityRepository<PostCategory>
  */
 class PostCategoryRepository extends ServiceEntityRepository
 {

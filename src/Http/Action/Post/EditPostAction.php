@@ -2,7 +2,7 @@
 
 namespace Aropixel\BlogBundle\Http\Action\Post;
 
-use Aropixel\AdminBundle\Domain\Translation\TranslationResolverInterface;
+use Aropixel\AdminBundle\Component\Translation\TranslationResolverInterface;
 use Aropixel\BlogBundle\Entity\Post;
 use Aropixel\BlogBundle\Repository\PostRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -21,9 +21,7 @@ class EditPostAction extends AbstractController
     {
         $isTranslatable = $this->translationResolver->isTranslatable();
 
-        /** @var Post $post */
         $post = $this->postRepository->find($id);
-
         if (is_null($post)) {
             throw $this->createNotFoundException();
         }

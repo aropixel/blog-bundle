@@ -2,7 +2,7 @@
 
 namespace Aropixel\BlogBundle\Repository;
 
-use Aropixel\AdminBundle\Infrastructure\Publication\Repository\PublishableRepository;
+use Aropixel\AdminBundle\Repository\PublishableRepository;
 use Aropixel\BlogBundle\Entity\Post;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -14,12 +14,12 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class PostRepository extends PublishableRepository
 {
-    public function __construct(ManagerRegistry $registry, $className)
+    public function __construct(ManagerRegistry $registry, string $className = Post::class)
     {
         parent::__construct($registry, $className);
     }
 
-    public function findPrevious(Post $post, $loop=false): Post|null
+    public function findPrevious(Post $post, bool $loop=false): Post|null
     {
 
         $qb = $this->qbPublished('p');
@@ -40,7 +40,7 @@ class PostRepository extends PublishableRepository
     }
 
 
-    public function findNext(Post $post, $loop=false): Post|null
+    public function findNext(Post $post, bool $loop=false): Post|null
     {
 
         $qb = $this->qbPublished('p');
@@ -61,11 +61,15 @@ class PostRepository extends PublishableRepository
     }
 
 
-    public function findNexts(Post $post, $quantity=10): ?array
+    /**
+     * @return Post[]|null
+     */
+    public function findNexts(Post $post, int $quantity=10): ?array
     {
 
         $qb = $this->qbPublished('p');
-        $next = $qb
+
+        return $qb
             ->andWhere('p.createdAt > :date')
             ->orderBy('p.createdAt', 'ASC')
             ->setParameter('date', $post->getCreatedAt())
@@ -73,8 +77,6 @@ class PostRepository extends PublishableRepository
             ->getQuery()
             ->getResult()
         ;
-
-        return $next;
     }
 
 
@@ -83,16 +85,14 @@ class PostRepository extends PublishableRepository
 
         $qb = $this->qbPublished('p');
 
-        /** @var array $posts */
+        /** @var Post[] $posts */
         $posts = $qb
             ->orderBy('p.createdAt', 'ASC')
             ->getQuery()
             ->getResult()
         ;
 
-        $first = current($posts);
-
-        return $first;
+        return current($posts);
     }
 
 
@@ -101,16 +101,14 @@ class PostRepository extends PublishableRepository
 
         $qb = $this->qbPublished('p');
 
-        /** @var array $posts */
+        /** @var Post[] $posts */
         $posts = $qb
             ->orderBy('p.createdAt', 'ASC')
             ->getQuery()
             ->getResult()
         ;
 
-        $last = end($posts);
-
-        return $last;
+        return end($posts);
     }
 
     public function add(Post $post, bool $flush = false): void

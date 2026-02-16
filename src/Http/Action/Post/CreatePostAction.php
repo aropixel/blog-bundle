@@ -2,7 +2,7 @@
 
 namespace Aropixel\BlogBundle\Http\Action\Post;
 
-use Aropixel\AdminBundle\Domain\Translation\TranslationResolverInterface;
+use Aropixel\AdminBundle\Component\Translation\TranslationResolverInterface;
 use Aropixel\AdminBundle\Entity\Publishable;
 use Aropixel\BlogBundle\Entity\PostInterface;
 use Aropixel\BlogBundle\Repository\PostRepository;

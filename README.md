@@ -1,39 +1,28 @@
-<p align="center">
-  <a href="http://www.aropixel.com/">
-    <img src="https://avatars1.githubusercontent.com/u/14820816?s=200&v=4" alt="Aropixel logo" width="75" height="75" style="border-radius:100px">
-  </a>
-</p>
+# Aropixel Blog Bundle
 
-<h1 align="center">Aropixel Blog Bundle</h1>
+<div align="center">
+    <img width="100" height="100" src="https://raw.githubusercontent.com/aropixel/admin-bundle/master/doc/assets/logo-aro.png" alt="aropixel logo" />
+</div>
 
-<p>
-  Aropixel Blog Bundle is a complementray bundle of <a href="https://github.com/aropixel/admin-bundle">Aropixel Admin Bundle</a>. It gives possibility to manage blog posts and categories for your website.   
-</p>
-<br>
-<span align="center">
+## Overview
 
-![GitHub last commit](https://img.shields.io/github/last-commit/aropixel/blog-bundle.svg)
-[![GitHub issues](https://img.shields.io/github/issues/aropixel/blog-bundle.svg)](https://github.com/stisla/stisla/issues)
-[![License](https://img.shields.io/github/license/aropixel/blog-bundle.svg)](LICENSE)
+The Aropixel Blog Bundle is a blog management module complementary to the **Aropixel Admin Bundle**. It allows you to easily manage posts and categories for your Symfony website.
 
-![Aropixel Admin Preview](./screenshot-1.png)
+It provides a complete system including:
+* **Posts**: Content management, publication dates, SEO, and images.
+* **Categories**: Organization of posts by topics.
+* **Multilingual**: Native support for translations of titles, descriptions, slugs, etc.
 
-![Aropixel Admin Preview](./screenshot-2.png)
+## Key Features
 
+* **Seamless integration**: Designed to work natively with the Admin Bundle.
+* **Content management**: Rich fields (excerpt, description) and SEO (meta title, description, keywords).
+* **Scheduled publication**: Management of publication start and end dates.
+* **Images and Crops**: Support for featured images with crop format management.
+* **Extensibility**: Flexible system allowing to override entities and forms.
 
-## Table of contents
+## Documentation
 
-- [Quick start](#quick-start)
-- [License](#license)
-
-
-## Quick start
-
-- Create your symfony 4 project & install Aropixel AdminBundle
-- Require Aropixel Blog Bundle : `composer require aropixel/blog-bundle`
-- Apply migrations
-- Include the routes
-
-
-## License
-Aropixel Blog Bundle is under the [MIT License](LICENSE)
+* [Installation](doc/installation.md)
+* [Entity Customization](doc/entities.md)
+* [Internationalization (i18n)](doc/i18n.md)

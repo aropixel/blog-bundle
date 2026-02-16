@@ -5,50 +5,94 @@ namespace Aropixel\BlogBundle\Entity;
 use Aropixel\AdminBundle\Entity\Publishable;
 use Aropixel\AdminBundle\Entity\PublishableTrait;
 use Aropixel\AdminBundle\Entity\TranslatableTrait;
+use Aropixel\BlogBundle\Repository\PostRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Doctrine\DBAL\Types\Types;
+use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Gedmo\Translatable\Translatable;
 
 
+#[ORM\MappedSuperclass(repositoryClass: PostRepository::class)]
+#[ORM\Table(name: "aropixel_post")]
+#[Gedmo\TranslationEntity(class: PostTranslation::class)]
 class Post implements PostInterface, Translatable
 {
 
     use PublishableTrait;
     use TranslatableTrait;
 
+    #[ORM\Id]
+    #[ORM\GeneratedValue(strategy: "AUTO")]
+    #[ORM\Column(type: Types::INTEGER)]
     private ?int $id = null;
 
+    #[ORM\Column(type: Types::STRING, length: 20)]
     private string $status = Publishable::STATUS_OFFLINE;
 
+    #[ORM\Column(type: Types::STRING, nullable: true)]
+    #[Gedmo\Translatable]
     private ?string $title = null;
 
+    #[ORM\Column(type: Types::STRING)]
+    #[Gedmo\Translatable]
+    #[Gedmo\Slug(fields: ["title"])]
     private ?string $slug = null;
 
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
+    #[Gedmo\Translatable]
     private ?string $excerpt = null;
 
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
+    #[Gedmo\Translatable]
     private ?string $description = null;
 
+    #[ORM\Column(type: Types::STRING, nullable: true)]
+    #[Gedmo\Translatable]
     private ?string $metaTitle = null;
 
+    #[ORM\Column(type: Types::STRING, nullable: true)]
+    #[Gedmo\Translatable]
     private ?string $metaDescription = null;
 
+    #[ORM\Column(type: Types::STRING, nullable: true)]
+    #[Gedmo\Translatable]
     private ?string $metaKeywords = null;
 
+    #[ORM\OneToOne(targetEntity: PostImage::class, inversedBy: "post", cascade: ["persist", "remove"])]
+    #[ORM\JoinColumn(name: "image_id", onDelete: "SET NULL")]
     private ?PostImage $image = null;
 
-    private ?\DateTime $createdAt = null;
+    #[ORM\Column(name: "created_at", type: Types::DATETIME_MUTABLE, nullable: true)]
+    #[Gedmo\Timestampable(on: "create")]
+    private ?\DateTimeInterface $createdAt = null;
 
-    private ?\DateTime $updatedAt = null;
+    #[ORM\Column(name: "updated_at", type: Types::DATETIME_MUTABLE, nullable: true)]
+    #[Gedmo\Timestampable(on: "update")]
+    private ?\DateTimeInterface $updatedAt = null;
 
-    private ?\DateTime $publishAt = null;
+    #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
+    private ?\DateTimeInterface $publishAt = null;
 
-    private ?\DateTime $publishUntil = null;
+    #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
+    private ?\DateTimeInterface $publishUntil = null;
 
     /**
-     * @var Collection|PostCategory[]
+     * @var Collection<int, PostCategory>
      */
     private Collection $categories;
+
+    /**
+     * @var Collection<int, PostTranslation>|null
+     */
+    #[ORM\OneToMany(targetEntity: PostTranslation::class, mappedBy: "object", cascade: ["persist", "remove"])]
+    private ?Collection $translations = null;
+
+    /**
+     * @var PostCategory|null
+     */
+    private ?PostCategory $category = null;
 
 
     public function __construct()
@@ -238,7 +282,7 @@ class Post implements PostInterface, Translatable
     }
 
     /**
-     * @return Collection|PostCategory[]
+     * @return Collection<int, PostCategory>
      */
     public function getCategories(): Collection
     {
