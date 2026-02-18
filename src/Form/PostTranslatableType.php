@@ -17,13 +17,17 @@ use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\DependencyInjection\Attribute\Autowire;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
 class PostTranslatableType extends AbstractType
 {
 
-    public function __construct(private readonly TranslatorInterface $translator, private readonly string $categoryMode)
-    {
+    public function __construct(
+        private readonly TranslatorInterface $translator,
+        #[Autowire('%aropixel_blog.categories%')]
+        private readonly string $categoryMode
+    ) {
     }
 
 

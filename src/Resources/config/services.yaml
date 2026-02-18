@@ -4,52 +4,11 @@ services:
     autoconfigure: true
     public: false
 
-  prototype:
-    namespace: Aropixel\BlogBundle\
-    resource: ../../*
-    exclude: ../../{DependencyInjection,Entity,Migrations,Resources,Tests}
-
-  aropixel_blog.form.post_type:
-    class: Aropixel\BlogBundle\Form\PostType
-    autowire: false
-    arguments:
-      - '@translator.default'
-      - '%aropixel_blog.categories%'
-    tags:
-      - { name: form.type }
-
-  Aropixel\BlogBundle\Form\PostTranslatableType:
-    class: '%aropixel_blog.forms.post_translatable%'
-    arguments:
-      - '@translator.default'
-      - '%aropixel_blog.categories%'
-    tags: [ 'aropixel.post.form' ]
-
-#  Aropixel\BlogBundle\Repository\:
-#    resource: '../../Repository'
-#    autowire: true
-#    tags: [ 'doctrine.repository_service' ]
-
+  Aropixel\BlogBundle\:
+    resource: '../../*'
+    exclude: '../../{DependencyInjection,Entity,Migrations,Resources,Tests}'
 
   Aropixel\BlogBundle\Repository\PostRepository:
-    public: true
-    autowire: true
     tags:
       - { name: doctrine.repository_service }
 
-
-  Aropixel\BlogBundle\EventListener\MapCategoryListener:
-    public: true
-    arguments:
-      - '%aropixel_blog.entities.post%'
-      - '%aropixel_blog.categories%'
-    tags:
-      - { name: doctrine.event_listener, event: 'loadClassMetadata' }
-
-  Aropixel\BlogBundle\EventListener\MappedSuperClassListener:
-    public: true
-    arguments:
-      - '%aropixel_blog.entities%'
-      - '@parameter_bag'
-    tags:
-      - { name: doctrine.event_listener, event: 'loadClassMetadata', priority: 8192 }

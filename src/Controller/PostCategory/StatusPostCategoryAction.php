@@ -1,22 +1,22 @@
 <?php
 
-namespace Aropixel\BlogBundle\Http\Action\Post;
+namespace Aropixel\BlogBundle\Controller\PostCategory;
 
 use Aropixel\AdminBundle\Component\Status\StatusInterface;
-use Aropixel\BlogBundle\Entity\Post;
+use Aropixel\BlogBundle\Entity\PostCategory;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 
-class StatusPostAction extends AbstractController
+class StatusPostCategoryAction extends AbstractController
 {
     public function __construct(
         private readonly StatusInterface $status,
     )
     {}
 
-    public function __invoke(Post $post) : Response
+    public function __invoke(PostCategory $postCategory) : Response
     {
-        $this->status->changeStatus($post);
+        $this->status->changeStatus($postCategory);
         return new Response('OK', Response::HTTP_OK);
     }
 }

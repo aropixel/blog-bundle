@@ -1,6 +1,6 @@
 <?php
 
-namespace Aropixel\BlogBundle\Http\Action\Post;
+namespace Aropixel\BlogBundle\Controller\Post;
 
 use Aropixel\BlogBundle\Repository\PostRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;

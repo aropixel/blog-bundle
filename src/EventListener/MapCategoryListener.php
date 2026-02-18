@@ -9,20 +9,20 @@ namespace Aropixel\BlogBundle\EventListener;
 
 use Aropixel\BlogBundle\Entity\PostCategory;
 use Aropixel\BlogBundle\Entity\PostInterface;
-use Doctrine\Common\EventSubscriber;
 use Doctrine\ORM\Event\LoadClassMetadataEventArgs;
 use Doctrine\ORM\Events;
-
-
+use Doctrine\Bundle\DoctrineBundle\Attribute\AsDoctrineListener;
+use Symfony\Component\DependencyInjection\Attribute\Autowire;
 
 /**
- * Doctrine Event Subscriber that handles the dynamic mapping of Post categories.
+ * Doctrine Event Listener that handles the dynamic mapping of Post categories.
  *
  * Depending on the configuration (categories mode: 'category' or 'tags'), this
  * listener dynamically defines the relationship between the Post entity and
  * the PostCategory entity.
  */
-class MapCategoryListener implements EventSubscriber
+#[AsDoctrineListener(event: Events::loadClassMetadata)]
+class MapCategoryListener
 {
 
     /**
@@ -30,23 +30,13 @@ class MapCategoryListener implements EventSubscriber
      * @param string $categoriesMode The category mode configured ('category' or 'tags').
      */
     public function __construct(
-        private string $postClass,
-        private string $categoriesMode
+        #[Autowire('%aropixel_blog.entities.post%')]
+        private readonly string $postClass,
+        #[Autowire('%aropixel_blog.categories%')]
+        private readonly string $categoriesMode
     ) {
     }
 
-
-    /**
-     * Returns the events this subscriber is subscribed to.
-     *
-     * @return array<string>
-     */
-    public function getSubscribedEvents(): array
-    {
-        return [
-            Events::loadClassMetadata,
-        ];
-    }
 
     /**
      * Modifies class metadata when it's loaded by Doctrine to dynamically

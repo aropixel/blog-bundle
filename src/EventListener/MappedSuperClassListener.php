@@ -8,41 +8,31 @@
 namespace Aropixel\BlogBundle\EventListener;
 
 
-use Doctrine\Common\EventSubscriber;
 use Doctrine\ORM\Event\LoadClassMetadataEventArgs;
 use Doctrine\ORM\Events;
 use Doctrine\ORM\Mapping\ClassMetadata;
-
+use Doctrine\Bundle\DoctrineBundle\Attribute\AsDoctrineListener;
+use Symfony\Component\DependencyInjection\Attribute\Autowire;
 
 /**
- * Doctrine Event Subscriber that handles the conversion of MappedSuperclasses to Entities.
+ * Doctrine Event Listener that handles the conversion of MappedSuperclasses to Entities.
  *
  * This listener checks if a class being loaded is configured as a customized entity.
  * If so, and if it's marked as a MappedSuperclass, it unsets that flag so Doctrine
  * treats it as a regular entity. This allows the bundle's base entities to be
  * extended and replaced by the application.
  */
-class MappedSuperClassListener implements EventSubscriber
+#[AsDoctrineListener(event: Events::loadClassMetadata, priority: 8192)]
+class MappedSuperClassListener
 {
 
     /**
      * @param array<string,string> $entitiesNames List of entity interfaces and their concrete implementations.
      */
-    public function __construct(private array $entitiesNames)
-    {
-    }
-
-
-    /**
-     * Returns the events this subscriber is subscribed to.
-     *
-     * @return array<string>
-     */
-    public function getSubscribedEvents(): array
-    {
-        return [
-            Events::loadClassMetadata,
-        ];
+    public function __construct(
+        #[Autowire('%aropixel_blog.entities%')]
+        private readonly array $entitiesNames
+    ) {
     }
 
     /**

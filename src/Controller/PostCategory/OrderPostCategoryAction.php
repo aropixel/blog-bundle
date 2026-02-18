@@ -1,6 +1,6 @@
 <?php
 
-namespace Aropixel\BlogBundle\Http\Action\PostCategory;
+namespace Aropixel\BlogBundle\Controller\PostCategory;
 
 use Aropixel\AdminBundle\Component\Position\PositionInterface;
 use Aropixel\BlogBundle\Entity\PostCategory;

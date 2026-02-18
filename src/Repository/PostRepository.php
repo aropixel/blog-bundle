@@ -64,7 +64,7 @@ class PostRepository extends PublishableRepository
     /**
      * @return Post[]|null
      */
-    public function findNexts(Post $post, int $quantity=10): ?array
+    public function findNextSiblings(Post $post, int $quantity=10): ?array
     {
 
         $qb = $this->qbPublished('p');
