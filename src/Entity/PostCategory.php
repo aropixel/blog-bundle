@@ -48,7 +48,7 @@ class PostCategory implements Translatable
      * @var Collection<int, PostCategoryTranslation>|null
      */
     #[ORM\OneToMany(targetEntity: PostCategoryTranslation::class, mappedBy: "object", cascade: ["persist", "remove"])]
-    private ?Collection $translations = null;
+    protected ?Collection $translations = null;
 
     public function __construct()
     {

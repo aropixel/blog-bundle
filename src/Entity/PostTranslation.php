@@ -31,14 +31,10 @@ class PostTranslation extends AbstractPersonalTranslation implements PostTransla
     protected $object;
 
 
-    public function __construct(?string $locale = null, ?string $field = null, string $value = null)
+    public function __construct(string $locale, string $field, ?string $value = null)
     {
-        if ($locale) {
-            $this->setLocale($locale);
-        }
-        if ($field) {
-            $this->setField($field);
-        }
+        $this->setLocale($locale);
+        $this->setField($field);
         if ($value) {
             $this->setContent($value);
         }
