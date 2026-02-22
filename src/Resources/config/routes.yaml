@@ -1,61 +1,61 @@
 aropixel_blog_post_index:
   path: /blog/post/
-  controller: Aropixel\BlogBundle\Http\Action\Post\IndexPostAction
+  controller: Aropixel\BlogBundle\Controller\Post\IndexPostAction
   methods: GET|POST
 
 
 aropixel_blog_post_new:
   path: /blog/post/new
-  controller: Aropixel\BlogBundle\Http\Action\Post\CreatePostAction
+  controller: Aropixel\BlogBundle\Controller\Post\CreatePostAction
   methods: GET|POST
 
 
 aropixel_blog_post_edit:
   path: /blog/post/{id}/edit
-  controller: Aropixel\BlogBundle\Http\Action\Post\EditPostAction
+  controller: Aropixel\BlogBundle\Controller\Post\EditPostAction
   methods: GET|POST
 
 
 aropixel_blog_post_delete:
   path: /blog/post/{id}
-  controller: Aropixel\BlogBundle\Http\Action\Post\DeletePostAction
+  controller: Aropixel\BlogBundle\Controller\Post\DeletePostAction
   methods: GET|POST|DELETE
 
 
 aropixel_blog_post_status:
   path: /blog/post/{id}/status
-  controller: Aropixel\BlogBundle\Http\Action\Post\StatusPostAction
+  controller: Aropixel\BlogBundle\Controller\Post\StatusPostAction
   methods: GET|POST
 
 
 aropixel_blog_category_index:
   path: /blog/category/index
-  controller: Aropixel\BlogBundle\Http\Action\PostCategory\IndexPostCategoryAction
+  controller: Aropixel\BlogBundle\Controller\PostCategory\IndexPostCategoryAction
   methods: GET|POST
 
 
 aropixel_blog_category_order:
   path: /blog/category/order
-  controller: Aropixel\BlogBundle\Http\Action\PostCategory\OrderPostCategoryAction
+  controller: Aropixel\BlogBundle\Controller\PostCategory\OrderPostCategoryAction
   methods: GET|POST
 
 
 aropixel_blog_category_new:
   path: /blog/category/new
-  controller: Aropixel\BlogBundle\Http\Action\PostCategory\CreatePostCategoryAction
+  controller: Aropixel\BlogBundle\Controller\PostCategory\CreatePostCategoryAction
   methods: GET|POST
 
 aropixel_blog_category_status:
   path: /blog/category/{id}/status
-  controller: Aropixel\BlogBundle\Http\Action\PostCategory\StatusPostCategoryAction
+  controller: Aropixel\BlogBundle\Controller\PostCategory\StatusPostCategoryAction
   methods: GET|POST
 
 aropixel_blog_category_edit:
   path: /blog/category/{id}/edit
-  controller: Aropixel\BlogBundle\Http\Action\PostCategory\EditPostCategoryAction
+  controller: Aropixel\BlogBundle\Controller\PostCategory\EditPostCategoryAction
   methods: GET|POST
 
 aropixel_blog_category_delete:
   path: /blog/category/{id}
-  controller: Aropixel\BlogBundle\Http\Action\PostCategory\DeletePostCategoryAction
+  controller: Aropixel\BlogBundle\Controller\PostCategory\DeletePostCategoryAction
   methods: GET|POST|DELETE
