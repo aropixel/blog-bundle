@@ -5,6 +5,7 @@ namespace Aropixel\BlogBundle\Controller\PostCategory;
 use Aropixel\BlogBundle\Entity\PostCategory;
 use Aropixel\BlogBundle\Form\PostCategoryType;
 use Aropixel\BlogBundle\Repository\PostCategoryRepository;
+use Symfony\Contracts\Translation\TranslatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
@@ -13,7 +14,8 @@ class CreatePostCategoryAction extends AbstractController
 {
     public function __construct(
         private readonly PostCategoryRepository $postCategoryRepository,
-        private readonly RequestStack $request
+        private readonly RequestStack $request,
+        private readonly TranslatorInterface $translator
     ){}
 
     public function __invoke() : Response
@@ -26,7 +28,7 @@ class CreatePostCategoryAction extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->postCategoryRepository->add($postCategory, true);
 
-            $this->addFlash('notice', 'La catégorie a bien été enregistrée.');
+            $this->addFlash('notice', $this->translator->trans('category.flash.saved'));
             return $this->redirectToRoute('aropixel_blog_category_edit', ['id' => $postCategory->getId()]);
         }
 

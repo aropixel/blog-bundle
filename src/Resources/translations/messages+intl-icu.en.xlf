@@ -209,6 +209,38 @@
         <source>form.field.publish_until</source>
         <target>Published until</target>
       </trans-unit>
+      <trans-unit id="post.flash.saved" resname="post.flash.saved">
+        <source>post.flash.saved</source>
+        <target>The post has been saved.</target>
+      </trans-unit>
+      <trans-unit id="category.flash.saved" resname="category.flash.saved">
+        <source>category.flash.saved</source>
+        <target>The category has been saved.</target>
+      </trans-unit>
+      <trans-unit id="form.field.category.label" resname="form.field.category.label">
+        <source>form.field.category.label</source>
+        <target>Category</target>
+      </trans-unit>
+      <trans-unit id="form.field.category.placeholder" resname="form.field.category.placeholder">
+        <source>form.field.category.placeholder</source>
+        <target>Choose a category</target>
+      </trans-unit>
+      <trans-unit id="form.field.tags.label" resname="form.field.tags.label">
+        <source>form.field.tags.label</source>
+        <target>Tags</target>
+      </trans-unit>
+      <trans-unit id="form.field.tags.placeholder" resname="form.field.tags.placeholder">
+        <source>form.field.tags.placeholder</source>
+        <target>Choose tags</target>
+      </trans-unit>
+      <trans-unit id="post.flash.deleted" resname="post.flash.deleted">
+        <source>post.flash.deleted</source>
+        <target>The post "{title}" has been deleted.</target>
+      </trans-unit>
+      <trans-unit id="category.flash.deleted" resname="category.flash.deleted">
+        <source>category.flash.deleted</source>
+        <target>The category "{title}" has been deleted.</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

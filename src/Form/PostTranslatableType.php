@@ -48,7 +48,7 @@ class PostTranslatableType extends AbstractType
                 'property_path'        => 'translations'
             ])
             ->add('description', TranslatableType::class, [
-                'label'                => 'Description',
+                'label'                => $this->translator->trans('form.field.description'),
                 'personal_translation' => PostTranslation::class,
                 'property_path'        => 'translations',
                 'widget' => TextareaType::class,

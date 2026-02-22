@@ -4,6 +4,7 @@ namespace Aropixel\BlogBundle\Controller\Post;
 
 use Aropixel\AdminBundle\Component\Translation\TranslationResolverInterface;
 use Aropixel\BlogBundle\Repository\PostRepository;
+use Symfony\Contracts\Translation\TranslatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
@@ -13,7 +14,8 @@ class EditPostAction extends AbstractController
     public function __construct(
         private readonly RequestStack $request,
         private readonly PostRepository $postRepository,
-        private readonly TranslationResolverInterface $translationResolver
+        private readonly TranslationResolverInterface $translationResolver,
+        private readonly TranslatorInterface $translator
     ){}
 
     public function __invoke(int $id) : Response
@@ -33,7 +35,7 @@ class EditPostAction extends AbstractController
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->postRepository->add($post, true);
-            $this->addFlash('notice', 'Le post a bien été enregistré.');
+            $this->addFlash('notice', $this->translator->trans('post.flash.saved'));
 
             return $this->redirectToRoute('aropixel_blog_post_edit', ['id' => $post->getId()]);
         }
