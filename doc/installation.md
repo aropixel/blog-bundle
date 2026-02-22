@@ -38,5 +38,5 @@ Add the bundle routes in `config/routes.yaml` or in a dedicated file:
 ```yaml
 aropixel_blog:
     resource: '@AropixelBlogBundle/Resources/config/routing/aropixel.yml'
-    prefix: /admin/blog
+    prefix: /admin
 ```
