@@ -2,6 +2,7 @@
 
 namespace Aropixel\BlogBundle\Form;
 
+use Aropixel\AdminBundle\Form\Type\EditorType;
 use Aropixel\AdminBundle\Form\Type\Image\Single\ImageType;
 use Aropixel\BlogBundle\Entity\PostCategory;
 use Aropixel\BlogBundle\Entity\PostImage;
@@ -39,7 +40,7 @@ class PostType extends AbstractType
         $builder
             ->add('title', null, ['label'  => $this->translator->trans('form.field.title')])
             ->add('excerpt', null, ['label'  => $this->translator->trans('form.field.excerpt')])
-            ->add('description', TextareaType::class, ['label'  => $this->translator->trans('form.field.description'), 'attr' => ['class' => 'ckeditor']])
+            ->add('description', EditorType::class, ['label'  => $this->translator->trans('form.field.description')])
             ->add('slug', HiddenType::class)
             ->add('metaTitle', null, ['label'  => $this->translator->trans('form.field.meta_title')])
             ->add('metaDescription', null, ['label'  => $this->translator->trans('form.field.meta_description')])
