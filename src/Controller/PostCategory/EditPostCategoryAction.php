@@ -4,10 +4,10 @@ namespace Aropixel\BlogBundle\Controller\PostCategory;
 
 use Aropixel\BlogBundle\Form\PostCategoryType;
 use Aropixel\BlogBundle\Repository\PostCategoryRepository;
-use Symfony\Contracts\Translation\TranslatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 class EditPostCategoryAction extends AbstractController
 {
@@ -15,13 +15,14 @@ class EditPostCategoryAction extends AbstractController
         private readonly RequestStack $request,
         private readonly PostCategoryRepository $postCategoryRepository,
         private readonly TranslatorInterface $translator
-    ){}
+    ) {
+    }
 
-    public function __invoke(int $id) : Response
+    public function __invoke(int $id): Response
     {
         $postCategory = $this->postCategoryRepository->find($id);
 
-        if (is_null($postCategory)) {
+        if (null === $postCategory) {
             throw $this->createNotFoundException();
         }
 
@@ -37,7 +38,7 @@ class EditPostCategoryAction extends AbstractController
 
         return $this->render('@AropixelBlog/category/form.html.twig', [
             'category' => $postCategory,
-            'form' => $editForm->createView()
+            'form' => $editForm->createView(),
         ]);
     }
 }

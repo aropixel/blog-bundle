@@ -12,14 +12,14 @@ use Gedmo\Mapping\Annotation as Gedmo;
 use Gedmo\Translatable\Translatable;
 
 #[ORM\Entity(repositoryClass: PostCategoryRepository::class)]
-#[ORM\Table(name: "aropixel_post_category")]
+#[ORM\Table(name: 'aropixel_post_category')]
 #[Gedmo\TranslationEntity(class: PostCategoryTranslation::class)]
 class PostCategory implements Translatable
 {
     use TranslatableTrait;
 
     #[ORM\Id]
-    #[ORM\GeneratedValue(strategy: "AUTO")]
+    #[ORM\GeneratedValue(strategy: 'AUTO')]
     #[ORM\Column(type: Types::INTEGER)]
     private ?int $id = null;
 
@@ -31,12 +31,12 @@ class PostCategory implements Translatable
     #[Gedmo\SortablePosition]
     private int $position;
 
-    #[ORM\Column(name: "created_at", type: Types::DATETIME_MUTABLE)]
-    #[Gedmo\Timestampable(on: "create")]
+    #[ORM\Column(name: 'created_at', type: Types::DATETIME_MUTABLE)]
+    #[Gedmo\Timestampable(on: 'create')]
     private ?\DateTime $createdAt = null;
 
-    #[ORM\Column(name: "updated_at", type: Types::DATETIME_MUTABLE, nullable: true)]
-    #[Gedmo\Timestampable(on: "update")]
+    #[ORM\Column(name: 'updated_at', type: Types::DATETIME_MUTABLE, nullable: true)]
+    #[Gedmo\Timestampable(on: 'update')]
     private ?\DateTime $updatedAt = null;
 
     /**
@@ -47,7 +47,7 @@ class PostCategory implements Translatable
     /**
      * @var Collection<int, PostCategoryTranslation>|null
      */
-    #[ORM\OneToMany(targetEntity: PostCategoryTranslation::class, mappedBy: "object", cascade: ["persist", "remove"])]
+    #[ORM\OneToMany(targetEntity: PostCategoryTranslation::class, mappedBy: 'object', cascade: ['persist', 'remove'])]
     protected ?Collection $translations = null;
 
     public function __construct()
@@ -56,7 +56,7 @@ class PostCategory implements Translatable
     }
 
     /**
-     * Get id
+     * Get id.
      *
      * @return int
      */
@@ -66,9 +66,10 @@ class PostCategory implements Translatable
     }
 
     /**
-     * Set name
+     * Set name.
      *
      * @param string $name
+     *
      * @return self
      */
     public function setName($name)
@@ -79,7 +80,7 @@ class PostCategory implements Translatable
     }
 
     /**
-     * Get name
+     * Get name.
      *
      * @return string
      */
@@ -89,9 +90,10 @@ class PostCategory implements Translatable
     }
 
     /**
-     * Set position
+     * Set position.
      *
-     * @param integer $position
+     * @param int $position
+     *
      * @return self
      */
     public function setPosition($position)
@@ -102,7 +104,7 @@ class PostCategory implements Translatable
     }
 
     /**
-     * Get position
+     * Get position.
      *
      * @return int
      */
@@ -112,9 +114,10 @@ class PostCategory implements Translatable
     }
 
     /**
-     * Set createdAt
+     * Set createdAt.
      *
      * @param \DateTime $createdAt
+     *
      * @return self
      */
     public function setCreatedAt($createdAt)
@@ -125,7 +128,7 @@ class PostCategory implements Translatable
     }
 
     /**
-     * Get createdAt
+     * Get createdAt.
      *
      * @return \DateTime
      */
@@ -135,9 +138,10 @@ class PostCategory implements Translatable
     }
 
     /**
-     * Set updatedAt
+     * Set updatedAt.
      *
      * @param \DateTime $updatedAt
+     *
      * @return self
      */
     public function setUpdatedAt($updatedAt)
@@ -148,14 +152,14 @@ class PostCategory implements Translatable
     }
 
     /**
-     * Get updatedAt
+     * Get updatedAt.
+     *
      * @return \DateTime
      */
     public function getUpdatedAt()
     {
         return $this->updatedAt;
     }
-
 
     /**
      * @return Collection<int, PostInterface>
@@ -164,7 +168,6 @@ class PostCategory implements Translatable
     {
         return $this->posts;
     }
-
 
     public function addPost(Post $post): self
     {
@@ -175,7 +178,6 @@ class PostCategory implements Translatable
 
         return $this;
     }
-
 
     public function removePost(Post $post): self
     {
@@ -189,5 +191,4 @@ class PostCategory implements Translatable
 
         return $this;
     }
-
 }

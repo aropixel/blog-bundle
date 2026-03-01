@@ -20,53 +20,40 @@ class PostCategoryType extends AbstractType
     ) {
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
-
         $isTranslatable = $this->translationResolver->isTranslatable();
 
         if ($isTranslatable) {
-
             $builder
                 ->add('name', TranslatableType::class, [
-                    'label'                => $this->translator->trans('categories.form.name.label'),
+                    'label' => $this->translator->trans('categories.form.name.label'),
                     'personal_translation' => PostCategoryTranslation::class,
-                    'property_path'        => 'translations'
+                    'property_path' => 'translations',
                 ])
             ;
-
         } else {
-
             $builder
                 ->add('name', null, [
-                    'label'  => $this->translator->trans('categories.form.name.label')
+                    'label' => $this->translator->trans('categories.form.name.label'),
                 ])
             ;
-
         }
-
 
         $builder
             ->add('createdAt', DateTimeType::class, [
                 'required' => false,
                 'date_widget' => 'single_text',
                 'time_widget' => 'single_text',
-                'date_format' => 'yyyy-MM-dd'
+                'date_format' => 'yyyy-MM-dd',
             ])
         ;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
             'data_class' => PostCategory::class,
         ]);
     }
-
 }

@@ -5,10 +5,10 @@ namespace Aropixel\BlogBundle\Controller\PostCategory;
 use Aropixel\BlogBundle\Entity\PostCategory;
 use Aropixel\BlogBundle\Form\PostCategoryType;
 use Aropixel\BlogBundle\Repository\PostCategoryRepository;
-use Symfony\Contracts\Translation\TranslatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 class CreatePostCategoryAction extends AbstractController
 {
@@ -16,9 +16,10 @@ class CreatePostCategoryAction extends AbstractController
         private readonly PostCategoryRepository $postCategoryRepository,
         private readonly RequestStack $request,
         private readonly TranslatorInterface $translator
-    ){}
+    ) {
+    }
 
-    public function __invoke() : Response
+    public function __invoke(): Response
     {
         $postCategory = new PostCategory();
 
@@ -29,6 +30,7 @@ class CreatePostCategoryAction extends AbstractController
             $this->postCategoryRepository->add($postCategory, true);
 
             $this->addFlash('notice', $this->translator->trans('category.flash.saved'));
+
             return $this->redirectToRoute('aropixel_blog_category_edit', ['id' => $postCategory->getId()]);
         }
 

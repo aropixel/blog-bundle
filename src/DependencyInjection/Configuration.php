@@ -22,35 +22,32 @@ use Symfony\Component\Config\Definition\ConfigurationInterface;
  */
 class Configuration implements ConfigurationInterface
 {
-    /**
-     * {@inheritdoc}
-     */
-    public function getConfigTreeBuilder() : TreeBuilder
+    public function getConfigTreeBuilder(): TreeBuilder
     {
         $treeBuilder = new TreeBuilder('aropixel_blog');
         $rootNode = $treeBuilder->getRootNode();
-        /** @var \Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition $rootNode */
+        /* @var \Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition $rootNode */
         $rootNode
             ->children()
-                ->scalarNode('categories')
-                    ->defaultValue('none')
-                ->end()
-                ->arrayNode('forms')
-                    ->addDefaultsIfNotSet()
-                    ->children()
-                        ->scalarNode('post')->defaultValue(PostType::class)->end()
-                        ->scalarNode('post_translatable')->defaultValue(PostTranslatableType::class)->end()
-                    ->end()
-                ->end()
-                ->arrayNode('entities')
-                    ->addDefaultsIfNotSet()
-                    ->children()
-                        ->scalarNode(PostInterface::class)->defaultValue(Post::class)->end()
-                        ->scalarNode(PostTranslationInterface::class)->defaultValue(PostTranslation::class)->end()
-                        ->scalarNode(PostCategoryInterface::class)->defaultValue(PostCategory::class)->end()
-                        ->scalarNode(PostCategoryTranslationInterface::class)->defaultValue(PostCategoryTranslation::class)->end()
-                    ->end()
-                ->end()
+            ->scalarNode('categories')
+            ->defaultValue('none')
+            ->end()
+            ->arrayNode('forms')
+            ->addDefaultsIfNotSet()
+            ->children()
+            ->scalarNode('post')->defaultValue(PostType::class)->end()
+            ->scalarNode('post_translatable')->defaultValue(PostTranslatableType::class)->end()
+            ->end()
+            ->end()
+            ->arrayNode('entities')
+            ->addDefaultsIfNotSet()
+            ->children()
+            ->scalarNode(PostInterface::class)->defaultValue(Post::class)->end()
+            ->scalarNode(PostTranslationInterface::class)->defaultValue(PostTranslation::class)->end()
+            ->scalarNode(PostCategoryInterface::class)->defaultValue(PostCategory::class)->end()
+            ->scalarNode(PostCategoryTranslationInterface::class)->defaultValue(PostCategoryTranslation::class)->end()
+            ->end()
+            ->end()
             ->end()
         ;
 

@@ -11,12 +11,13 @@ class StatusPostCategoryAction extends AbstractController
 {
     public function __construct(
         private readonly StatusInterface $status,
-    )
-    {}
+    ) {
+    }
 
-    public function __invoke(PostCategory $postCategory) : Response
+    public function __invoke(PostCategory $postCategory): Response
     {
         $this->status->changeStatus($postCategory);
+
         return new Response('OK', Response::HTTP_OK);
     }
 }

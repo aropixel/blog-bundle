@@ -13,18 +13,16 @@ use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Gedmo\Translatable\Translatable;
 
-
 #[ORM\MappedSuperclass(repositoryClass: PostRepository::class)]
-#[ORM\Table(name: "aropixel_post")]
+#[ORM\Table(name: 'aropixel_post')]
 #[Gedmo\TranslationEntity(class: PostTranslation::class)]
 class Post implements PostInterface, Translatable
 {
-
     use PublishableTrait;
     use TranslatableTrait;
 
     #[ORM\Id]
-    #[ORM\GeneratedValue(strategy: "AUTO")]
+    #[ORM\GeneratedValue(strategy: 'AUTO')]
     #[ORM\Column(type: Types::INTEGER)]
     private ?int $id = null;
 
@@ -37,7 +35,7 @@ class Post implements PostInterface, Translatable
 
     #[ORM\Column(type: Types::STRING)]
     #[Gedmo\Translatable]
-    #[Gedmo\Slug(fields: ["title"])]
+    #[Gedmo\Slug(fields: ['title'])]
     private ?string $slug = null;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
@@ -60,16 +58,16 @@ class Post implements PostInterface, Translatable
     #[Gedmo\Translatable]
     private ?string $metaKeywords = null;
 
-    #[ORM\OneToOne(targetEntity: PostImage::class, inversedBy: "post", cascade: ["persist", "remove"])]
-    #[ORM\JoinColumn(name: "image_id", onDelete: "SET NULL")]
+    #[ORM\OneToOne(targetEntity: PostImage::class, inversedBy: 'post', cascade: ['persist', 'remove'])]
+    #[ORM\JoinColumn(name: 'image_id', onDelete: 'SET NULL')]
     private ?PostImage $image = null;
 
-    #[ORM\Column(name: "created_at", type: Types::DATETIME_MUTABLE, nullable: true)]
-    #[Gedmo\Timestampable(on: "create")]
+    #[ORM\Column(name: 'created_at', type: Types::DATETIME_MUTABLE, nullable: true)]
+    #[Gedmo\Timestampable(on: 'create')]
     private ?\DateTimeInterface $createdAt = null;
 
-    #[ORM\Column(name: "updated_at", type: Types::DATETIME_MUTABLE, nullable: true)]
-    #[Gedmo\Timestampable(on: "update")]
+    #[ORM\Column(name: 'updated_at', type: Types::DATETIME_MUTABLE, nullable: true)]
+    #[Gedmo\Timestampable(on: 'update')]
     private ?\DateTimeInterface $updatedAt = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
@@ -86,14 +84,10 @@ class Post implements PostInterface, Translatable
     /**
      * @var Collection<int, PostTranslation>|null
      */
-    #[ORM\OneToMany(targetEntity: PostTranslation::class, mappedBy: "object", cascade: ["persist", "remove"])]
+    #[ORM\OneToMany(targetEntity: PostTranslation::class, mappedBy: 'object', cascade: ['persist', 'remove'])]
     protected ?Collection $translations = null;
 
-    /**
-     * @var PostCategory|null
-     */
     private ?PostCategory $category = null;
-
 
     public function __construct()
     {
@@ -306,5 +300,4 @@ class Post implements PostInterface, Translatable
 
         return $this;
     }
-
 }

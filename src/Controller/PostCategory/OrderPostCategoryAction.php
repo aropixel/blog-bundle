@@ -15,22 +15,21 @@ class OrderPostCategoryAction extends AbstractController
         private readonly RequestStack $request,
         private readonly PositionInterface $position,
         private readonly PostCategoryRepository $postCategoryRepository
-    )
-    {}
+    ) {
+    }
 
-
-    public function __invoke() : Response
+    public function __invoke(): Response
     {
         if ($this->request->getMainRequest()->isXmlHttpRequest()) {
             $this->position->updatePosition(PostCategory::class);
+
             return new Response('OK', Response::HTTP_OK);
         }
-        else {
 
-            $postCategories = $this->postCategoryRepository->findBy([], ['position' => 'ASC']);
-            return $this->render('@AropixelBlog/category/order.html.twig', [
-                'categories' => $postCategories,
-            ]);
-        }
+        $postCategories = $this->postCategoryRepository->findBy([], ['position' => 'ASC']);
+
+        return $this->render('@AropixelBlog/category/order.html.twig', [
+            'categories' => $postCategories,
+        ]);
     }
 }

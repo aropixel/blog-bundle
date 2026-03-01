@@ -11,6 +11,7 @@ use Doctrine\Persistence\ManagerRegistry;
  * @method PostImageCrop|null findOneBy(array $criteria, array $orderBy = null)
  * @method PostImageCrop[]    findAll()
  * @method PostImageCrop[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ *
  * @extends ServiceEntityRepository<PostImageCrop>
  */
 class PostImageCropRepository extends ServiceEntityRepository

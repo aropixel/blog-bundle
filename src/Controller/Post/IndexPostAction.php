@@ -10,14 +10,15 @@ class IndexPostAction extends AbstractController
 {
     public function __construct(
         private readonly PostRepository $postRepository
-    ){}
+    ) {
+    }
 
-    public function __invoke() : Response
+    public function __invoke(): Response
     {
         $posts = $this->postRepository->findAll();
 
         return $this->render('@AropixelBlog/post/index.html.twig', [
-            'posts' => $posts
+            'posts' => $posts,
         ]);
     }
 }

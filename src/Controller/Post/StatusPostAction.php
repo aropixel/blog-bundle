@@ -11,12 +11,13 @@ class StatusPostAction extends AbstractController
 {
     public function __construct(
         private readonly StatusInterface $status,
-    )
-    {}
+    ) {
+    }
 
-    public function __invoke(Post $post) : Response
+    public function __invoke(Post $post): Response
     {
         $this->status->changeStatus($post);
+
         return new Response('OK', Response::HTTP_OK);
     }
 }

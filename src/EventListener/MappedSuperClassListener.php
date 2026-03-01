@@ -1,17 +1,10 @@
 <?php
-/**
- * Créé par Aropixel @2019.
- * Par: Joël Gomez Caballe
- * Date: 16/04/2019 à 15:56
- */
 
 namespace Aropixel\BlogBundle\EventListener;
 
-
+use Doctrine\Bundle\DoctrineBundle\Attribute\AsDoctrineListener;
 use Doctrine\ORM\Event\LoadClassMetadataEventArgs;
 use Doctrine\ORM\Events;
-use Doctrine\ORM\Mapping\ClassMetadata;
-use Doctrine\Bundle\DoctrineBundle\Attribute\AsDoctrineListener;
 use Symfony\Component\DependencyInjection\Attribute\Autowire;
 
 /**
@@ -25,9 +18,8 @@ use Symfony\Component\DependencyInjection\Attribute\Autowire;
 #[AsDoctrineListener(event: Events::loadClassMetadata, priority: 8192)]
 class MappedSuperClassListener
 {
-
     /**
-     * @param array<string,string> $entitiesNames List of entity interfaces and their concrete implementations.
+     * @param array<string,string> $entitiesNames list of entity interfaces and their concrete implementations
      */
     public function __construct(
         #[Autowire('%aropixel_blog.entities%')]
@@ -37,15 +29,12 @@ class MappedSuperClassListener
 
     /**
      * Modifies class metadata when it's loaded by Doctrine.
-     *
-     * @param LoadClassMetadataEventArgs $eventArgs
      */
     public function loadClassMetadata(LoadClassMetadataEventArgs $eventArgs): void
     {
-
         $metadata = $eventArgs->getClassMetadata();
 
-        /**
+        /*
          * Check if the reflection class is part of the customized entities
          */
         foreach ($this->entitiesNames as $interface => $model) {
@@ -55,7 +44,5 @@ class MappedSuperClassListener
                 }
             }
         }
-
     }
-
 }

@@ -4,10 +4,10 @@ namespace Aropixel\BlogBundle\Controller\Post;
 
 use Aropixel\AdminBundle\Component\Translation\TranslationResolverInterface;
 use Aropixel\BlogBundle\Repository\PostRepository;
-use Symfony\Contracts\Translation\TranslatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 class EditPostAction extends AbstractController
 {
@@ -16,14 +16,15 @@ class EditPostAction extends AbstractController
         private readonly PostRepository $postRepository,
         private readonly TranslationResolverInterface $translationResolver,
         private readonly TranslatorInterface $translator
-    ){}
+    ) {
+    }
 
-    public function __invoke(int $id) : Response
+    public function __invoke(int $id): Response
     {
         $isTranslatable = $this->translationResolver->isTranslatable();
 
         $post = $this->postRepository->find($id);
-        if (is_null($post)) {
+        if (null === $post) {
             throw $this->createNotFoundException();
         }
 
@@ -42,7 +43,7 @@ class EditPostAction extends AbstractController
 
         return $this->render('@AropixelBlog/post/form.html.twig', [
             'post' => $post,
-            'form' => $editForm->createView()
+            'form' => $editForm->createView(),
         ]);
     }
 }

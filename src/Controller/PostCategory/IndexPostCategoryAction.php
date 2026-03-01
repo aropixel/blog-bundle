@@ -10,12 +10,13 @@ class IndexPostCategoryAction extends AbstractController
 {
     public function __construct(
         private readonly PostCategoryRepository $postCategoryRepository
-    ){}
+    ) {
+    }
 
-    public function __invoke() : Response
+    public function __invoke(): Response
     {
         return $this->render('@AropixelBlog/category/index.html.twig', [
-            'categories' => $this->postCategoryRepository->findAll()
+            'categories' => $this->postCategoryRepository->findAll(),
         ]);
     }
 }

@@ -4,21 +4,20 @@ namespace Aropixel\BlogBundle\Controller\PostCategory;
 
 use Aropixel\BlogBundle\Entity\PostCategory;
 use Aropixel\BlogBundle\Repository\PostCategoryRepository;
-use Symfony\Contracts\Translation\TranslatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 class DeletePostCategoryAction extends AbstractController
 {
-
     public function __construct(
         private readonly PostCategoryRepository $postCategoryRepository,
         private readonly TranslatorInterface $translator
-    )
-    {}
+    ) {
+    }
 
-    public function  __invoke(Request $request, PostCategory $postCategory) : Response
+    public function __invoke(Request $request, PostCategory $postCategory): Response
     {
         $title = $postCategory->getName();
 
@@ -28,7 +27,5 @@ class DeletePostCategoryAction extends AbstractController
         }
 
         return $this->redirect($this->generateUrl('aropixel_blog_category_index'));
-
     }
-
 }
