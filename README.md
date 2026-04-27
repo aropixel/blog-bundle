@@ -11,7 +11,7 @@ The Aropixel Blog Bundle is a blog management module complementary to the **Arop
 It provides a complete system including:
 * **Posts**: Content management, publication dates, SEO, and images.
 * **Categories**: Organization of posts by topics.
-* **Multilingual**: Native support for translations of titles, descriptions, slugs, etc.
+* **Multilingual**: Native support for translations of titles, descriptions, slugs, etc. Interface available in French, English, German, Spanish, Italian and Czech.
 
 ## Key Features
 

@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
-  <file source-language="fr" target-language="fr" datatype="plaintext" original="file.ext">
+  <file source-language="fr" target-language="cs" datatype="plaintext" original="file.ext">
     <header>
       <tool tool-id="symfony" tool-name="Symfony"/>
     </header>
     <body>
       <trans-unit id="OmKv5oR" resname="form.meta.title">
         <source>form.meta.title</source>
-        <target>Actualités</target>
+        <target>Aktuality</target>
       </trans-unit>
       <trans-unit id="np_t4FK" resname="form.header.title">
         <source>form.header.title</source>
-        <target>Actualités</target>
+        <target>Aktuality</target>
       </trans-unit>
       <trans-unit id="gMLmKTL" resname="breadcrumb.home">
         <source>breadcrumb.home</source>
-        <target>Accueil</target>
+        <target>Domů</target>
       </trans-unit>
       <trans-unit id="2jiXFwn" resname="breadcrumb.blog">
         <source>breadcrumb.blog</source>
@@ -23,159 +23,159 @@
       </trans-unit>
       <trans-unit id="fbtEl2O" resname="breadcrumb.list">
         <source>breadcrumb.list</source>
-        <target>News</target>
+        <target>Novinky</target>
       </trans-unit>
       <trans-unit id="RIm2M8r" resname="breadcrumb.form.edit">
         <source>breadcrumb.form.edit</source>
-        <target>Modifier</target>
+        <target>Upravit</target>
       </trans-unit>
       <trans-unit id="hoJ6mIr" resname="breadcrumb.form.add">
         <source>breadcrumb.form.add</source>
-        <target>Ajouter</target>
+        <target>Přidat</target>
       </trans-unit>
       <trans-unit id="jSbUW0O" resname="form.pills.content">
         <source>form.pills.content</source>
-        <target>Contenu</target>
+        <target>Obsah</target>
       </trans-unit>
       <trans-unit id="Eg5NBgf" resname="form.pills.image">
         <source>form.pills.image</source>
-        <target>Image</target>
+        <target>Obrázek</target>
       </trans-unit>
       <trans-unit id="WPAMlIw" resname="form.pills.seo">
         <source>form.pills.seo</source>
-        <target>Référencement</target>
+        <target>SEO</target>
       </trans-unit>
       <trans-unit id="iitI3Lq" resname="list.header.title">
         <source>list.header.title</source>
-        <target>Actualités</target>
+        <target>Aktuality</target>
       </trans-unit>
       <trans-unit id="Z6TLuDy" resname="list.datatable.header.title">
         <source>list.datatable.header.title</source>
-        <target>Titre</target>
+        <target>Název</target>
       </trans-unit>
       <trans-unit id="nd24Mi0" resname="list.datatable.header.date">
         <source>list.datatable.header.date</source>
-        <target>Date</target>
+        <target>Datum</target>
       </trans-unit>
       <trans-unit id="WCWrrjj" resname="list.datatable.header.actions">
         <source>list.datatable.header.actions</source>
-        <target>Actions</target>
+        <target>Akce</target>
       </trans-unit>
       <trans-unit id="WbWWVMe" resname="list.datatable.body.edit">
         <source>list.datatable.body.edit</source>
-        <target>Modifier</target>
+        <target>Upravit</target>
       </trans-unit>
       <trans-unit id="mkDUQEV" resname="list.datatable.body.toggle_status.confirm">
         <source>list.datatable.body.toggle_status.confirm</source>
-        <target>Voulez-vous vraiment passer ce post %s ?</target>
+        <target>Opravdu chcete tento příspěvek přepnout na %s?</target>
       </trans-unit>
       <trans-unit id="wHq1TkQ" resname="list.datatable.body.toggle_status.to_offline">
         <source>list.datatable.body.toggle_status.to_offline</source>
-        <target>Mettre hors ligne</target>
+        <target>Uvést do offline režimu</target>
       </trans-unit>
       <trans-unit id="GQbsrQ8" resname="list.datatable.body.toggle_status.to_online">
         <source>list.datatable.body.toggle_status.to_online</source>
-        <target>Mettre en ligne</target>
+        <target>Uvést do online režimu</target>
       </trans-unit>
       <trans-unit id="nnXe.Zl" resname="list.datatable.body.delete.confirm">
         <source>list.datatable.body.delete.confirm</source>
-        <target>Êtes-vous certain de vouloir supprimer ce post ?</target>
+        <target>Opravdu chcete tento příspěvek smazat?</target>
       </trans-unit>
       <trans-unit id="LwjjM8K" resname="list.datatable.body.delete.button">
         <source>list.datatable.body.delete.button</source>
-        <target>Supprimer</target>
+        <target>Smazat</target>
       </trans-unit>
       <trans-unit id="EqOdnwY" resname="categories.form.meta.title">
         <source>categories.form.meta.title</source>
-        <target>Catégories</target>
+        <target>Kategorie</target>
       </trans-unit>
       <trans-unit id="7lAsh4C" resname="categories.form.header.title">
         <source>categories.form.header.title</source>
-        <target>Catégories</target>
+        <target>Kategorie</target>
       </trans-unit>
       <trans-unit id="OtJJHgs" resname="breadcrumb.categories">
         <source>breadcrumb.categories</source>
-        <target>Catégories</target>
+        <target>Kategorie</target>
       </trans-unit>
       <trans-unit id="VyKnwmV" resname="categories.form.pills.content">
         <source>categories.form.pills.content</source>
-        <target>Contenu</target>
+        <target>Obsah</target>
       </trans-unit>
       <trans-unit id="6H5vToz" resname="categories.list.meta.title">
         <source>categories.list.meta.title</source>
-        <target>Liste des catégories</target>
+        <target>Seznam kategorií</target>
       </trans-unit>
       <trans-unit id="jbRL15j" resname="categories.list.header.title">
         <source>categories.list.header.title</source>
-        <target>Catégories</target>
+        <target>Kategorie</target>
       </trans-unit>
       <trans-unit id="E0PDdYx" resname="categories.list.datatable.header.position">
         <source>categories.list.datatable.header.position</source>
-        <target>Position</target>
+        <target>Pozice</target>
       </trans-unit>
       <trans-unit id="tVivb6n" resname="categories.list.datatable.header.title">
         <source>categories.list.datatable.header.title</source>
-        <target>Titre</target>
+        <target>Název</target>
       </trans-unit>
       <trans-unit id="1d6gIos" resname="categories.list.datatable.header.date">
         <source>categories.list.datatable.header.date</source>
-        <target>Date</target>
+        <target>Datum</target>
       </trans-unit>
       <trans-unit id="Cxzx.0a" resname="categories.list.datatable.header.actions">
         <source>categories.list.datatable.header.actions</source>
-        <target>Actions</target>
+        <target>Akce</target>
       </trans-unit>
       <trans-unit id="r4lOP34" resname="categories.list.datatable.body.edit">
         <source>categories.list.datatable.body.edit</source>
-        <target>Modifier</target>
+        <target>Upravit</target>
       </trans-unit>
       <trans-unit id="1cJo3M0" resname="categories.list.datatable.body.delete.confirm">
         <source>categories.list.datatable.body.delete.confirm</source>
-        <target>Êtes-vous certain de vouloir supprimer cette catégorie ?</target>
+        <target>Opravdu chcete tuto kategorii smazat?</target>
       </trans-unit>
       <trans-unit id="N4K1fWQ" resname="categories.list.datatable.body.delete.button">
         <source>categories.list.datatable.body.delete.button</source>
-        <target>Supprimer</target>
+        <target>Smazat</target>
       </trans-unit>
       <trans-unit id="xNlqtr4" resname="categories.order.meta.title">
         <source>categories.order.meta.title</source>
-        <target>Catégories - Réorganiser les catégories</target>
+        <target>Kategorie - Změnit pořadí kategorií</target>
       </trans-unit>
       <trans-unit id="JMmB0Xo" resname="breadcrumb.categories.order">
         <source>breadcrumb.categories.order</source>
-        <target>Réorganiser les catégories</target>
+        <target>Změnit pořadí kategorií</target>
       </trans-unit>
       <trans-unit id="F9f0eWF" resname="categories.order.title">
         <source>categories.order.title</source>
-        <target>Réorganiser les catégories</target>
+        <target>Změnit pořadí kategorií</target>
       </trans-unit>
       <trans-unit id="BYTp9At" resname="categories.order.datatable.header.position">
         <source>categories.order.datatable.header.position</source>
-        <target>Pos.</target>
+        <target>Poz.</target>
       </trans-unit>
       <trans-unit id="AK_Y_r6" resname="categories.order.datatable.header.title">
         <source>categories.order.datatable.header.title</source>
-        <target>Titre</target>
+        <target>Název</target>
       </trans-unit>
       <trans-unit id="JP7781R" resname="categories.order.datatable.header.date">
         <source>categories.order.datatable.header.date</source>
-        <target>Date</target>
+        <target>Datum</target>
       </trans-unit>
       <trans-unit id="bI.kWhk" resname="categories.form.name.label">
         <source>categories.form.name.label</source>
-        <target>Nom de la catégorie</target>
+        <target>Název kategorie</target>
       </trans-unit>
       <trans-unit id="U2dI4mp" resname="form.field.title">
         <source>form.field.title</source>
-        <target>Titre</target>
+        <target>Název</target>
       </trans-unit>
       <trans-unit id="HEsX53e" resname="form.field.excerpt">
         <source>form.field.excerpt</source>
-        <target>Extrait</target>
+        <target>Perex</target>
       </trans-unit>
       <trans-unit id="uDSEEWp" resname="form.field.description">
         <source>form.field.description</source>
-        <target>Description</target>
+        <target>Popis</target>
       </trans-unit>
       <trans-unit id="GHYWBnX" resname="form.field.meta_title">
         <source>form.field.meta_title</source>
@@ -191,51 +191,51 @@
       </trans-unit>
       <trans-unit id="igmwK8E" resname="text.dashboard">
         <source>text.dashboard</source>
-        <target>Tableau de bord</target>
+        <target>Nástěnka</target>
       </trans-unit>
       <trans-unit id="5e4s9b1" resname="form.field.created_at">
         <source>form.field.created_at</source>
-        <target>Créé le</target>
+        <target>Vytvořeno dne</target>
       </trans-unit>
       <trans-unit id="UErOO7D" resname="form.field.publish_at">
         <source>form.field.publish_at</source>
-        <target>Publié le</target>
+        <target>Publikováno dne</target>
       </trans-unit>
       <trans-unit id="o5fIg51" resname="form.field.publish_until">
         <source>form.field.publish_until</source>
-        <target>Jusqu'au</target>
+        <target>Publikováno do</target>
       </trans-unit>
       <trans-unit id="post.flash.saved" resname="post.flash.saved">
         <source>post.flash.saved</source>
-        <target>Le post a bien été enregistré.</target>
+        <target>Příspěvek byl úspěšně uložen.</target>
       </trans-unit>
       <trans-unit id="category.flash.saved" resname="category.flash.saved">
         <source>category.flash.saved</source>
-        <target>La catégorie a bien été enregistrée.</target>
+        <target>Kategorie byla úspěšně uložena.</target>
       </trans-unit>
       <trans-unit id="form.field.category.label" resname="form.field.category.label">
         <source>form.field.category.label</source>
-        <target>Catégorie</target>
+        <target>Kategorie</target>
       </trans-unit>
       <trans-unit id="form.field.category.placeholder" resname="form.field.category.placeholder">
         <source>form.field.category.placeholder</source>
-        <target>Choisir une catégorie</target>
+        <target>Vyberte kategorii</target>
       </trans-unit>
       <trans-unit id="form.field.tags.label" resname="form.field.tags.label">
         <source>form.field.tags.label</source>
-        <target>Tags</target>
+        <target>Tagy</target>
       </trans-unit>
       <trans-unit id="form.field.tags.placeholder" resname="form.field.tags.placeholder">
         <source>form.field.tags.placeholder</source>
-        <target>Choisir des tags</target>
+        <target>Vyberte tagy</target>
       </trans-unit>
       <trans-unit id="post.flash.deleted" resname="post.flash.deleted">
         <source>post.flash.deleted</source>
-        <target>Le post "{title}" a bien été supprimé.</target>
+        <target>Příspěvek "{title}" byl smazán.</target>
       </trans-unit>
       <trans-unit id="category.flash.deleted" resname="category.flash.deleted">
         <source>category.flash.deleted</source>
-        <target>La catégorie "{title}" a bien été supprimée.</target>
+        <target>Kategorie "{title}" byla smazána.</target>
       </trans-unit>
     </body>
   </file>
