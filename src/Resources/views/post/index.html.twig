@@ -1,4 +1,5 @@
 {% extends '@AropixelAdmin/List/datatable.html.twig' %}
+{% import '@AropixelAdmin/Macro/actions.html.twig' as list %}
 
 {% block header_title %}{% trans %}list.header.title{% endtrans %}{% endblock %}
 {% block header_breadcrumb %}
@@ -12,7 +13,7 @@
 
 {% block paneldatatable %}
 
-    <table class="table card-table table-vcenter text-nowrap datatable">
+    <table class="table text-nowrap datatable">
         <thead>
         <tr>
             <th>{% trans %}list.datatable.header.title{% endtrans %}</th>
@@ -28,22 +29,18 @@
                 <td>{{ post.createdAt|datetime('dd/MM/Y') }}</td>
 
                 <td class="text-right">
-                    <div class="btn-group">
-                        <button type="button" class="badge badge-light badge-icon" data-bs-toggle="dropdown" data-boundary="viewport">
-                            <i class="fas fa-ellipsis-h"></i>
-                        </button>
-                        <div class="dropdown-menu dropdown-menu-end" data-bs-popper="static">
-                            <a href="{{ path('aropixel_blog_post_edit', {'id': post.id}) }}" class="dropdown-item has-icon"><i class="fas fa-edit"></i> {% trans %}list.datatable.body.edit{% endtrans %}</a>
-                            <a class="dropdown-item has-icon status" data-confirm="{% trans %}list.datatable.body.toggle_status.confirm{% endtrans %}" data-path="{{ path('aropixel_blog_post_status', {'id': post.id}) }}"><i class="fas fa-toggle-on"></i>{{ post.status == 'online' ? 'list.datatable.body.toggle_status.to_offline'|trans() : 'list.datatable.body.toggle_status.to_online'|trans() }}</a></li>
-                            <div class="dropdown-divider"></div>
-                            <a data-confirm="{% trans %}list.datatable.body.delete.confirm{% endtrans %}" class="delete dropdown-item has-icon text-danger">
-                                <i class="fas fa-trash"></i> {% trans %}list.datatable.body.delete.button{% endtrans %}
-                            </a>
-                            <form method="post" action="{{ path('aropixel_blog_post_delete', {'id': post.id}) }}">
-                                <input type="hidden" name="_token" value="{{ csrf_token('delete__post' ~ post.id) }}">
-                            </form>
-                        </div>
-                    </div>
+                    {{ list.actions(
+                        post,
+                        path('aropixel_blog_post_edit', {'id': post.id}),
+                        path('aropixel_blog_post_delete', {'id': post.id}),
+                        'list.datatable.body.delete.confirm'|trans,
+                        {
+                            path: path('aropixel_blog_post_status', {'id': post.id}),
+                            confirm: 'list.datatable.body.toggle_status.confirm'|trans,
+                            label: post.status == 'online' ? 'list.datatable.body.toggle_status.to_offline'|trans : 'list.datatable.body.toggle_status.to_online'|trans
+                        },
+                        csrf_token('delete__post' ~ post.id)
+                    ) }}
                 </td>
             </tr>
         {% endfor %}
