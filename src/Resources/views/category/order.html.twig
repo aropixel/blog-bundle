@@ -1,10 +1,9 @@
 {% extends '@AropixelAdmin/List/order.html.twig' %}
 
-
 {% block meta_title %}{% trans %}categories.order.meta.title{% endtrans %}{% endblock %}
 {% block header_title %}{% trans %}categories.order.meta.title{% endtrans %}{% endblock %}
 {% block header_breadcrumb %}
-    <ul class="breadcrumb breadcrumb-caret position-right">
+    <ul class="breadcrumb">
         <li class="breadcrumb-item"><a href="{{ url('_admin') }}">{% trans %}text.dashboard{% endtrans %}</a></li>
         <li class="breadcrumb-item">{% trans %}breadcrumb.blog{% endtrans %}</li>
         <li class="breadcrumb-item"><a href="{{ url('aropixel_blog_category_index') }}">{% trans %}breadcrumb.categories{% endtrans %}</a></li>
@@ -12,9 +11,7 @@
     </ul>
 {% endblock %}
 
-
 {% block paneltitle %}{% trans %}categories.order.title{% endtrans %}{% endblock %}
-
 
 {% block panelbody %}
 
@@ -30,7 +27,7 @@
         <tbody>
         {% for category in categories %}
             <tr id="entity_{{ category.id }}">
-                <td class="position"><i class="fas fa-arrows-alt"></i></td>
+                <td class="position">{{ ux_icon('lucide:move') }}</td>
                 <td class="position numero" style="width:35px;">{{ category.position + 1 }}.</td>
                 <td>{{ category.name }}</td>
                 <td>{{ category.createdAt|datetime('dd/MM/Y') }}</td>

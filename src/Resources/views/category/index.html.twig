@@ -1,20 +1,19 @@
 {% extends '@AropixelAdmin/List/datatable.html.twig' %}
-
+{% import '@AropixelAdmin/Macro/actions.html.twig' as list %}
 
 {% block meta_title %}{% trans %}categories.list.meta.title{% endtrans %}{% endblock %}
 {% block header_title %}{% trans %}categories.list.header.title{% endtrans %} {% endblock %}
 {% block header_breadcrumb %}
-    <ul class="breadcrumb breadcrumb-caret position-right">
+    <ul class="breadcrumb">
         <li class="breadcrumb-item"><a href="{{ url('_admin') }}">{% trans %}text.dashboard{% endtrans %}</a></li>
         <li class="breadcrumb-item">{% trans %}breadcrumb.blog{% endtrans %}</li>
         <li class="breadcrumb-item active">{% trans %}breadcrumb.list{% endtrans %}</li>
     </ul>
 {% endblock %}
 
-
 {% block paneldatatable %}
 
-    <table class="table card-table table-vcenter text-nowrap datatable">
+    <table class="table text-nowrap datatable">
         <thead>
             <tr>
                 <th style="width:100px">{% trans %}categories.list.datatable.header.position{% endtrans %}</th>
@@ -26,26 +25,19 @@
         <tbody>
             {% for category in categories %}
                 <tr>
-                    <td>{{ category.position +1 }}</td>
-                    <td><a href="{{ path('aropixel_blog_category_edit', {'id': category.id}) }}">{{ category.name }}</a></td>
+                    <td>{{ category.position + 1 }}</td>
+                    <td><a href="{{ path('aropixel_blog_category_edit', {id: category.id}) }}">{{ category.name }}</a></td>
                     <td>{{ category.createdAt|datetime('dd/MM/Y') }}</td>
 
                     <td class="text-right">
-                        <div class="btn-group">
-                            <button type="button" class="badge badge-light badge-icon" data-bs-toggle="dropdown" data-boundary="viewport">
-                                <i class="fas fa-ellipsis-h"></i>
-                            </button>
-                            <div class="dropdown-menu dropdown-menu-end" data-bs-popper="static">
-                                <a href="{{ path('aropixel_blog_category_edit', {'id': category.id}) }}" class="dropdown-item has-icon"><i class="fas fa-edit"></i> {% trans %}categories.list.datatable.body.edit{% endtrans %}</a>
-                                <div class="dropdown-divider"></div>
-                                <a data-confirm="{% trans %}categories.list.datatable.body.delete.confirm{% endtrans %}" class="delete dropdown-item has-icon text-danger">
-                                    <i class="fas fa-trash"></i> {% trans %}categories.list.datatable.body.delete.button{% endtrans %}
-                                </a>
-                                <form method="post" action="{{ path('aropixel_blog_category_delete', {'id': category.id}) }}">
-                                    <input type="hidden" name="_token" value="{{ csrf_token('delete__post_category' ~ category.id) }}">
-                                </form>
-                            </div>
-                        </div>
+                        {{ list.actions(
+                            category,
+                            path('aropixel_blog_category_edit', {id: category.id}),
+                            path('aropixel_blog_category_delete', {id: category.id}),
+                            'categories.list.datatable.body.delete.confirm'|trans,
+                            null,
+                            csrf_token('delete__post_category' ~ category.id),
+                        ) }}
                     </td>
                 </tr>
             {% endfor %}
