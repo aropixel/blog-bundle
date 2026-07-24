@@ -1,7 +1,6 @@
 {% extends '@AropixelAdmin/List/datatable.html.twig' %}
 {% import '@AropixelAdmin/Macro/actions.html.twig' as list %}
 
-
 {% block meta_title %}{% trans %}categories.list.meta.title{% endtrans %}{% endblock %}
 {% block header_title %}{% trans %}categories.list.header.title{% endtrans %} {% endblock %}
 {% block header_breadcrumb %}
@@ -11,7 +10,6 @@
         <li class="breadcrumb-item active">{% trans %}breadcrumb.list{% endtrans %}</li>
     </ul>
 {% endblock %}
-
 
 {% block paneldatatable %}
 
@@ -27,18 +25,18 @@
         <tbody>
             {% for category in categories %}
                 <tr>
-                    <td>{{ category.position +1 }}</td>
-                    <td><a href="{{ path('aropixel_blog_category_edit', {'id': category.id}) }}">{{ category.name }}</a></td>
+                    <td>{{ category.position + 1 }}</td>
+                    <td><a href="{{ path('aropixel_blog_category_edit', {id: category.id}) }}">{{ category.name }}</a></td>
                     <td>{{ category.createdAt|datetime('dd/MM/Y') }}</td>
 
                     <td class="text-right">
                         {{ list.actions(
                             category,
-                            path('aropixel_blog_category_edit', {'id': category.id}),
-                            path('aropixel_blog_category_delete', {'id': category.id}),
+                            path('aropixel_blog_category_edit', {id: category.id}),
+                            path('aropixel_blog_category_delete', {id: category.id}),
                             'categories.list.datatable.body.delete.confirm'|trans,
                             null,
-                            csrf_token('delete__post_category' ~ category.id)
+                            csrf_token('delete__post_category' ~ category.id),
                         ) }}
                     </td>
                 </tr>

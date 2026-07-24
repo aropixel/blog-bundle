@@ -10,7 +10,6 @@
     </ul>
 {% endblock %}
 
-
 {% block paneldatatable %}
 
     <table class="table text-nowrap datatable">
@@ -25,21 +24,21 @@
         <tbody>
         {% for post in posts %}
             <tr>
-                <td><a href="{{ path('aropixel_blog_post_edit', {'id': post.id}) }}">{{ post.title }}</a></td>
+                <td><a href="{{ path('aropixel_blog_post_edit', {id: post.id}) }}">{{ post.title }}</a></td>
                 <td>{{ post.createdAt|datetime('dd/MM/Y') }}</td>
 
                 <td class="text-right">
                     {{ list.actions(
                         post,
-                        path('aropixel_blog_post_edit', {'id': post.id}),
-                        path('aropixel_blog_post_delete', {'id': post.id}),
+                        path('aropixel_blog_post_edit', {id: post.id}),
+                        path('aropixel_blog_post_delete', {id: post.id}),
                         'list.datatable.body.delete.confirm'|trans,
                         {
-                            path: path('aropixel_blog_post_status', {'id': post.id}),
+                            path: path('aropixel_blog_post_status', {id: post.id}),
                             confirm: 'list.datatable.body.toggle_status.confirm'|trans,
-                            label: post.status == 'online' ? 'list.datatable.body.toggle_status.to_offline'|trans : 'list.datatable.body.toggle_status.to_online'|trans
+                            label: post.status == 'online' ? 'list.datatable.body.toggle_status.to_offline'|trans : 'list.datatable.body.toggle_status.to_online'|trans,
                         },
-                        csrf_token('delete__post' ~ post.id)
+                        csrf_token('delete__post' ~ post.id),
                     ) }}
                 </td>
             </tr>
