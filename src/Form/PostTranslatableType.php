@@ -2,6 +2,7 @@
 
 namespace Aropixel\BlogBundle\Form;
 
+use Aropixel\AdminBundle\Form\Type\EditorType;
 use Aropixel\AdminBundle\Form\Type\Image\Single\ImageType;
 use Aropixel\AdminBundle\Form\Type\TranslatableType;
 use Aropixel\BlogBundle\Entity\PostCategory;
@@ -15,7 +16,6 @@ use Symfony\Component\DependencyInjection\Attribute\Autowire;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Contracts\Translation\TranslatorInterface;
@@ -46,8 +46,7 @@ class PostTranslatableType extends AbstractType
                 'label' => $this->translator->trans('form.field.description'),
                 'personal_translation' => PostTranslation::class,
                 'property_path' => 'translations',
-                'widget' => TextareaType::class,
-                'attr' => ['class' => 'ckeditor'],
+                'widget' => EditorType::class,
             ])
             ->add('slug', HiddenType::class)
             ->add('metaTitle', TranslatableType::class, [
