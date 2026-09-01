@@ -4,7 +4,9 @@ namespace Aropixel\BlogBundle\Repository;
 
 use Aropixel\AdminBundle\Repository\PublishableRepository;
 use Aropixel\BlogBundle\Entity\Post;
+use Aropixel\BlogBundle\Entity\PostInterface;
 use Doctrine\Persistence\ManagerRegistry;
+use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 
 /**
  * @method Post|null find($id, $lockMode = null, $lockVersion = null)
@@ -14,9 +16,12 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class PostRepository extends PublishableRepository
 {
-    public function __construct(ManagerRegistry $registry, string $className = Post::class)
+    public function __construct(ManagerRegistry $registry, ParameterBagInterface $parameterBag)
     {
-        parent::__construct($registry, $className);
+        /** @var array<string,string> $entities */
+        $entities = $parameterBag->get('aropixel_blog.entities');
+
+        parent::__construct($registry, $entities[PostInterface::class]);
     }
 
     public function findPrevious(Post $post, bool $loop = false): ?Post
