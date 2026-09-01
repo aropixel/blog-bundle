@@ -84,7 +84,7 @@ class Post implements PostInterface, Translatable
     /**
      * @var Collection<int, PostTranslation>|null
      */
-    #[ORM\OneToMany(targetEntity: PostTranslation::class, mappedBy: 'object', cascade: ['persist', 'remove'])]
+    #[ORM\OneToMany(targetEntity: PostTranslationInterface::class, mappedBy: 'object', cascade: ['persist', 'remove'])]
     protected ?Collection $translations = null;
 
     private ?PostCategory $category = null;
